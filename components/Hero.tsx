@@ -188,7 +188,7 @@ export function Hero() {
               fontSize: "10px",
             }}
           >
-            scroll to explore — DOC.00
+            scroll to explore — EXP.00
           </span>
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.15)" }} />
         </div>
