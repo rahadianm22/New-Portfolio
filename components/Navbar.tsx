@@ -58,7 +58,7 @@ export function Navbar() {
 
         {/* CTA */}
         <a
-          href="mailto:rahadianm22@gmail.com"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=rahadianm22@gmail.com&su=Halo%20Rahadian"
           className="text-xs px-4 py-2 transition-all duration-150 hover:opacity-80"
           style={{
             fontFamily: "'JetBrains Mono', monospace",

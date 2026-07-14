@@ -25,13 +25,13 @@ const links: ContactLink[] = [
   },
   {
     label: "LinkedIn",
-    value: "/in/rahadianm",
+    value: "Rahadianm22",
     href: "https://www.linkedin.com/in/rahadianm22/",
     annotation: "network: professional",
   },
   {
     label: "Dribbble",
-    value: "/rahadianm22",
+    value: "Rahadianm22",
     href: "https://dribbble.com/rahadianm22",
     annotation: "type: visual",
   },

@@ -72,7 +72,7 @@ export function Hero() {
               className="w-1.5 h-1.5 rounded-full flex-shrink-0"
               style={{ backgroundColor: "#FF4B33" }}
             />
-            Senior Product Designer — Platform & Internal Systems
+            Senior Product Designer — Fintech & Digital Banking
           </span>
         </div>
 
@@ -140,7 +140,7 @@ export function Hero() {
             fontWeight: 400,
           }}
         >
-          Senior Product Designer dengan 5+ tahun merancang produk finansial teregulasi — dari aplikasi perbankan consumer-facing hingga platform lending internal untuk BRI.
+        Senior Product Designer with 5+ years of experience building regulated financial products—from consumer banking apps to complex enterprise lending platforms. Specialized in transforming technical constraints and fragmented data into clear, scalable workflows for operational users.
         </p>
 
         {/* CTA Buttons */}
