@@ -19,14 +19,14 @@ const links: ContactLink[] = [
   },
   {
     label: "Portfolio",
-    value: "own.page/rahadianm22",
-    href: "https://own.page/rahadianm22",
+    value: "rahadianm22",
+    href: "https://rahadianm22.vercel.app/",
     annotation: "type: showcase",
   },
   {
     label: "LinkedIn",
     value: "/in/rahadianm",
-    href: "https://linkedin.com/in/rahadianm",
+    href: "https://www.linkedin.com/in/rahadianm22/",
     annotation: "network: professional",
   },
   {
