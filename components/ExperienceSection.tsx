@@ -14,19 +14,19 @@ interface ExperienceEntry {
 
 const experiences: ExperienceEntry[] = [
   {
-    docId: "DOC.01",
+    docId: "EXP.01",
     role: "Senior Product Designer",
     company: "Bank Rakyat Indonesia (BRI)",
-    period: "Des 2023 — Sekarang",
-    duration: "1.5+ yr",
+    period: "Dec 2023 – Present",
+    duration: "2.5+ yr",
     highlights: [
-      "Memimpin desain BRISPOT, platform lending internal untuk alur approval multi-role: Pemrakarsa, Pemutus, dan ADK — termasuk state management proses multi-step yang kompleks.",
-      "Mendigitalisasi sistem KPR end-to-end, dari form pengajuan hingga status tracking nasabah.",
-      "Membangun dashboard analitik finansial dengan tabel data-heavy dan visualisasi metrik lending real-time.",
-      "Memimpin scaling design system berbasis variable tokens, mendefinisikan arsitektur komponen untuk tim 10+ designer.",
-      "Menangani modul Kartu Kredit & fitur Ubah Cicilan di BRImo/QITA (consumer-facing, jutaan pengguna aktif).",
+      "End-to-end loan endorsement & administration: Architected user flows and interfaces across web and mobile for three internal role groups — initiators (Pemrakarsa), approvers (Pemutus: CBM, PCP, Pinca, RCBH), and admin officers (Petugas ADK) — covering loan portfolio management, disbursement status tracking (Status 105), and Early Warning System (EWS) states.",
+      "Briguna digital lending core: Led UX research and interface design for cross-bank installment autofill (Crystal feature), customer whitelist management, national quota administration (Maker/Signer roles), and external institution flagging workflows (e.g. Taspen).",
+      "Advanced financial analytics tools: Designed complex data-visualisation dashboards and customer visit reporting tools with download/upload pipelines for balance sheet and profit-and-loss data, supporting credit analysis and RIPLAY summary previews for approvers on web and tablet.",
+      "Funnel monitoring & marketing tools: Optimised real-time application funnel monitoring dashboards (process and detail views) and promotional parameter management panels (Admin Gimmick Maker/Signer) to improve field-sales conversion and efficiency.",
+      "Design system scaling: Spearheaded scaling of the enterprise design system using variable design tokens, standardising design-to-development handover across all BRISPOT modules.",
     ],
-    tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard"],
+    tags: ["Figma", "Design System", "FigJam", "Design Variable Tokens", "Notion", "Auto Layout"],
   },
   {
     docId: "DOC.02",
@@ -35,9 +35,10 @@ const experiences: ExperienceEntry[] = [
     period: "Agu 2022 — Jul 2023",
     duration: "11 mo",
     highlights: [
-      "Membangun dan mendokumentasikan design system BSI Mobile Banking dari nol — komponen library, token warna, dan panduan tipografi.",
-      "Melakukan user research & usability testing untuk fitur-fitur kritis: transfer, QRIS, dan tabungan.",
-      "Mempresentasikan design rationale dan iterasi desain langsung ke stakeholder senior dan product manager.",
+      "Organised the design system library by epic in Figma, and built/documented reusable components (buttons, input fields, navigation) using Auto Layout to speed up design-to-development handoff.",
+      "Designed user flows for new mobile banking features, aligning with existing app behaviour and running user research to validate feature impact before build.",
+      "Maintained design consistency in line with BSI's UI/UX standards across product features, and presented design rationale and prototypes to internal stakeholders.",
+      "Prototyped and pitched new product concepts in ideation sessions with product owners and business analysts, iterating based on stakeholder feedback."
     ],
     tags: ["Mobile Banking", "Design System", "User Research"],
   },
