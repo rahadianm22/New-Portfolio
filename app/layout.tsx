@@ -1,30 +1,10 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["500", "700"],
-  variable: "--font-display",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-});
-
 export const metadata: Metadata = {
-  title: "Rahadian — Product Designer",
+  title: "Rahadian Maulana — Senior Product Designer",
   description:
-    "Product designer working on fintech & banking products — portfolio starter.",
+    "Senior Product Designer with 5+ years designing regulated fintech & banking products.",
 };
 
 export default function RootLayout({
@@ -34,12 +14,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${display.variable} ${body.variable} ${mono.variable} font-body bg-paper text-ink antialiased`}
-      >
+      <head>
+        {/* Google Fonts referenced directly by name in the section components
+            (Space Grotesk, Inter, JetBrains Mono) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased" style={{ backgroundColor: "#EDEFF5" }}>
         {children}
-        <SpeedInsights />
-        
       </body>
     </html>
   );

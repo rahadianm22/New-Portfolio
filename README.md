@@ -11,18 +11,22 @@ project, link) masih **placeholder**, tinggal kamu ganti.
 
 ```
 app/
-  layout.tsx      -> font + metadata global
-  globals.css     -> style dasar (grid background, selection color, dst)
+  layout.tsx      -> font (Google Fonts link) + metadata global
+  globals.css     -> style dasar (background, selection color, dst)
   page.tsx        -> merakit semua section jadi 1 halaman
 components/
+  Navbar.tsx
   Hero.tsx
-  WorkSection.tsx
-  AboutSection.tsx
+  ExperienceSection.tsx   -> juga export SectionLabel (dipakai section lain)
+  SystemsSection.tsx
   ContactSection.tsx
   Footer.tsx
-  SpecTag.tsx
-  CornerMarks.tsx
 ```
+
+Komponen di atas hasil convert dari desain Figma Make (konsep "spec sheet /
+blueprint"). Warna & font ditulis langsung sebagai inline style di tiap
+komponen, bukan lewat token Tailwind — sengaja dibiarkan begitu supaya persis
+sama desainnya.
 
 ## 1. Jalanin di lokal (VS Code)
 
@@ -36,12 +40,17 @@ npm run dev
 Buka `http://localhost:3000` di browser. Setiap kali kamu simpan file, halaman
 auto-refresh.
 
-## 2. Konten yang perlu diganti
+## 2. Konten yang perlu diganti / dicek lagi
 
 - `components/Hero.tsx` — nama, tagline, role
-- `components/WorkSection.tsx` — array `projects`, ganti sama case study kamu
-- `components/AboutSection.tsx` — bio & tools list
-- `components/ContactSection.tsx` — array `links`, ganti email/LinkedIn/Dribbble/Notion kamu
+- `components/ExperienceSection.tsx` — array `experiences`. **Cek dulu:**
+  badge durasi "1.5+ yr" di BRI dan klaim "tim 10+ designer" / "jutaan
+  pengguna aktif" itu hasil tebakan Figma Make, bukan dari CV kamu — pastikan
+  akurat sebelum publish.
+- `components/SystemsSection.tsx` — bio & parts list (tools)
+- `components/ContactSection.tsx` — array `links`, pastikan URL LinkedIn &
+  Dribbble kamu benar (yang sekarang masih placeholder pola umum)
+- `components/Navbar.tsx` — label menu & tombol "Hire me"
 - `app/layout.tsx` — bagian `metadata` (title & description buat SEO/tab browser)
 
 ## 3. Push ke GitHub
