@@ -1,6 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface SubProject {
+  title: string;
+  bullets: string[];
+  tech: string[];
+}
 
 interface ExperienceEntry {
   docId: string;
@@ -8,8 +14,12 @@ interface ExperienceEntry {
   company: string;
   period: string;
   duration: string;
-  highlights: string[];
   tags: string[];
+  // Simple entries just use `highlights`. Roles with multiple concurrent
+  // projects (like BRI) use `subProjects` instead — the modal renders
+  // each as its own block, matching how it's laid out on the CV.
+  highlights?: string[];
+  subProjects?: SubProject[];
 }
 
 const experiences: ExperienceEntry[] = [
@@ -29,11 +39,11 @@ const experiences: ExperienceEntry[] = [
     tags: ["Figma", "Design System", "FigJam", "Design Variable Tokens", "Notion", "Auto Layout"],
   },
   {
-    docId: "DOC.02",
+    docId: "EXP.02",
     role: "Product Designer",
     company: "Bank Syariah Indonesia (BSI)",
     period: "Agu 2022 — Jul 2023",
-    duration: "11 mo",
+    duration: "1 yr",
     highlights: [
       "Organised the design system library by epic in Figma, and built/documented reusable components (buttons, input fields, navigation) using Auto Layout to speed up design-to-development handoff.",
       "Designed user flows for new mobile banking features, aligning with existing app behaviour and running user research to validate feature impact before build.",
@@ -43,34 +53,35 @@ const experiences: ExperienceEntry[] = [
     tags: ["Mobile Banking", "Design System", "User Research"],
   },
   {
-    docId: "DOC.03",
+    docId: "EXP.03",
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
     period: "Mar 2021 — Mei 2022",
-    duration: "14 mo",
+    duration: "1+ yr",
     highlights: [
-      "Merancang sistem desain untuk BTN Conventional & Syariah: komponen form kompleks, alur pengajuan KPR, dan onboarding nasabah.",
-      "Mendesain dashboard table-heavy untuk sistem manajemen ATM CIMB — termasuk filter multi-dimensi dan export report.",
-      "Membuat custom 3D icon set di Blender untuk memperkaya visual identity aplikasi.",
+      "Built the design system and documentation for BTN's mobile and website platforms, benchmarking against competitor mobile banking UX patterns.",
+      "Designed a table-heavy dashboard UI for CIMB's ATM management system, covering financial and maintenance modules end-to-end.",
+      "Created custom 3D icons (Blender) and adapted the BTN design system for BTN Syariah's distinct branding and key app screens.",
+      "Managed the shared Figma Team Library across projects, and built interactive prototypes for client and stakeholder walkthroughs."
     ],
     tags: ["Banking", "Dashboard", "3D Illustration"],
   },
   {
-    docId: "DOC.04",
+    docId: "EXP.04",
     role: "UI/UX Designer",
     company: "Malline Indonesia",
     period: "Sep 2019 — Feb 2021",
-    duration: "17 mo",
+    duration: "2 yr",
     highlights: [
-      "Merancang platform e-commerce end-to-end dari tahap riset & wireframing hingga desain hi-fi dan implementasi WordPress.",
-      "Berkolaborasi langsung dengan developer untuk memastikan fidelitas desain dalam implementasi.",
-      "Melakukan iterasi cepat berdasarkan feedback pengguna dan A/B testing.",
+      "Designed UI concepts for Home, Category, Product, Cart, and Order pages, plus the admin dashboard from wireframe through WordPress implementation.",
+      "Conducted user research, surveys, and usability testing to inform iteration; built a consistent visual system across the platform.",
     ],
-    tags: ["E-commerce", "End-to-end", "Wireframing"],
+    tags: ["E-commerce", "Wordpress", "Wireframing"],
   },
 ];
-
 export function ExperienceSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section
       id="experience"
@@ -91,27 +102,44 @@ export function ExperienceSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Five documents from the archive.
+            Selected works & experiences.
           </h2>
         </div>
 
         {/* Experience list */}
         <div className="space-y-0">
           {experiences.map((entry, i) => (
-            <ExperienceCard key={entry.docId} entry={entry} isLast={i === experiences.length - 1} />
+            <ExperienceRow
+              key={entry.docId}
+              entry={entry}
+              isLast={i === experiences.length - 1}
+              onOpen={() => setOpenIndex(i)}
+            />
           ))}
         </div>
       </div>
+
+      {/* Detail modal */}
+      {openIndex !== null && (
+        <ExperienceModal entry={experiences[openIndex]} onClose={() => setOpenIndex(null)} />
+      )}
     </section>
   );
 }
 
-function ExperienceCard({ entry, isLast }: { entry: ExperienceEntry; isLast: boolean }) {
+function ExperienceRow({
+  entry,
+  isLast,
+  onOpen,
+}: {
+  entry: ExperienceEntry;
+  isLast: boolean;
+  onOpen: () => void;
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      className="relative group cursor-default transition-all duration-200"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -123,23 +151,53 @@ function ExperienceCard({ entry, isLast }: { entry: ExperienceEntry; isLast: boo
       }}
     >
       <div className="py-8 px-6 md:px-8">
-        <div className="flex flex-col md:flex-row md:items-start gap-6">
-          {/* Left: doc ID + duration badge */}
-          <div className="flex-shrink-0 flex md:flex-col gap-3 md:gap-2 md:w-28">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          {/* Left: doc ID + company + role + period */}
+          <div>
             <span
-              className="text-sm tracking-widest"
+              className="block text-sm tracking-widest mb-3"
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                color: hovered ? "#FF4B33" : "#2B4EFF",
+                color: "#2B4EFF",
                 fontWeight: 600,
-                transition: "color 0.2s ease",
               }}
             >
               {entry.docId}
             </span>
-            {hovered && (
+            <h3
+              className="text-xl mb-0.5"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontWeight: 700,
+                color: "#12151C",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {entry.company}
+            </h3>
+            <p
+              className="text-sm mb-1"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                color: "#6B7280",
+                fontWeight: 500,
+              }}
+            >
+              {entry.role}
+            </p>
+            <span
+              className="text-xs tracking-wider"
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                color: "#6B7280",
+              }}
+            >
+              {entry.period}
+            </span>
+
+            <div className="flex flex-wrap items-center gap-2 mt-4">
               <span
-                className="text-xs px-2 py-0.5 self-start"
+                className="text-xs px-2 py-0.5"
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   color: "#FF4B33",
@@ -150,68 +208,6 @@ function ExperienceCard({ entry, isLast }: { entry: ExperienceEntry; isLast: boo
               >
                 {entry.duration}
               </span>
-            )}
-          </div>
-
-          {/* Center: company + role + period */}
-          <div className="flex-1">
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
-              <div>
-                <h3
-                  className="text-xl mb-0.5"
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    fontWeight: 700,
-                    color: "#12151C",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {entry.company}
-                </h3>
-                <p
-                  className="text-sm"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    color: "#6B7280",
-                    fontWeight: 500,
-                  }}
-                >
-                  {entry.role}
-                </p>
-              </div>
-              <span
-                className="text-xs tracking-wider flex-shrink-0"
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: "#6B7280",
-                }}
-              >
-                {entry.period}
-              </span>
-            </div>
-
-            {/* Highlights */}
-            <ul className="space-y-2">
-              {entry.highlights.map((highlight, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-sm leading-relaxed"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    color: "#3D4557",
-                  }}
-                >
-                  <span
-                    className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: hovered ? "#FF4B33" : "#2B4EFF", transition: "background-color 0.2s ease" }}
-                  />
-                  {highlight}
-                </li>
-              ))}
-            </ul>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mt-4">
               {entry.tags.map((tag) => (
                 <span
                   key={tag}
@@ -230,6 +226,178 @@ function ExperienceCard({ entry, isLast }: { entry: ExperienceEntry; isLast: boo
               ))}
             </div>
           </div>
+
+          {/* Right: open-modal button */}
+          <button
+            onClick={onOpen}
+            className="flex-shrink-0 flex items-center gap-2 self-start md:self-auto transition-colors duration-150"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#FFFFFF",
+              backgroundColor: "#2B4EFF",
+              padding: "10px 18px",
+            }}
+          >
+            See detail
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 9L9 3M9 3H4M9 3V8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExperienceModal({ entry, onClose }: { entry: ExperienceEntry; onClose: () => void }) {
+  // Close on Escape, lock body scroll while open
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 md:p-8 overflow-y-auto"
+      style={{ backgroundColor: "rgba(18, 21, 28, 0.6)" }}
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl my-8 md:my-0"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.15)" }}
+      >
+        {/* Corner marks */}
+        <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+
+        {/* Header */}
+        <div
+          className="flex items-start justify-between gap-4 px-6 md:px-10 py-6"
+          style={{ borderBottom: "1px solid rgba(18, 21, 28, 0.1)" }}
+        >
+          <div>
+            <span
+              className="block text-xs tracking-widest mb-2"
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", fontWeight: 600 }}
+            >
+              {entry.docId}
+            </span>
+            <h3
+              className="text-2xl mb-1"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.01em" }}
+            >
+              {entry.company}
+            </h3>
+            <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280", fontWeight: 500 }}>
+              {entry.role} · {entry.period}
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Tutup"
+            className="flex-shrink-0 flex items-center justify-center"
+            style={{ width: "32px", height: "32px", border: "1px solid rgba(18, 21, 28, 0.15)", color: "#6B7280" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="px-6 md:px-10 py-8 max-h-[65vh] overflow-y-auto">
+          {entry.subProjects ? (
+            <div className="space-y-8">
+              {entry.subProjects.map((project) => (
+                <div key={project.title}>
+                  <h4
+                    className="text-base mb-3"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#12151C" }}
+                  >
+                    {project.title}
+                  </h4>
+                  <ul className="space-y-2">
+                    {project.bullets.map((bullet, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm leading-relaxed"
+                        style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                      >
+                        <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-2 py-1 tracking-wide uppercase"
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          color: "#6B7280",
+                          backgroundColor: "rgba(107, 114, 128, 0.08)",
+                          border: "1px solid rgba(107, 114, 128, 0.2)",
+                          fontSize: "10px",
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <ul className="space-y-2">
+                {entry.highlights?.map((highlight, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm leading-relaxed"
+                    style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                  >
+                    <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {entry.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-2 py-1 tracking-wide uppercase"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#6B7280",
+                      backgroundColor: "rgba(107, 114, 128, 0.08)",
+                      border: "1px solid rgba(107, 114, 128, 0.2)",
+                      fontSize: "10px",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
