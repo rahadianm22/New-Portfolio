@@ -60,7 +60,9 @@ export function SystemsSection() {
                 lineHeight: 1.75,
               }}
             >
-              Spesialisasi pada sistem produk yang kompleks: multi-role approval workflow, dashboard data-heavy dengan tabel padat, dan state management proses multi-step untuk pengguna operasional. Bukan hanya tampilan — tapi logika yang bisa dibangun.
+              Specializing in complex product ecosystems: multi-role approval workflows, data-heavy dashboards with dense data tables, and multi-step state management for operational users. It’s not just about the visuals—it’s about building the underlying logic.
+
+
             </p>
             <p
               className="text-base leading-relaxed"
@@ -70,11 +72,11 @@ export function SystemsSection() {
                 lineHeight: 1.75,
               }}
             >
-              Pendekatan berbasis{" "}
-              <span style={{ color: "#12151C", fontWeight: 600 }}>design token architecture</span>{" "}
-              memastikan setiap komponen skalabel dan konsisten di seluruh platform. Saat ini mengeksplorasi AI-assisted design-to-code dengan{" "}
+              A design token architecture approach ensures every component remains{" "}
+              <span style={{ color: "#12151C", fontWeight: 600 }}>scalable and consistent</span>{" "}
+              across the entire platform. Currently exploring AI-assisted design-to-code workflows with{" "}
               <span style={{ color: "#12151C", fontWeight: 600 }}>Claude Code</span>{" "}
-              untuk mempercepat pipeline dari desain ke produksi.
+              to accelerate the design-to-production pipeline.
             </p>
 
             {/* Expertise chips */}

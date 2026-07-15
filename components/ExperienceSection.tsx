@@ -102,7 +102,7 @@ export function ExperienceSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Selected works & experiences.
+            Five documents from the archive.
           </h2>
         </div>
 
@@ -226,6 +226,178 @@ function ExperienceRow({
               ))}
             </div>
           </div>
+
+          {/* Right: open-modal button */}
+          <button
+            onClick={onOpen}
+            className="flex-shrink-0 flex items-center gap-2 self-start md:self-auto transition-colors duration-150"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#FFFFFF",
+              backgroundColor: "#2B4EFF",
+              padding: "10px 18px",
+            }}
+          >
+            Lihat detail
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 9L9 3M9 3H4M9 3V8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExperienceModal({ entry, onClose }: { entry: ExperienceEntry; onClose: () => void }) {
+  // Close on Escape, lock body scroll while open
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 md:p-8 overflow-y-auto"
+      style={{ backgroundColor: "rgba(18, 21, 28, 0.6)" }}
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl my-8 md:my-0"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.15)" }}
+      >
+        {/* Corner marks */}
+        <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+        <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 pointer-events-none" style={{ borderColor: "#2B4EFF" }} />
+
+        {/* Header */}
+        <div
+          className="flex items-start justify-between gap-4 px-6 md:px-10 py-6"
+          style={{ borderBottom: "1px solid rgba(18, 21, 28, 0.1)" }}
+        >
+          <div>
+            <span
+              className="block text-xs tracking-widest mb-2"
+              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", fontWeight: 600 }}
+            >
+              {entry.docId}
+            </span>
+            <h3
+              className="text-2xl mb-1"
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.01em" }}
+            >
+              {entry.company}
+            </h3>
+            <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280", fontWeight: 500 }}>
+              {entry.role} · {entry.period}
+            </p>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Tutup"
+            className="flex-shrink-0 flex items-center justify-center"
+            style={{ width: "32px", height: "32px", border: "1px solid rgba(18, 21, 28, 0.15)", color: "#6B7280" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Body */}
+        <div className="px-6 md:px-10 py-8 max-h-[65vh] overflow-y-auto">
+          {entry.subProjects ? (
+            <div className="space-y-8">
+              {entry.subProjects.map((project) => (
+                <div key={project.title}>
+                  <h4
+                    className="text-base mb-3"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, color: "#12151C" }}
+                  >
+                    {project.title}
+                  </h4>
+                  <ul className="space-y-2">
+                    {project.bullets.map((bullet, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm leading-relaxed"
+                        style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                      >
+                        <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-2 py-1 tracking-wide uppercase"
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          color: "#6B7280",
+                          backgroundColor: "rgba(107, 114, 128, 0.08)",
+                          border: "1px solid rgba(107, 114, 128, 0.2)",
+                          fontSize: "10px",
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <ul className="space-y-2">
+                {entry.highlights?.map((highlight, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 text-sm leading-relaxed"
+                    style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                  >
+                    <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {entry.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-2 py-1 tracking-wide uppercase"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#6B7280",
+                      backgroundColor: "rgba(107, 114, 128, 0.08)",
+                      border: "1px solid rgba(107, 114, 128, 0.2)",
+                      fontSize: "10px",
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
