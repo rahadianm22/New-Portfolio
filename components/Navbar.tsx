@@ -38,6 +38,7 @@ export function Navbar() {
           {[
             { label: "Experience", href: "#experience" },
             { label: "Systems", href: "#systems" },
+            { label: "Side Project", href: "#side-project" },
             { label: "Contact", href: "#contact" },
           ].map((item) => (
             <a
@@ -58,7 +59,7 @@ export function Navbar() {
 
         {/* CTA */}
         <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=rahadianm22@gmail.com&su=Halo%20Rahadian%20"
+          href="mailto:rahadianm22@gmail.com"
           className="text-xs px-4 py-2 transition-all duration-150 hover:opacity-80"
           style={{
             fontFamily: "'JetBrains Mono', monospace",
