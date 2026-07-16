@@ -133,6 +133,84 @@ const experiences: ExperienceEntry[] = [
       "Mempresentasikan design rationale dan iterasi desain langsung ke stakeholder senior dan product manager.",
     ],
     tags: ["Mobile Banking", "Design System", "User Research"],
+    products: [
+      {
+        tabLabel: "BRISPOT",
+        name: "BRISPOT",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
+        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+        contributions: [
+          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
+          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
+          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
+          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
+          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
+        ],
+      },
+      {
+        tabLabel: "KPR Digital",
+        name: "KPR (Mortgage) Digital",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
+        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
+        contributions: [
+          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
+          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
+          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
+        ],
+      },
+      {
+        tabLabel: "BRImo & QITA",
+        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
+        category: "CONSUMER-FACING — SUPER APP",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
+        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
+        contributions: [
+          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
+          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
+          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
+        ],
+      },
+      {
+        tabLabel: "BUM Desa",
+        name: "BUM Desa — Digital Platform",
+        category: "INTERNAL PLATFORM — 0→1",
+        status: "Completed — Transisi ke BRImo/QITA",
+        statusLive: false,
+        description:
+          "Platform digital baru yang dibangun dari nol (0→1), sebelum tim bertransisi fokus ke segmen BRImo/QITA.",
+        scope: "scope: Internal — fase discovery hingga implementasi awal",
+        contributions: [
+          "Memimpin arsitektur UX/UI platform baru dari tahap discovery hingga implementasi.",
+          "Melakukan stakeholder interview untuk mendefinisikan core journey pengguna.",
+        ],
+      },
+      {
+        tabLabel: "BRI Design System",
+        name: "BRI Enterprise Design System",
+        category: "DESIGN SYSTEM — CROSS-PLATFORM",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
+        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
+        contributions: [
+          "Memimpin scaling design system menggunakan variable design tokens.",
+          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
+          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+        ],
+      },
+    ],
   },
   {
     docId: "DOC.03",
@@ -146,6 +224,84 @@ const experiences: ExperienceEntry[] = [
       "Membuat custom 3D icon set di Blender untuk memperkaya visual identity aplikasi.",
     ],
     tags: ["Banking", "Dashboard", "3D Illustration"],
+    products: [
+      {
+        tabLabel: "BRISPOT",
+        name: "BRISPOT",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
+        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+        contributions: [
+          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
+          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
+          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
+          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
+          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
+        ],
+      },
+      {
+        tabLabel: "KPR Digital",
+        name: "KPR (Mortgage) Digital",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
+        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
+        contributions: [
+          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
+          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
+          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
+        ],
+      },
+      {
+        tabLabel: "BRImo & QITA",
+        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
+        category: "CONSUMER-FACING — SUPER APP",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
+        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
+        contributions: [
+          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
+          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
+          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
+        ],
+      },
+      {
+        tabLabel: "BUM Desa",
+        name: "BUM Desa — Digital Platform",
+        category: "INTERNAL PLATFORM — 0→1",
+        status: "Completed — Transisi ke BRImo/QITA",
+        statusLive: false,
+        description:
+          "Platform digital baru yang dibangun dari nol (0→1), sebelum tim bertransisi fokus ke segmen BRImo/QITA.",
+        scope: "scope: Internal — fase discovery hingga implementasi awal",
+        contributions: [
+          "Memimpin arsitektur UX/UI platform baru dari tahap discovery hingga implementasi.",
+          "Melakukan stakeholder interview untuk mendefinisikan core journey pengguna.",
+        ],
+      },
+      {
+        tabLabel: "BRI Design System",
+        name: "BRI Enterprise Design System",
+        category: "DESIGN SYSTEM — CROSS-PLATFORM",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
+        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
+        contributions: [
+          "Memimpin scaling design system menggunakan variable design tokens.",
+          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
+          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+        ],
+      },
+    ],
   },
   {
     docId: "DOC.04",
@@ -159,6 +315,70 @@ const experiences: ExperienceEntry[] = [
       "Melakukan iterasi cepat berdasarkan feedback pengguna dan A/B testing.",
     ],
     tags: ["E-commerce", "End-to-end", "Wireframing"],
+    products: [
+      {
+        tabLabel: "BRISPOT",
+        name: "BRISPOT",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
+        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+        contributions: [
+          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
+          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
+          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
+          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
+          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
+        ],
+      },
+      {
+        tabLabel: "KPR Digital",
+        name: "KPR (Mortgage) Digital",
+        category: "INTERNAL PLATFORM — LENDING",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
+        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
+        contributions: [
+          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
+          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
+          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
+        ],
+      },
+      {
+        tabLabel: "BRImo & QITA",
+        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
+        category: "CONSUMER-FACING — SUPER APP",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
+        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
+        contributions: [
+          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
+          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
+          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
+        ],
+      },
+      {
+        tabLabel: "BRI Design System",
+        name: "BRI Enterprise Design System",
+        category: "DESIGN SYSTEM — CROSS-PLATFORM",
+        status: "Live — Aktif dikembangkan",
+        statusLive: true,
+        description:
+          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
+        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
+        contributions: [
+          "Memimpin scaling design system menggunakan variable design tokens.",
+          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
+          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+        ],
+      },
+    ],
   },
 ];
 
