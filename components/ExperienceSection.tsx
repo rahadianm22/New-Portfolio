@@ -273,7 +273,7 @@ function ExperienceRow({
               className="flex items-start gap-3 text-sm leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFFs" }} />
+              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
               {highlight}
             </li>
           ))}
