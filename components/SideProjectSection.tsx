@@ -35,13 +35,13 @@ export function SideProjectSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Building a system of my own.
+            Building a system of our own.
           </h2>
           <span
             className="flex-shrink-0 flex items-center gap-1.5 text-xs"
             style={{ fontFamily: "'JetBrains Mono', monospace", color: "#B45309" }}
           >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F59E0B" }} />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b" }} />
             v1.0 — In Progress
           </span>
         </div>
@@ -54,19 +54,14 @@ export function SideProjectSection() {
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557", lineHeight: 1.75 }}
             >
               <span style={{ color: "#12151C", fontWeight: 600 }}>Natuna Digilab Foundation</span>{" "}
-              adalah design system pribadi yang lagi aku bangun di luar pekerjaan — eksplorasi
-              arsitektur token dari nol, tanpa batasan brand perusahaan mana pun. Tujuannya
-              sederhana: bikin fondasi yang benar-benar scalable, dari warna sampai tipografi,
-              yang bisa dipakai ulang di project apa pun.
+               is a shared design system engineered by our team outside of daily work exploring token architecture from scratch without corporate brand limitations. The objective was straightforward: to build a highly scalable foundation, spanning color to typography, designed for instant adoption across any project.
             </p>
             <p
               className="text-base leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557", lineHeight: 1.75 }}
             >
-              Dibangun sepenuhnya pakai{" "}
-              <span style={{ color: "#12151C", fontWeight: 600 }}>Figma Variables</span> — setiap
-              token warna, angka, efek, dan tipografi saling terhubung, sehingga satu perubahan di
-              level foundation otomatis mengalir ke seluruh komponen di atasnya.
+              Leveraging the full power of{" "}
+              <span style={{ color: "#12151C", fontWeight: 600 }}>Figma Variables</span>, all tokens color, number, effect, and typography are seamlessly linked. A single change at the foundation level instantly cascades down to all components, allowing teams to start working immediately with zero setup friction.
             </p>
 
             <div className="flex flex-wrap gap-3 mt-2">

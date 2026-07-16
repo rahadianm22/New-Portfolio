@@ -63,14 +63,14 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase"
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              color: "#FF4B33",
+              color: "#f5740b",
               backgroundColor: "rgba(255, 75, 51, 0.08)",
               border: "1px solid rgba(255, 75, 51, 0.2)",
             }}
           >
             <span
               className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-              style={{ backgroundColor: "#FF4B33" }}
+              style={{ backgroundColor: "#f5740b" }}
             />
             Senior Product Designer — Fintech & Digital Banking
           </span>

@@ -184,7 +184,7 @@ export function ExperienceSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Five documents from the archive.
+            Designing at scale for complex ecosystems.
           </h2>
         </div>
 
@@ -226,7 +226,7 @@ function ExperienceRow({
       style={{
         borderTop: "1px solid rgba(18, 21, 28, 0.1)",
         borderBottom: isLast ? "1px solid rgba(18, 21, 28, 0.1)" : "none",
-        borderLeft: rowHovered ? "3px solid #FF4B33" : "3px solid transparent",
+        borderLeft: rowHovered ? "3px solid #f5740b" : "3px solid transparent",
         backgroundColor: rowHovered ? "#FFFFFF" : "transparent",
         transition: "border-color 0.2s ease, background-color 0.2s ease",
       }}
@@ -243,7 +243,7 @@ function ExperienceRow({
             className="text-xs px-2 py-0.5"
             style={{
               fontFamily: "'JetBrains Mono', monospace",
-              color: "#FF4B33",
+              color: "#f5740b",
               backgroundColor: "rgba(255, 75, 51, 0.1)",
               border: "1px solid rgba(255, 75, 51, 0.2)",
               fontSize: "10px",
@@ -273,7 +273,7 @@ function ExperienceRow({
               className="flex items-start gap-3 text-sm leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#FF4B33" }} />
+              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#f5740b" }} />
               {highlight}
             </li>
           ))}
@@ -311,25 +311,13 @@ function ExperienceRow({
           >
             <span
               className="flex items-center gap-1.5 px-3 py-1.5"
-              style={{
-                color: "#FFFFFF",
-                backgroundColor: "#2B4EFF",
-                border: "1px solid #2B4EFF",
-              }}
+              style={{ color: "#f5740b", backgroundColor: "rgba(255, 75, 51, 0.1)", border: "1px solid rgba(255, 75, 51, 0.25)" }}
             >
-              SEE DETAIL
+              See Detail
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f5740b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-            {productCount > 0 && (
-              <span
-                className="px-3 py-1.5"
-                style={{ color: "#FF4B33", backgroundColor: "rgba(255, 75, 51, 0.1)", border: "1px solid rgba(255, 75, 51, 0.25)" }}
-              >
-                {productCount} PRODUCTS
-              </span>
-            )}
           </button>
         </div>
       </div>
@@ -485,10 +473,10 @@ function ExperienceModal({ entry, onClose }: { entry: ExperienceEntry; onClose: 
 
               {/* Contributions */}
               <div className="flex items-center gap-2 mt-8 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#FF4B33" }} />
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b3" }} />
                 <span
                   className="text-xs tracking-widest uppercase"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FF4B33", letterSpacing: "0.1em" }}
+                  style={{ fontFamily: "'JetBrains Mono', monospace", color: "#f5740b", letterSpacing: "0.1em" }}
                 >
                   Contributions
                 </span>
