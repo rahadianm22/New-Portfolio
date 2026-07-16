@@ -126,7 +126,7 @@ const experiences: ExperienceEntry[] = [
     role: "Product Designer",
     company: "Bank Syariah Indonesia (BSI)",
     period: "Agu 2022 — Jul 2023",
-    duration: "11 mo",
+    duration: "1 yr",
     highlights: [
       "Membangun dan mendokumentasikan design system BSI Mobile Banking dari nol — komponen library, token warna, dan panduan tipografi.",
       "Melakukan user research & usability testing untuk fitur-fitur kritis: transfer, QRIS, dan tabungan.",
@@ -139,7 +139,7 @@ const experiences: ExperienceEntry[] = [
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
     period: "Mar 2021 — Mei 2022",
-    duration: "14 mo",
+    duration: "1+ yr",
     highlights: [
       "Merancang sistem desain untuk BTN Conventional & Syariah: komponen form kompleks, alur pengajuan KPR, dan onboarding nasabah.",
       "Mendesain dashboard table-heavy untuk sistem manajemen ATM CIMB — termasuk filter multi-dimensi dan export report.",
@@ -152,7 +152,7 @@ const experiences: ExperienceEntry[] = [
     role: "UI/UX Designer",
     company: "Malline Indonesia",
     period: "Sep 2019 — Feb 2021",
-    duration: "17 mo",
+    duration: "1.5+ yr",
     highlights: [
       "Merancang platform e-commerce end-to-end dari tahap riset & wireframing hingga desain hi-fi dan implementasi WordPress.",
       "Berkolaborasi langsung dengan developer untuk memastikan fidelitas desain dalam implementasi.",
@@ -226,7 +226,7 @@ function ExperienceRow({
       style={{
         borderTop: "1px solid rgba(18, 21, 28, 0.1)",
         borderBottom: isLast ? "1px solid rgba(18, 21, 28, 0.1)" : "none",
-        borderLeft: rowHovered ? "3px solid #f5740b" : "3px solid transparent",
+        borderLeft: rowHovered ? "3px solid #2B4EFF" : "3px solid transparent",
         backgroundColor: rowHovered ? "#FFFFFF" : "transparent",
         transition: "border-color 0.2s ease, background-color 0.2s ease",
       }}
@@ -273,7 +273,7 @@ function ExperienceRow({
               className="flex items-start gap-3 text-sm leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#f5740b" }} />
+              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFFs" }} />
               {highlight}
             </li>
           ))}
@@ -311,11 +311,11 @@ function ExperienceRow({
           >
             <span
               className="flex items-center gap-1.5 px-3 py-1.5"
-              style={{ color: "#f5740b", backgroundColor: "rgba(255, 75, 51, 0.1)", border: "1px solid rgba(255, 75, 51, 0.25)" }}
+              style={{ color: "#2B4EFF", backgroundColor: "rgba(51, 105, 255, 0.1)", border: "1px solid rgba(51, 82, 255, 0.25)" }}
             >
               See Detail
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#f5740b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 8L8 2M8 2H3M8 2V7" stroke="#2B4EFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
           </button>
@@ -473,7 +473,7 @@ function ExperienceModal({ entry, onClose }: { entry: ExperienceEntry; onClose: 
 
               {/* Contributions */}
               <div className="flex items-center gap-2 mt-8 mb-4">
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b3" }} />
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b" }} />
                 <span
                   className="text-xs tracking-widest uppercase"
                   style={{ fontFamily: "'JetBrains Mono', monospace", color: "#f5740b", letterSpacing: "0.1em" }}
