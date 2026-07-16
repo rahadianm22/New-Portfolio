@@ -13,16 +13,16 @@ interface ContactLink {
 const links: ContactLink[] = [
   {
     label: "Email",
-    value: "rahadianm22@gmail.com",
+    value: "Rahadianm22@gmail.com",
     href: "mailto:rahadianm22@gmail.com",
     annotation: "channel: direct",
   },
-  {
+  /*{
     label: "Portfolio",
-    value: "rahadianm22",
+    value: "Rahadianm22",
     href: "https://rahadianm22.vercel.app/",
     annotation: "type: showcase",
-  },
+  },*/
   {
     label: "LinkedIn",
     value: "Rahadianm22",
