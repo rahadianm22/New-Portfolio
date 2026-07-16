@@ -20,26 +20,27 @@ interface ExperienceEntry {
   period: string;
   duration: string;
   tags: string[];
-  // Simple entries just use `highlights`. Roles with multiple concurrent
-  // projects (like BRI) use `subProjects` instead — the modal renders
-  // each as its own block, matching how it's laid out on the CV.
-  highlights?: string[];
-  subProjects?: SubProject[];
+  highlights: string[];
+  // Entries with multiple concurrent products (like BRI) get a tabbed
+  // product breakdown in the modal. Entries without this just show
+  // `highlights` in a simple modal instead.
+  products?: Product[];
 }
 
 const experiences: ExperienceEntry[] = [
   {
-    docId: "EXP.01",
+    docId: "DOC.01",
     role: "Senior Product Designer",
     company: "Bank Rakyat Indonesia (BRI)",
-    period: "Dec 2023 – Present",
+    period: "Des 2023 — Sekarang",
     duration: "2.5+ yr",
+    tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard"],
     highlights: [
-      "End-to-end loan endorsement & administration: Architected user flows and interfaces across web and mobile for three internal role groups — initiators (Pemrakarsa), approvers (Pemutus: CBM, PCP, Pinca, RCBH), and admin officers (Petugas ADK) — covering loan portfolio management, disbursement status tracking (Status 105), and Early Warning System (EWS) states.",
-      "Briguna digital lending core: Led UX research and interface design for cross-bank installment autofill (Crystal feature), customer whitelist management, national quota administration (Maker/Signer roles), and external institution flagging workflows (e.g. Taspen).",
-      "Advanced financial analytics tools: Designed complex data-visualisation dashboards and customer visit reporting tools with download/upload pipelines for balance sheet and profit-and-loss data, supporting credit analysis and RIPLAY summary previews for approvers on web and tablet.",
-      "Funnel monitoring & marketing tools: Optimised real-time application funnel monitoring dashboards (process and detail views) and promotional parameter management panels (Admin Gimmick Maker/Signer) to improve field-sales conversion and efficiency.",
-      "Design system scaling: Spearheaded scaling of the enterprise design system using variable design tokens, standardising design-to-development handover across all BRISPOT modules.",
+      "Memimpin desain BRISPOT, platform lending internal untuk alur approval multi-role: Pemrakarsa, Pemutus, dan ADK — termasuk state management proses multi-step yang kompleks.",
+      "Mendigitalisasi sistem KPR end-to-end, dari form pengajuan hingga status tracking nasabah.",
+      "Membangun dashboard analitik finansial dengan tabel data-heavy dan visualisasi metrik lending.",
+      "Memimpin scaling design system berbasis variable tokens, mendefinisikan arsitektur komponen lintas modul BRISPOT.",
+      "Menangani modul Kartu Kredit & fitur Ubah Cicilan di BRImo/QITA (consumer-facing).",
     ],
     products: [
       {
@@ -119,50 +120,47 @@ const experiences: ExperienceEntry[] = [
         ],
       },
     ],
-    tags: ["Figma", "Design System", "FigJam", "Design Variable Tokens", "Notion", "Auto Layout"],
   },
   {
-    docId: "EXP.02",
+    docId: "DOC.02",
     role: "Product Designer",
     company: "Bank Syariah Indonesia (BSI)",
     period: "Agu 2022 — Jul 2023",
-    duration: "1 yr",
+    duration: "11 mo",
     highlights: [
-      "Organised the design system library by epic in Figma, and built/documented reusable components (buttons, input fields, navigation) using Auto Layout to speed up design-to-development handoff.",
-      "Designed user flows for new mobile banking features, aligning with existing app behaviour and running user research to validate feature impact before build.",
-      "Maintained design consistency in line with BSI's UI/UX standards across product features, and presented design rationale and prototypes to internal stakeholders.",
-      "Prototyped and pitched new product concepts in ideation sessions with product owners and business analysts, iterating based on stakeholder feedback."
+      "Membangun dan mendokumentasikan design system BSI Mobile Banking dari nol — komponen library, token warna, dan panduan tipografi.",
+      "Melakukan user research & usability testing untuk fitur-fitur kritis: transfer, QRIS, dan tabungan.",
+      "Mempresentasikan design rationale dan iterasi desain langsung ke stakeholder senior dan product manager.",
     ],
     tags: ["Mobile Banking", "Design System", "User Research"],
   },
   {
-    docId: "EXP.03",
+    docId: "DOC.03",
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
     period: "Mar 2021 — Mei 2022",
-    duration: "1+ yr",
+    duration: "14 mo",
     highlights: [
-      "Built the design system and documentation for BTN's mobile and website platforms, benchmarking against competitor mobile banking UX patterns.",
-      "Designed a table-heavy dashboard UI for CIMB's ATM management system, covering financial and maintenance modules end-to-end.",
-      "Created custom 3D icons (Blender) and adapted the BTN design system for BTN Syariah's distinct branding and key app screens.",
-      "Managed the shared Figma Team Library across projects, and built interactive prototypes for client and stakeholder walkthroughs."
+      "Merancang sistem desain untuk BTN Conventional & Syariah: komponen form kompleks, alur pengajuan KPR, dan onboarding nasabah.",
+      "Mendesain dashboard table-heavy untuk sistem manajemen ATM CIMB — termasuk filter multi-dimensi dan export report.",
+      "Membuat custom 3D icon set di Blender untuk memperkaya visual identity aplikasi.",
     ],
     tags: ["Banking", "Dashboard", "3D Illustration"],
   },
   {
-    docId: "EXP.04",
+    docId: "DOC.04",
     role: "UI/UX Designer",
     company: "Malline Indonesia",
     period: "Sep 2019 — Feb 2021",
-    duration: "2 yr",
+    duration: "17 mo",
     highlights: [
-      "Designed UI concepts for Home, Category, Product, Cart, and Order pages, plus the admin dashboard from wireframe through WordPress implementation.",
-      "Conducted user research, surveys, and usability testing to inform iteration; built a consistent visual system across the platform.",
+      "Merancang platform e-commerce end-to-end dari tahap riset & wireframing hingga desain hi-fi dan implementasi WordPress.",
+      "Berkolaborasi langsung dengan developer untuk memastikan fidelitas desain dalam implementasi.",
+      "Melakukan iterasi cepat berdasarkan feedback pengguna dan A/B testing.",
     ],
-    tags: ["E-commerce", "Wordpress", "Wireframing"],
+    tags: ["E-commerce", "End-to-end", "Wireframing"],
   },
 ];
-
 
 export function ExperienceSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
