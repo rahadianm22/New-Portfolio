@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,17 +22,14 @@ export function Navbar() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between">
-        {/* Logo / name */}
-        <span
-          className="text-xs tracking-widest uppercase"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            color: "#12151C",
-            letterSpacing: "0.12em",
-          }}
-        >
-          RM<span style={{ color: "#2B4EFF" }}>.</span>
-        </span>
+        {/* Logo / favicon */}
+        <Image
+          src="/android-chrome-512x512.png"
+          alt="Rahadian Maulana"
+          width={28}
+          height={28}
+          priority
+        />
 
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-8">
@@ -69,7 +67,7 @@ export function Navbar() {
             letterSpacing: "0.08em",
           }}
         >
-          Hire me
+          Let's talk
         </a>
       </div>
     </nav>
