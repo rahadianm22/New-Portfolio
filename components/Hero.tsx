@@ -45,7 +45,7 @@ export function Hero() {
               color: "#6B7280",
             }}
           >
-            Rahadian Maulana
+            Product Designer
           </span>
           <span
             className="text-xs tracking-widest uppercase"
