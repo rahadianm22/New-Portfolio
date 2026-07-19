@@ -125,8 +125,9 @@ export function Hero() {
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  Rahadian Maulana
+                  Rahadian 
                   <br />
+                  Maulana
                 </h1>
               </div>
             </div>
