@@ -58,134 +58,15 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Two-column layout: text left, photo right */}
-        <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-12 md:gap-10 items-center">
-          {/* Left column: role tag, headline, sub-headline, CTAs */}
-          <div>
-            {/* Role tag */}
-            {/* <div className="mb-8">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase"
-                style={{
-                  fontFamily: "'JetBrains Mono', monospace",
-                  color: "#FF4B33",
-                  backgroundColor: "rgba(255, 75, 51, 0.08)",
-                  border: "1px solid rgba(255, 75, 51, 0.2)",
-                }}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: "#FF4B33" }}
-                />
-                Senior Product Designer — Platform & Internal Systems
-              </span>
-            </div> */}
-
-            {/* Headline with dashed border */}
-            <div className="relative mb-10">
-              <div
-                className="relative inline-block"
-                style={{
-                  border: "1.5px dashed rgba(43, 78, 255, 0.35)",
-                  padding: "24px 28px",
-                }}
-              >
-                <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-                <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-                <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-                <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-
-                <span
-                  className="absolute -top-5 left-0 text-xs"
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: "#2B4EFF",
-                    fontSize: "10px",
-                  }}
-                >
-                  width: auto
-                </span>
-                <span
-                  className="absolute -bottom-5 right-0 text-xs"
-                  style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    color: "#2B4EFF",
-                    fontSize: "10px",
-                  }}
-                >
-                  token: --heading-xl
-                </span>
-
-                <h1
-                  className="text-4xl md:text-6xl leading-[1.05]"
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    fontWeight: 700,
-                    color: "#12151C",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  Rahadian 
-                  <br />
-                  Maulana
-                </h1>
-              </div>
-            </div>
-
-            {/* Sub-headline */}
-            <p
-              className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
-              style={{
-                fontFamily: "'Urb', sans-serif",
-                color: "#3D4557",
-                fontWeight: 400,
-              }}
-            >
-              5+ years optimizing complex financial products and workflows to drive business impact
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#experience"
-                className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-80"
-                style={{
-                  fontFamily: "'Urb', sans-serif",
-                  fontWeight: 600,
-                  backgroundColor: "#12151C",
-                  color: "#FFFFFF",
-                  fontSize: "15px",
-                }}
-              >
-                View Experience
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-              {/* <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-70"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 600,
-                  backgroundColor: "transparent",
-                  color: "#12151C",
-                  border: "1.5px solid #12151C",
-                  fontSize: "15px",
-                }}
-              >
-                Get in Touch
-              </a> */}
-            </div>
-          </div>
-
-          {/* Right column: framed photo */}
-          <div className="relative mx-auto md:mx-0 w-full max-w-sm">
+        {/* Single centered column layout */}
+        <div className="flex flex-col items-center text-center">
+          {/* Headline with dashed border */}
+          <div className="relative mb-10">
             <div
-              className="relative"
+              className="relative inline-block"
               style={{
                 border: "1.5px dashed rgba(43, 78, 255, 0.35)",
-                padding: "14px",
+                padding: "24px 28px",
               }}
             >
               <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
@@ -193,32 +74,73 @@ export function Hero() {
               <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
               <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
 
-              {/* Top-left annotation */}
               <span
                 className="absolute -top-5 left-0 text-xs"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", fontSize: "10px" }}
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: "#2B4EFF",
+                  fontSize: "10px",
+                }}
               >
-                img: rahadian.jpg
+                width: auto
               </span>
-              {/* Bottom-right annotation */}
               <span
                 className="absolute -bottom-5 right-0 text-xs"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", fontSize: "10px" }}
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: "#2B4EFF",
+                  fontSize: "10px",
+                }}
               >
-                ratio: 4:5
+                token: --heading-xl
               </span>
 
-              <div className="relative w-full" style={{ aspectRatio: "4 / 5" }}>
-                <Image
-                  src="/poto baru.png"
-                  alt="Rahadian Maulana"
-                  fill
-                  sizes="(max-width: 768px) 90vw, 400px"
-                  style={{ objectFit: "cover" }}
-                  priority
-                />
-              </div>
+              <h1
+                className="text-4xl md:text-6xl leading-[1.05]"
+                style={{
+                  fontFamily: "'Urbanist', sans-serif",
+                  fontWeight: 700,
+                  color: "#12151C",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Rahadian 
+                <br />
+                Maulana
+              </h1>
             </div>
+          </div>
+
+          {/* Sub-headline */}
+          <p
+            className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
+            style={{
+              fontFamily: "'Urb', sans-serif",
+              color: "#3D4557",
+              fontWeight: 400,
+            }}
+          >
+            5+ years optimizing complex financial products and workflows to drive business impact
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="#experience"
+              className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-80"
+              style={{
+                fontFamily: "'Urb', sans-serif",
+                fontWeight: 600,
+                backgroundColor: "#12151C",
+                color: "#FFFFFF",
+                fontSize: "15px",
+              }}
+            >
+              View Experience
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
         </div>
 
