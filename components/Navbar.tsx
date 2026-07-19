@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -22,14 +23,30 @@ export function Navbar() {
       }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between">
-        {/* Logo / favicon */}
-        <Image
-          src="/android-chrome-512x512.png"
-          alt="Rahadian Maulana"
-          width={28}
-          height={28}
-          priority
-        />
+        {/* Logo + Nama — Klikable ke Home */}
+        <a
+          href="/"
+          className="flex items-center gap-2.5 transition-opacity duration-150 hover:opacity-70"
+          style={{ textDecoration: "none" }}
+        >
+          <Image
+            src="/android-chrome-512x512.png"
+            alt="Rahadian Maulana"
+            width={28}
+            height={28}
+            priority
+          />
+          <span
+            className="text-sm font-semibold tracking-wide"
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              color: "#12151C",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Rahadianm22
+          </span>
+        </a>
 
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-8">

@@ -8,7 +8,7 @@ interface PartCategory {
 const partsList: PartCategory[] = [
   {
     category: "Design Tools",
-    items: ["Figma", "FigJam", "Framer", "Adobe XD", "Adobe Photoshop", "Adobe Illustrator", "Blender"],
+    items: ["Figma", "FigJam"],
   },
   {
     category: "Systems",

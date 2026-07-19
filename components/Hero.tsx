@@ -63,7 +63,7 @@ export function Hero() {
           {/* Left column: role tag, headline, sub-headline, CTAs */}
           <div>
             {/* Role tag */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <span
                 className="inline-flex items-center gap-2 px-3 py-1.5 text-xs tracking-widest uppercase"
                 style={{
@@ -79,7 +79,7 @@ export function Hero() {
                 />
                 Senior Product Designer — Platform & Internal Systems
               </span>
-            </div>
+            </div> */}
 
             {/* Headline with dashed border */}
             <div className="relative mb-10">
@@ -119,15 +119,14 @@ export function Hero() {
                 <h1
                   className="text-4xl md:text-6xl leading-[1.05]"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontFamily: "'Urbanist', sans-serif",
                     fontWeight: 700,
                     color: "#12151C",
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  Product systems,
+                  Rahadian Maulana
                   <br />
-                  not just screens.
                 </h1>
               </div>
             </div>
@@ -136,12 +135,12 @@ export function Hero() {
             <p
               className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily: "'Urb', sans-serif",
                 color: "#3D4557",
                 fontWeight: 400,
               }}
             >
-              Senior Product Designer dengan 5+ tahun merancang produk finansial teregulasi — dari aplikasi perbankan consumer-facing hingga platform lending internal untuk BRI.
+              5+ years optimizing complex financial products and workflows to drive business impact
             </p>
 
             {/* CTA Buttons */}
@@ -150,7 +149,7 @@ export function Hero() {
                 href="#experience"
                 className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-80"
                 style={{
-                  fontFamily: "'Inter', sans-serif",
+                  fontFamily: "'Urb', sans-serif",
                   fontWeight: 600,
                   backgroundColor: "#12151C",
                   color: "#FFFFFF",
@@ -162,7 +161,7 @@ export function Hero() {
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-              <a
+              {/* <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-70"
                 style={{
@@ -175,7 +174,7 @@ export function Hero() {
                 }}
               >
                 Get in Touch
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -210,7 +209,7 @@ export function Hero() {
 
               <div className="relative w-full" style={{ aspectRatio: "4 / 5" }}>
                 <Image
-                  src="/rahadian-photo.jpg"
+                  src="/poto baru.png"
                   alt="Rahadian Maulana"
                   fill
                   sizes="(max-width: 768px) 90vw, 400px"
