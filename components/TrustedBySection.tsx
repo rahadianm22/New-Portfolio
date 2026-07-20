@@ -19,7 +19,7 @@ const clients: Client[] = [
   {
     name: "BRI",
     color: "#00529C",
-    logo: "/Logo/bri.png",
+    logo: "/Logo/BRI.png",
     url: "https://play.google.com/store/apps/details?id=id.co.bri.brimo",
   },
    {
