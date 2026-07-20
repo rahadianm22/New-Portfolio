@@ -17,48 +17,48 @@ const clients: Client[] = [
   {
     name: "BRI",
     color: "#00529C",
-    logo: "/logo/BRI.png",
+    logo: "/Logo/BRI.png",
   },
    {
     name: "Qita by BRI",
     color: "#00529C",
-    logo: "/logo/qita.png",
+    logo: "/Logo/qita.png",
   },
   {
     name: "BRISPOT",
     color: "#00529C",
-    logo: "/logo/brispot.png",
+    logo: "/Logo/brispot.png",
   },
   {
     name: "BSI",
     // subtitle: "Islamic Bank",
     color: "#00A651",
-    logo: "/logo/byondbsi.png",
+    logo: "/Logo/byondbsi.png",
   },
   {
     name: "Bale by BTN",
     color: "#F7941E",
-    logo: "/logo/balebtn.png",
+    logo: "/Logo/balebtn.png",
   },
   {
     name: "BTN Syariah",
     color: "#F7941E",
-    logo: "/logo/btnsyariah.jpg",
+    logo: "/Logo/btnsyariah.jpg",
   },
   {
     name: "CIMB",
     color: "#7A1E2C",
-    logo: "/logo/cimb.jpg",
+    logo: "/Logo/cimb.jpg",
   },
   {
     name: "Kotakode",
     color: "#7A1E2C",
-    logo: "/logo/kotakode.png",
+    logo: "/Logo/kotakode.png",
   },
   {
     name: "Malline",
     color: "#12151C",
-    logo: "/logo/Malline.png",
+    logo: "/Logo/Malline.png",
   },
 ];
 
