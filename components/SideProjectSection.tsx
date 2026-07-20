@@ -166,7 +166,7 @@ export function SideProjectSection() {
 
             {/* Download button */}
             <a
-              href="https://drive.google.com/file/d/14h74U7yr9rxcL3pJ0isvHqL8hJIqy358/view?usp=sharing"
+              href="https://www.figma.com/community/file/1660946308636540525"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 flex items-center justify-center gap-2 w-full py-3 transition-colors duration-150 hover:opacity-90"
