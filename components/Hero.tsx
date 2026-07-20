@@ -104,9 +104,9 @@ export function Hero() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Rahadian 
+                Hi, I'm Rahadian Maulana. 
                 <br />
-                Maulana
+                Product Designer With 5+ Years Experience 
               </h1>
             </div>
           </div>
@@ -120,7 +120,7 @@ export function Hero() {
               fontWeight: 400,
             }}
           >
-            5+ years optimizing complex financial products and workflows to drive business impact
+            Based in Indonesia, optimizing complex financial products and workflows to drive business impact and user growth.
           </p>
 
           {/* CTA Buttons */}

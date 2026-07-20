@@ -36,8 +36,8 @@ const experiences: ExperienceEntry[] = [
     duration: "2.5+ yr",
     tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard"],
     highlights: [
-      "Memimpin desain BRISPOT, platform lending internal untuk alur approval multi-role: Pemrakarsa, Pemutus, dan ADK — termasuk state management proses multi-step yang kompleks.",
-      "Mendigitalisasi sistem KPR end-to-end, dari form pengajuan hingga status tracking nasabah.",
+      "End-to-end loan endorsement & administration: Architected user flows and interfaces across web and mobile for three internal role groups — initiators (Pemrakarsa), approvers (Pemutus: CBM, PCP, Pinca, RCBH), and admin officers (Petugas ADK) — covering loan portfolio management, disbursement status tracking (Status 105), and Early Warning System (EWS) states.",
+      "Briguna digital lending core: Led UX research and interface design for cross-bank installment autofill (Crystal feature), customer whitelist management, national quota administration (Maker/Signer roles), and external institution flagging workflows (e.g. Taspen).",
       "Membangun dashboard analitik finansial dengan tabel data-heavy dan visualisasi metrik lending.",
       "Memimpin scaling design system berbasis variable tokens, mendefinisikan arsitektur komponen lintas modul BRISPOT.",
       "Menangani modul Kartu Kredit & fitur Ubah Cicilan di BRImo/QITA (consumer-facing).",
