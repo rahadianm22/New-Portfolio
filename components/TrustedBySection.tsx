@@ -17,7 +17,7 @@ const clients: Client[] = [
   {
     name: "BRI",
     color: "#00529C",
-    logo: "/Logo/BRI.png",
+    logo: "/Logo/bri.png",
   },
    {
     name: "Qita by BRI",
@@ -27,28 +27,28 @@ const clients: Client[] = [
   {
     name: "BRISPOT",
     color: "#00529C",
-    logo: "/Logo/brispot.png",
+    logo: "/Logo/brispotbaru.png",
   },
   {
     name: "BSI",
     // subtitle: "Islamic Bank",
     color: "#00A651",
-    logo: "/Logo/byondbsi.png",
+    logo: "/Logo/byond.png",
   },
   {
     name: "Bale by BTN",
     color: "#F7941E",
-    logo: "/Logo/balebtn.png",
+    logo: "/Logo/bale.png",
   },
   {
     name: "BTN Syariah",
     color: "#F7941E",
-    logo: "/Logo/btnsyariah.jpg",
+    logo: "/Logo/btnsyariah.png",
   },
   {
     name: "CIMB",
     color: "#7A1E2C",
-    logo: "/Logo/cimb.jpg",
+    logo: "/Logo/cimb.png",
   },
   {
     name: "Kotakode",
