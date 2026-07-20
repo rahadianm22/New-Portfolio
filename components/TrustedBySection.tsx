@@ -11,6 +11,8 @@ interface Client {
   // If omitted, falls back to the generic `icon` SVG below.
   logo?: string;
   icon?: React.ReactNode;
+  // Play Store (or app/website) link. Card becomes clickable when set.
+  url?: string;
 }
 
 const clients: Client[] = [
@@ -18,58 +20,74 @@ const clients: Client[] = [
     name: "BRI",
     color: "#00529C",
     logo: "/Logo/bri.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.bri.brimo",
   },
    {
     name: "Qita by BRI",
     color: "#00529C",
     logo: "/Logo/qita.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.bri.brimons&hl=en&pli=1", // TODO: isi link Play Store QITA di sini
   },
   {
     name: "BRISPOT",
     color: "#00529C",
     logo: "/Logo/brispotbaru.png",
+    // BRISPOT itu internal tool, biasanya nggak ada di Play Store publik —
+    // biarkan kosong (card jadi nggak bisa diklik) kecuali kamu punya link lain.
+    url: "https://play.google.com/store/apps/details?id=id.co.bri.brispotnew"
   },
   {
     name: "BSI",
     // subtitle: "Islamic Bank",
     color: "#00A651",
     logo: "/Logo/byond.png",
+    url: "https://play.google.com/store/apps/details?id=co.id.bankbsi.superapp",
   },
   {
     name: "Bale by BTN",
     color: "#F7941E",
     logo: "/Logo/bale.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.btn.mobilebanking.android", // TODO: isi link Play Store BTN Mobile / Bale
   },
   {
     name: "BTN Syariah",
     color: "#F7941E",
     logo: "/Logo/btnsyariah.png",
+    url: "", // TODO: isi link Play Store BTN Syariah
   },
   {
     name: "CIMB",
     color: "#7A1E2C",
     logo: "/Logo/cimb.png",
+    url: "https://www.cimbniaga.co.id/id/home/welcome", // TODO: isi link Play Store OCTO Mobile CIMB
   },
   {
     name: "Kotakode",
     color: "#7A1E2C",
     logo: "/Logo/kotakode.png",
+    url: "https://labs.kotakode.com/", // TODO: isi link Play Store / website Kotakode
   },
   {
     name: "Malline",
     color: "#12151C",
     logo: "/Logo/Malline.png",
+    url: "", // TODO: isi link website Malline (kemungkinan bukan app, jadi bisa link ke situsnya)
   },
 ];
 
+const VISIBLE_COUNT = 4;
+
 export function TrustedBySection() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const visibleClients = showAll ? clients : clients.slice(0, VISIBLE_COUNT);
 
   return (
     <section className="py-20 md:py-24" style={{ backgroundColor: "#EDEFF5" }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Label row */}
         <div className="flex items-center gap-3 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
           <span
             className="text-xs tracking-widest uppercase whitespace-nowrap"
             style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", letterSpacing: "0.15em" }}
@@ -86,18 +104,27 @@ export function TrustedBySection() {
         </div>
 
         {/* Logo grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-          {clients.map((client, i) => {
+        <div className="flex flex-wrap justify-center gap-3">
+          {visibleClients.map((client, i) => {
             const isHovered = hovered === i;
+            const hasUrl = Boolean(client.url);
+            const CardTag = hasUrl ? "a" : "div";
             return (
-              <div
+              <CardTag
                 key={client.name}
+                {...(hasUrl
+                  ? { href: client.url, target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200 cursor-default"
+                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
                 style={{
+                  width: "150px",
                   backgroundColor: isHovered ? "rgba(43, 78, 255, 0.06)" : "#FFFFFF",
                   border: isHovered ? "1px solid #2B4EFF" : "1px solid rgba(18, 21, 28, 0.08)",
+                  borderRadius: "12px",
+                  textDecoration: "none",
+                  cursor: hasUrl ? "pointer" : "default",
                 }}
               >
                 <div
@@ -153,29 +180,32 @@ export function TrustedBySection() {
                     </span>
                   )}
                 </div>
-              </div>
+              </CardTag>
             );
           })}
-
-          {/* "More" placeholder card */}
-          {/* <div
-            className="flex flex-col items-center justify-center gap-2 py-8 px-4"
-            style={{ border: "1px dashed rgba(43, 78, 255, 0.3)" }}
-          >
-            <span className="text-lg" style={{ color: "#2B4EFF" }}>
-              +
-            </span>
-            <span
-              className="text-[10px] tracking-wider uppercase"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", opacity: 0.6 }}
-            >
-              More
-            </span>
-          </div> */}
         </div>
 
+        {/* See more / show less toggle */}
+        {clients.length > VISIBLE_COUNT && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => setShowAll((v) => !v)}
+              className="flex items-center gap-2 px-5 py-2.5 transition-colors duration-200"
+              style={{ border: "1px dashed rgba(43, 78, 255, 0.3)", borderRadius: "8px" }}
+            >
+              <span style={{ color: "#2B4EFF" }}>{showAll ? "−" : "+"}</span>
+              <span
+                className="text-[10px] tracking-wider uppercase"
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", opacity: 0.8 }}
+              >
+                {showAll ? "Show Less" : `${clients.length - VISIBLE_COUNT} More`}
+              </span>
+            </button>
+          </div>
+        )}
+
         <p
-          className="mt-6 text-[10px] tracking-wide"
+          className="mt-6 text-[10px] tracking-wide text-center"
           style={{ fontFamily: "'JetBrains Mono', monospace", color: "#9CA3AF" }}
         >
           hover to reveal — token: --logo-grayscale-default
