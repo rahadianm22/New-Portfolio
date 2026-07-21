@@ -51,7 +51,7 @@ export function ContactSection() {
           <h2
             className="text-4xl md:text-5xl mb-4"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Urbanist', sans-serif",
               fontWeight: 700,
               color: "#12151C",
               letterSpacing: "-0.02em",
@@ -105,7 +105,7 @@ function ContactRow({ link, isLast }: { link: ContactLink; isLast: boolean }) {
         <span
           className="text-xs tracking-widest uppercase w-20 flex-shrink-0"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'Urbanist', sans-serif",
             color: hovered ? "rgba(255,255,255,0.5)" : "#6B7280",
             fontSize: "10px",
             letterSpacing: "0.12em",
@@ -131,7 +131,7 @@ function ContactRow({ link, isLast }: { link: ContactLink; isLast: boolean }) {
         <span
           className="text-xs hidden md:block"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'Urbanist', sans-serif",
             color: hovered ? "rgba(43,78,255,0.6)" : "rgba(43, 78, 255, 0.35)",
             fontSize: "10px",
             transition: "color 0.15s ease",

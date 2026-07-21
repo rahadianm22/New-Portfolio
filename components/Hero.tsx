@@ -41,7 +41,7 @@ export function Hero() {
           <span
             className="text-xs tracking-widest uppercase"
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Urbanist', sans-serif",
               color: "#6B7280",
             }}
           >
@@ -50,7 +50,7 @@ export function Hero() {
           <span
             className="text-xs tracking-widest uppercase"
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Urbanist', sans-serif",
               color: "#6B7280",
             }}
           >
@@ -77,7 +77,7 @@ export function Hero() {
               <span
                 className="absolute -top-5 left-0 text-xs"
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'Urbanist', sans-serif",
                   color: "#2B4EFF",
                   fontSize: "10px",
                 }}
@@ -87,7 +87,7 @@ export function Hero() {
               <span
                 className="absolute -bottom-5 right-0 text-xs"
                 style={{
-                  fontFamily: "'JetBrains Mono', monospace",
+                  fontFamily: "'Urbanist', sans-serif",
                   color: "#2B4EFF",
                   fontSize: "10px",
                 }}
@@ -152,7 +152,7 @@ export function Hero() {
           <span
             className="text-xs tracking-widest uppercase"
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Urbanist', sans-serif",
               color: "rgba(43, 78, 255, 0.4)",
               fontSize: "10px",
             }}

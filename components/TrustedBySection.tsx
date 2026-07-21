@@ -90,18 +90,30 @@ export function TrustedBySection() {
           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
           <span
             className="text-xs tracking-widest uppercase whitespace-nowrap"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", letterSpacing: "0.15em" }}
+            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
           >
-            // Projects — Financial Institutions
+            // Projects Handled
           </span>
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.2)" }} />
           <span
             className="text-xs whitespace-nowrap"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF" }}
+            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
           >
             count: {clients.length}
           </span>
         </div>
+
+        <h2
+          className="text-3xl md:text-4xl mb-10"
+          style={{
+            fontFamily: "'Urbanist', sans-serif",
+            fontWeight: 700,
+            color: "#12151C",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Featured works and digital products.
+        </h2>
 
         {/* Logo grid */}
         <div className="flex flex-wrap justify-center gap-3">
@@ -158,7 +170,7 @@ export function TrustedBySection() {
                   <span
                     className="text-xs tracking-wider uppercase transition-opacity duration-200"
                     style={{
-                      fontFamily: "'JetBrains Mono', monospace",
+                      fontFamily: "'Urbanist', sans-serif",
                       fontWeight: 700,
                       color: "#12151C",
                       opacity: isHovered ? 1 : 0.6,
@@ -170,7 +182,7 @@ export function TrustedBySection() {
                     <span
                       className="text-[10px] tracking-wider uppercase transition-opacity duration-200"
                       style={{
-                        fontFamily: "'JetBrains Mono', monospace",
+                        fontFamily: "'Urbanist', sans-serif",
                         color: "#2B4EFF",
                         opacity: isHovered ? 1 : 0,
                         height: isHovered ? "auto" : 0,
@@ -196,7 +208,7 @@ export function TrustedBySection() {
               <span style={{ color: "#2B4EFF" }}>{showAll ? "−" : "+"}</span>
               <span
                 className="text-[10px] tracking-wider uppercase"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: "#2B4EFF", opacity: 0.8 }}
+                style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", opacity: 0.8 }}
               >
                 {showAll ? "Show Less" : `${clients.length - VISIBLE_COUNT} More`}
               </span>
@@ -206,7 +218,7 @@ export function TrustedBySection() {
 
         <p
           className="mt-6 text-[10px] tracking-wide text-center"
-          style={{ fontFamily: "'JetBrains Mono', monospace", color: "#9CA3AF" }}
+          style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}
         >
           hover to reveal — token: --logo-grayscale-default
         </p>

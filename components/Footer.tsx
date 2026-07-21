@@ -36,7 +36,7 @@ export function Footer() {
         <span
           className="text-xs"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'Urbanist', sans-serif",
             color: "rgba(255,255,255,0.35)",
             letterSpacing: "0.05em",
           }}
@@ -54,7 +54,7 @@ export function Footer() {
             <span
               className="text-xs"
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'Urbanist', sans-serif",
                 color: "rgba(255,255,255,0.35)",
                 letterSpacing: "0.05em",
               }}
@@ -73,7 +73,7 @@ export function Footer() {
           <span
             className="text-xs"
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Urbanist', sans-serif",
               color: "rgba(255,255,255,0.35)",
               letterSpacing: "0.05em",
             }}

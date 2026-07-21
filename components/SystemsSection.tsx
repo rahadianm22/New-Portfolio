@@ -39,7 +39,7 @@ export function SystemsSection() {
           <h2
             className="text-4xl md:text-5xl"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
+              fontFamily: "'Urbanist', sans-serif",
               fontWeight: 700,
               color: "#12151C",
               letterSpacing: "-0.02em",
@@ -93,7 +93,7 @@ export function SystemsSection() {
                   key={chip}
                   className="text-xs px-3 py-1.5 tracking-wide"
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'Urbanist', sans-serif",
                     color: "#2B4EFF",
                     backgroundColor: "rgba(43, 78, 255, 0.06)",
                     border: "1px dashed rgba(43, 78, 255, 0.3)",
@@ -127,7 +127,7 @@ export function SystemsSection() {
                 <span
                   className="text-xs tracking-widest uppercase"
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'Urbanist', sans-serif",
                     color: "#2B4EFF",
                     letterSpacing: "0.15em",
                   }}
@@ -137,7 +137,7 @@ export function SystemsSection() {
                 <span
                   className="text-xs"
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'Urbanist', sans-serif",
                     color: "#6B7280",
                     fontSize: "10px",
                   }}
@@ -152,7 +152,7 @@ export function SystemsSection() {
                     <span
                       className="text-xs tracking-wider uppercase block mb-2"
                       style={{
-                        fontFamily: "'JetBrains Mono', monospace",
+                        fontFamily: "'Urbanist', sans-serif",
                         color: "#6B7280",
                         fontSize: "10px",
                         letterSpacing: "0.12em",
@@ -188,7 +188,7 @@ export function SystemsSection() {
               >
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'Urbanist', sans-serif",
                     color: "rgba(43, 78, 255, 0.5)",
                     fontSize: "10px",
                   }}
@@ -197,7 +197,7 @@ export function SystemsSection() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'JetBrains Mono', monospace",
+                    fontFamily: "'Urbanist', sans-serif",
                     color: "rgba(43, 78, 255, 0.5)",
                     fontSize: "10px",
                   }}

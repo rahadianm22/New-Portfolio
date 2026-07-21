@@ -39,7 +39,7 @@ export function Navbar() {
           <span
             className="text-sm font-semibold tracking-wide"
             style={{
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: "'Urbanist', sans-serif",
               color: "#12151C",
               letterSpacing: "0.02em",
             }}
@@ -61,7 +61,7 @@ export function Navbar() {
               href={item.href}
               className="text-xs tracking-widest uppercase transition-colors duration-150 hover:opacity-60"
               style={{
-                fontFamily: "'JetBrains Mono', monospace",
+                fontFamily: "'Urbanist', sans-serif",
                 color: "#12151C",
                 textDecoration: "none",
                 letterSpacing: "0.1em",
@@ -77,7 +77,7 @@ export function Navbar() {
           href="mailto:rahadianm22@gmail.com"
           className="text-xs px-4 py-2 transition-all duration-150 hover:opacity-80"
           style={{
-            fontFamily: "'JetBrains Mono', monospace",
+            fontFamily: "'Urbanist', sans-serif",
             backgroundColor: "#2B4EFF",
             color: "#FFFFFF",
             textDecoration: "none",
