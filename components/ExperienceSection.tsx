@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { experiences } from "@/lib/experienceData";
+import { experiences } from "@/lib/experience-data";
 
 export function SectionLabel({ label }: { label: string }) {
   return (

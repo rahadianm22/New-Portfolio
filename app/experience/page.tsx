@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { experiences } from "@/lib/experienceData";
+import { experiences } from "@/lib/experience-data";
 
 export const metadata = {
   title: "Experience — Rahadian Maulana",
