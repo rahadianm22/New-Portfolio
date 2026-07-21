@@ -150,7 +150,7 @@ export function ExperienceSection() {
         </div>
 
         {/* Entry point to the full detail page */}
-        <div className="flex justify-center mt-10">
+        {/* <div className="flex justify-center mt-10">
           <Link
             href="/experience"
             className="text-xs tracking-wider uppercase"
@@ -158,7 +158,7 @@ export function ExperienceSection() {
           >
             Lihat semua pengalaman kerja →
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
