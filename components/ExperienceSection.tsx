@@ -33,7 +33,7 @@ export function ExperienceSection() {
 
         <div className="mt-6 mb-12">
           <h2
-            className="text-4xl md:text-5xl"
+            className="text-3xl md:text-4xl mb-10"
             style={{
               fontFamily: "'Urbanist', sans-serif",
               fontWeight: 700,

@@ -58,18 +58,18 @@ export function SystemsSection() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
             <SectionLabel label="// Technical Capabilities" />
-           <h2
-          className="text-3xl md:text-4xl mb-10"
+            <h2
+              className="text-3xl md:text-4xl mb-10"
           style={{
             fontFamily: "'Urbanist', sans-serif",
             fontWeight: 700,
             color: "#12151C",
             letterSpacing: "-0.02em",
-          }}
-        >
-          My Design Expertise.
-        </h2>
-
+              }}
+            >
+              My Design Expertise.
+              <br />
+            </h2>
           </div>
         </div>
 
