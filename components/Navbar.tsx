@@ -52,8 +52,8 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           {[
             { label: "Experience", href: "#experience" },
-            { label: "Systems", href: "#systems" },
-            { label: "Side Project", href: "#side-project" },
+            { label: "Skills", href: "#systems" },
+            { label: "Design Systems", href: "#side-project" },
             { label: "Contact", href: "#contact" },
           ].map((item) => (
             <a

@@ -1,28 +1,50 @@
 import { SectionLabel } from "./ExperienceSection";
 
-interface PartCategory {
-  category: string;
-  items: string[];
+interface ServiceItem {
+  code: string;
+  status: "AVAILABLE" | "BOOKED" | "WAITLIST";
+  title: string;
+  description: string;
+  deliverables: string[];
+  tools: string[];
+  scope: string;
 }
 
-const partsList: PartCategory[] = [
+const services: ServiceItem[] = [
   {
-    category: "Design Tools",
-    items: ["Figma", "FigJam"],
+    code: "SVC.01",
+    status: "AVAILABLE",
+    title: "Design System Architecture",
+    description: "Token-based component libraries built to scale with the product.",
+    deliverables: ["Token documentation", "Component library", "Usage guidelines", "Figma + Dev handoff"],
+    tools: ["Figma", "Tokens Studio", "Confluence"],
+    scope: "4–8 weeks",
   },
   {
-    category: "Systems",
-    items: ["Variable Design Tokens", "Auto Layout", "Component Architecture", "Design System Docs"],
+    code: "SVC.02",
+    status: "AVAILABLE",
+    title: "Complex Product UI Design",
+    description: "Multi-role workflows, approval chains, and data-dense dashboards for operational users.",
+    deliverables: ["UX audit & flows", "Hi-fi wireframes", "Interactive prototype", "Usability testing"],
+    tools: ["FigJam", "Maze", "Jira"],
+    scope: "2–6 weeks",
   },
   {
-    category: "Process",
-    items: ["User Research", "Usability Testing", "Rapid Prototyping", "Design Rationale"],
-  },
-  {
-    category: "Collaboration",
-    items: ["Jira", "Confluence", "Notion", "Figma Dev Mode"],
+    code: "SVC.03",
+    status: "AVAILABLE",
+    title: "Design-to-Code Bridge",
+    description: "Figma → production handoff that reduces back-and-forth with engineers to near zero.",
+    deliverables: ["Variable token export", "Dev Mode annotations", "Component spec sheet", "AI-assisted QA"],
+    tools: ["Figma Dev Mode", "Claude Code", "Storybook"],
+    scope: "1–3 weeks",
   },
 ];
+
+const statusColor: Record<ServiceItem["status"], string> = {
+  AVAILABLE: "#22C55E",
+  BOOKED: "#EF4444",
+  WAITLIST: "#F59E0B",
+};
 
 export function SystemsSection() {
   return (
@@ -32,180 +54,156 @@ export function SystemsSection() {
       style={{ backgroundColor: "#F5F6FA" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        {/* Section label */}
-        <SectionLabel label="// Systems" />
+        {/* Header row */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div>
+            <SectionLabel label="// Technical Capabilities" />
+           <h2
+          className="text-3xl md:text-4xl mb-10"
+          style={{
+            fontFamily: "'Urbanist', sans-serif",
+            fontWeight: 700,
+            color: "#12151C",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          My Design Expertise.
+        </h2>
 
-        <div className="mt-6 mb-16">
-          <h2
-            className="text-4xl md:text-5xl"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 700,
-              color: "#12151C",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Built for precision.
-          </h2>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-          {/* Left: Bio */}
-          <div className="flex flex-col gap-6">
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                color: "#3D4557",
-                lineHeight: 1.75,
-              }}
-            >
-              Specializing in complex product ecosystems: multi-role approval workflows, data-heavy dashboards with dense data tables, and multi-step state management for operational users. It’s not just about the visuals—it’s about building the underlying logic.
+        {/* Card container with corner marks + meta line */}
+        <div className="relative">
 
+          <div
+            className="relative grid grid-cols-1 md:grid-cols-3"
+            style={{ border: "1.5px dashed rgba(43, 78, 255, 0.3)", backgroundColor: "#FFFFFF" }}
+          >
+            {/* Corner marks */}
+            <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
+            <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
+            <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
+            <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
 
-            </p>
-            <p
-              className="text-base leading-relaxed"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                color: "#3D4557",
-                lineHeight: 1.75,
-              }}
-            >
-              A design token architecture approach ensures every component remains{" "}
-              <span style={{ color: "#12151C", fontWeight: 600 }}>scalable and consistent</span>{" "}
-              across the entire platform. Currently exploring AI-assisted design-to-code workflows with{" "}
-              <span style={{ color: "#12151C", fontWeight: 600 }}>Claude Code</span>{" "}
-              to accelerate the design-to-production pipeline.
-            </p>
-
-            {/* Expertise chips */}
-            <div className="flex flex-wrap gap-2 mt-2">
-              {[
-                "Multi-role Workflows",
-                "Data-heavy Dashboards",
-                "Design Token Architecture",
-                "Financial Products",
-                "Internal Tools",
-                "Consumer Banking",
-              ].map((chip) => (
-                <span
-                  key={chip}
-                  className="text-xs px-3 py-1.5 tracking-wide"
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    color: "#2B4EFF",
-                    backgroundColor: "rgba(43, 78, 255, 0.06)",
-                    border: "1px dashed rgba(43, 78, 255, 0.3)",
-                    fontSize: "11px",
-                  }}
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Parts List */}
-          <div className="relative">
-            {/* Dashed border box */}
-            <div
-              className="relative p-6"
-              style={{
-                border: "1.5px dashed rgba(43, 78, 255, 0.3)",
-                backgroundColor: "#FFFFFF",
-              }}
-            >
-              {/* Corner marks */}
-              <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-
-              {/* Parts list label */}
-              <div className="flex items-center gap-2 mb-6 pb-4" style={{ borderBottom: "1px solid rgba(43, 78, 255, 0.12)" }}>
-                <span
-                  className="text-xs tracking-widest uppercase"
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    color: "#2B4EFF",
-                    letterSpacing: "0.15em",
-                  }}
-                >
-                  Parts List
-                </span>
-                <span
-                  className="text-xs"
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    color: "#6B7280",
-                    fontSize: "10px",
-                  }}
-                >
-                  v2.5 — {new Date().getFullYear()}
-                </span>
-              </div>
-
-              <div className="space-y-5">
-                {partsList.map((part) => (
-                  <div key={part.category}>
+            {services.map((service, i) => (
+              <div
+                key={service.code}
+                className="p-6 md:p-8 flex flex-col"
+                style={{
+                  borderRight: i < services.length - 1 ? "1px dashed rgba(43, 78, 255, 0.2)" : undefined,
+                }}
+              >
+                {/* Top meta row */}
+                <div className="flex items-center justify-between mb-6">
+                  <span
+                    className="text-xs tracking-widest"
+                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", opacity: 0.6, letterSpacing: "0.1em" }}
+                  >
+                    {service.code}
+                  </span>
+                  <div className="flex items-center gap-1.5">
                     <span
-                      className="text-xs tracking-wider uppercase block mb-2"
-                      style={{
-                        fontFamily: "'Urbanist', sans-serif",
-                        color: "#6B7280",
-                        fontSize: "10px",
-                        letterSpacing: "0.12em",
-                      }}
+                      className="w-1.5 h-1.5 rounded-full"
+                      style={{ backgroundColor: statusColor[service.status] }}
+                    />
+                    <span
+                      className="text-xs tracking-wider"
+                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", fontSize: "10px" }}
                     >
-                      {part.category}
+                      {service.status}
                     </span>
-                    <div className="flex flex-wrap gap-2">
-                      {part.items.map((item) => (
+                  </div>
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="text-xl md:text-2xl mb-4"
+                  style={{
+                    fontFamily: "'Urbanist', sans-serif",
+                    fontWeight: 700,
+                    color: "#12151C",
+                    letterSpacing: "-0.01em",
+                    lineHeight: 1.25,
+                  }}
+                >
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className="text-sm mb-6"
+                  style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280", lineHeight: 1.6 }}
+                >
+                  {service.description}
+                </p>
+
+                {/* Deliverables */}
+                <div className="pt-4 mb-6" style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}>
+                  <span
+                    className="text-xs tracking-widest uppercase block mb-3"
+                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.12em" }}
+                  >
+                    Deliverables
+                  </span>
+                  <ul className="space-y-2">
+                    {service.deliverables.map((item, idx) => (
+                      <li key={item} className="flex items-start gap-2">
                         <span
-                          key={item}
-                          className="text-sm px-2 py-0.5"
-                          style={{
-                            fontFamily: "'Inter', sans-serif",
-                            color: "#12151C",
-                            backgroundColor: "rgba(18, 21, 28, 0.04)",
-                            border: "1px solid rgba(18, 21, 28, 0.08)",
-                            fontWeight: 500,
-                          }}
+                          className="text-xs mt-0.5"
+                          style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", fontSize: "10px", opacity: 0.7 }}
+                        >
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className="text-sm"
+                          style={{ fontFamily: "'Inter', sans-serif", color: "#12151C", fontWeight: 500 }}
                         >
                           {item}
                         </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Bottom annotation */}
-              <div
-                className="mt-6 pt-4 flex items-center justify-between"
-                style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    color: "rgba(43, 78, 255, 0.5)",
-                    fontSize: "10px",
-                  }}
-                >
-                  token: --parts-list-v2
-                </span>
-                <span
-                  style={{
-                    fontFamily: "'Urbanist', sans-serif",
-                    color: "rgba(43, 78, 255, 0.5)",
-                    fontSize: "10px",
-                  }}
-                >
-                  items: {partsList.reduce((acc, p) => acc + p.items.length, 0)}
-                </span>
+                {/* Push footer down */}
+                <div className="mt-auto">
+                  {/* Tools */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {service.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="text-xs px-2 py-1"
+                        style={{
+                          fontFamily: "'Inter', sans-serif",
+                          color: "#3D4557",
+                          border: "1px solid rgba(18, 21, 28, 0.12)",
+                          fontSize: "11px",
+                        }}
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Scope */}
+                  <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}>
+                    <span
+                      className="text-xs tracking-widest uppercase"
+                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.1em" }}
+                    >
+                      Scope
+                    </span>
+                    <span
+                      className="text-sm"
+                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#12151C", fontWeight: 700 }}
+                    >
+                      {service.scope}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
