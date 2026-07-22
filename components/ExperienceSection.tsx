@@ -4,17 +4,25 @@ import { useState } from "react";
 import Link from "next/link";
 import { experiences } from "@/lib/experience-data";
 
-export function SectionLabel({ label }: { label: string }) {
+export function SectionLabel({ label, meta }: { label: string; meta?: string }) {
   return (
     <div className="flex items-center gap-3">
       <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
       <span
-        className="text-xs tracking-widest uppercase"
+        className="text-xs tracking-widest uppercase whitespace-nowrap"
         style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
       >
         {label}
       </span>
-      <div className="h-px flex-1 max-w-24" style={{ backgroundColor: "rgba(43, 78, 255, 0.2)" }} />
+      <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.2)" }} />
+      {meta && (
+        <span
+          className="text-xs whitespace-nowrap"
+          style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
+        >
+          {meta}
+        </span>
+      )}
     </div>
   );
 }
@@ -41,7 +49,7 @@ export function ExperienceSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Five documents from the archive.
+            Featured works and digital products.
           </h2>
         </div>
 

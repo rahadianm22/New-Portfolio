@@ -55,20 +55,19 @@ export function SystemsSection() {
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header row */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <div>
-            <SectionLabel label="// Technical Capabilities" />
+        <div className="mb-16">
+          <SectionLabel label="// Technical Capabilities" />
+          <div className="mt-6 mb-10">
             <h2
-              className="text-3xl md:text-4xl mb-10"
-          style={{
-            fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 700,
-            color: "#12151C",
-            letterSpacing: "-0.02em",
+              className="text-3xl md:text-4xl"
+              style={{
+                fontFamily: "'Urbanist', sans-serif",
+                fontWeight: 700,
+                color: "#12151C",
+                letterSpacing: "-0.02em",
               }}
             >
               My Design Expertise.
-              <br />
             </h2>
           </div>
         </div>
@@ -187,7 +186,7 @@ export function SystemsSection() {
                   </div>
 
                   {/* Scope */}
-                  <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}>
+                  {/* <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}>
                     <span
                       className="text-xs tracking-widest uppercase"
                       style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.1em" }}
@@ -200,7 +199,7 @@ export function SystemsSection() {
                     >
                       {service.scope}
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

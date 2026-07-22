@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { SectionLabel } from "./ExperienceSection";
 
 interface Client {
   name: string;
@@ -86,21 +87,8 @@ export function TrustedBySection() {
     <section className="py-20 md:py-24" style={{ backgroundColor: "#EDEFF5" }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Label row */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
-          <span
-            className="text-xs tracking-widest uppercase whitespace-nowrap"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
-          >
-            // Projects Handled
-          </span>
-          <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.2)" }} />
-          <span
-            className="text-xs whitespace-nowrap"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
-          >
-            count: {clients.length}
-          </span>
+        <div className="mb-8">
+          <SectionLabel label="// Projects Handled" meta={`count: ${clients.length}`} />
         </div>
 
         <h2

@@ -42,12 +42,14 @@ export function ContactSection() {
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative">
         {/* Top row: label + status */}
-        <div className="flex items-center justify-between mb-16">
-          <SectionLabel label="// Contact" />
-          <div className="hidden md:flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <SectionLabel label="// Contact" />
+          </div>
+          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#22C55E" }} />
             <span
-              className="text-xs tracking-wider"
+              className="text-xs tracking-wider whitespace-nowrap"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557", fontSize: "12px" }}
             >
               Open for projects
@@ -55,21 +57,18 @@ export function ContactSection() {
           </div>
         </div>
 
-        {/* Headline with left bracket accent */}
-        <div className="mb-16">
+        {/* Headline */}
+        <div className="mt-6 mb-10">
           <h2
-            className="text-4xl md:text-5xl"
+            className="text-3xl md:text-4xl"
             style={{
               fontFamily: "'Urbanist', sans-serif",
               fontWeight: 700,
               color: "#12151C",
               letterSpacing: "-0.02em",
-              lineHeight: 1.15,
             }}
           >
             Let's build something precise.
-            <br />
-            <br />
           </h2>
         </div>
 
