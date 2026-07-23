@@ -84,7 +84,7 @@ export function TrustedBySection() {
   const visibleClients = showAll ? clients : clients.slice(0, VISIBLE_COUNT);
 
   return (
-    <section className="py-20 md:py-24" style={{ backgroundColor: "#EDEFF5" }}>
+    <section className="py-20 md:py-24" style={{ backgroundColor: "#F5F6FA" }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Label row */}
         <div className="mb-8">

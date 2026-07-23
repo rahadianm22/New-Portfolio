@@ -38,7 +38,7 @@ export function ContactSection() {
     <section
       id="contact"
       className="py-24 md:py-32 relative overflow-hidden"
-      style={{ backgroundColor: "#EDEFF5" }}
+      style={{ backgroundColor: "#F5F6FA" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative">
         {/* Top row: label + status */}
@@ -88,10 +88,14 @@ export function ContactSection() {
 
 function PrimaryContactCard({ email }: { email: string }) {
   const [hovered, setHovered] = useState(false);
+  const gmailComposeHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
+
 
   return (
     <a
-      href={`mailto:${email}`}
+      href={gmailComposeHref}
+      target="_blank"
+      rel="noopener noreferrer"
       className="relative block"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

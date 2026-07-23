@@ -34,7 +34,7 @@ export function ExperienceSection() {
     <section
       id="experience"
       className="py-24 md:py-32"
-      style={{ backgroundColor: "#EDEFF5" }}
+      style={{ backgroundColor: "#ffffff" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <SectionLabel label="// Experience" />
