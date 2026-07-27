@@ -15,6 +15,7 @@ export interface ExperienceEntry {
   company: string;
   period: string;
   duration: string;
+  description?: string;
   tags: string[];
   highlights: string[];
   products?: Product[];
@@ -31,11 +32,7 @@ export const experiences: ExperienceEntry[] = [
     duration: "2.5+ yr",
     tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard"],
     highlights: [
-      "End-to-end loan endorsement & administration: Architected user flows and interfaces across web and mobile for three internal role groups — initiators (Pemrakarsa), approvers (Pemutus: CBM, PCP, Pinca, RCBH), and admin officers (Petugas ADK) — covering loan portfolio management, disbursement status tracking (Status 105), and Early Warning System (EWS) states.",
-      "Briguna digital lending core: Led UX research and interface design for cross-bank installment autofill (Crystal feature), customer whitelist management, national quota administration (Maker/Signer roles), and external institution flagging workflows (e.g. Taspen).",
-      "Membangun dashboard analitik finansial dengan tabel data-heavy dan visualisasi metrik lending.",
-      "Memimpin scaling design system berbasis variable tokens, mendefinisikan arsitektur komponen lintas modul BRISPOT.",
-      "Menangani modul Kartu Kredit & fitur Ubah Cicilan di BRImo/QITA (consumer-facing).",
+      "En",
     ],
     products: [
       {
@@ -51,8 +48,7 @@ export const experiences: ExperienceEntry[] = [
           "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
           "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
           "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
-          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
-          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
+          "Design System Scaling: Collaborated on scaling the internal enterprise design system by implementing robust design variable tokens to guarantee visual consistency, streamline design-to-development handovers for front-end teams, and ensure rapid component scalability across all BRISPOT modules.",
         ],
       },
       {
@@ -131,78 +127,19 @@ export const experiences: ExperienceEntry[] = [
     products: [
       {
         tabLabel: "BRISPOT",
-        name: "BRISPOT",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
+        name: "BYOND by BSI",
+        category: "MOBILE BANKING — SHARIA SUPER APP",
+        status: "Live — Released on Google Play & App Store",
         statusLive: true,
         description:
-          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
-        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+          "Contributed to the digital transformation of Bank Syariah Indonesia (BSI) by designing core mobile banking features and scaling the enterprise design system. Focused on establishing advanced Figma workflows, component libraries, and Auto Layout architecture to drive UI consistency and accelerate cross-functional production.",
+        scope: "B2C Mobile Banking — Retail Customers & General Public",
         contributions: [
-          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
-          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
-          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
-          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
-          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
-        ],
-      },
-      {
-        tabLabel: "KPR Digital",
-        name: "KPR (Mortgage) Digital",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
-        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
-        contributions: [
-          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
-          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
-          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
-        ],
-      },
-      {
-        tabLabel: "BRImo & QITA",
-        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
-        category: "CONSUMER-FACING — SUPER APP",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
-        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
-        contributions: [
-          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
-          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
-          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
-        ],
-      },
-      {
-        tabLabel: "BUM Desa",
-        name: "BUM Desa — Digital Platform",
-        category: "INTERNAL PLATFORM — 0→1",
-        status: "Completed — Transisi ke BRImo/QITA",
-        statusLive: false,
-        description:
-          "Platform digital baru yang dibangun dari nol (0→1), sebelum tim bertransisi fokus ke segmen BRImo/QITA.",
-        scope: "scope: Internal — fase discovery hingga implementasi awal",
-        contributions: [
-          "Memimpin arsitektur UX/UI platform baru dari tahap discovery hingga implementasi.",
-          "Melakukan stakeholder interview untuk mendefinisikan core journey pengguna.",
-        ],
-      },
-      {
-        tabLabel: "BRI Design System",
-        name: "BRI Enterprise Design System",
-        category: "DESIGN SYSTEM — CROSS-PLATFORM",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
-        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
-        contributions: [
-          "Memimpin scaling design system menggunakan variable design tokens.",
-          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
-          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+          "Streamlined and maintained the enterprise design system library to accelerate design-to-development handoffs and ensure component scalability across platforms.",
+          "Architected intuitive user flows and wireframes for upcoming products, ensuring seamless integration and alignment with Bank BSI's core application ecosystem and user behaviors.",
+          "Fostered cross-functional collaboration with Product Owners, Business Analysts, stakeholders, and end-users to successfully translate complex business requirements into user-centered design solutions.",
+          "Conducted comprehensive user research and usability testing to gather actionable insights and evaluate the long-term impact of new features on the Bank BSI application's user experience.",
+          "Optimized design workflow and file architecture by structuring Figma files around specific epics, significantly improving team collaboration efficiency and project organization.",
         ],
       },
     ],
@@ -212,6 +149,8 @@ export const experiences: ExperienceEntry[] = [
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
     period: "Mar 2021 — Mei 2022",
+    description:
+      "Merancang sistem desain untuk BTN Conventional & Syariah, serta dashboard analitik multi-dimensi untuk sistem manajemen ATM CIMB.",
     duration: "1+ yr",
     highlights: [
       "Merancang sistem desain untuk BTN Conventional & Syariah: komponen form kompleks, alur pengajuan KPR, dan onboarding nasabah.",
@@ -222,78 +161,50 @@ export const experiences: ExperienceEntry[] = [
     products: [
       {
         tabLabel: "BRISPOT",
-        name: "BRISPOT",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
+        name: "BTN Conventional (bale by BTN)",
+        category: "DIGITAL BANKING — RETAIL SERVICES",
+        status: "Live — Released on Google Play & App Store",
         statusLive: true,
         description:
-          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
-        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+          "A comprehensive multi-platform digital banking application designed for BTN retail customers. Built to simplify daily financial transactions, account management, and banking services through a seamless mobile and web user experience.",
+        scope: "B2C Mobile Banking — Retail Customers & General Public",
         contributions: [
-          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
-          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
-          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
-          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
-          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
+          "Built and scaled a multi-platform design system in Figma, standardizing UI components to ensure design consistency across mobile and web banking products.",
+          "Developed structured design documentation to establish a single source of truth, accelerating cross-functional production workflows and team alignment.",
+          "Architected user flows and wireframes by translating complex banking requirements into intuitive, user-centric mobile application layouts.",
+          "Created rapid, high-fidelity interactive prototypes to demonstrate product concepts and secure stakeholder alignment during client presentations.",
         ],
       },
       {
-        tabLabel: "KPR Digital",
-        name: "KPR (Mortgage) Digital",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
-        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
-        contributions: [
-          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
-          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
-          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
-        ],
-      },
-      {
-        tabLabel: "BRImo & QITA",
-        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
-        category: "CONSUMER-FACING — SUPER APP",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
-        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
-        contributions: [
-          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
-          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
-          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
-        ],
-      },
-      {
-        tabLabel: "BUM Desa",
-        name: "BUM Desa — Digital Platform",
-        category: "INTERNAL PLATFORM — 0→1",
-        status: "Completed — Transisi ke BRImo/QITA",
+        tabLabel: "btn-syariah",
+        name: "BTN Syariah",
+        category: "MOBILE BANKING — SHARIA SERVICES",
+        status: "Unreleased Concept",
         statusLive: false,
         description:
-          "Platform digital baru yang dibangun dari nol (0→1), sebelum tim bertransisi fokus ke segmen BRImo/QITA.",
-        scope: "scope: Internal — fase discovery hingga implementasi awal",
+          "A dedicated mobile banking application concept designed to adapt BTN's core digital banking services into BTN Syariah's distinct brand identity and Sharia-compliant user experience.",
+        scope: "B2C Mobile Banking — Syariah Retail Customers",
         contributions: [
-          "Memimpin arsitektur UX/UI platform baru dari tahap discovery hingga implementasi.",
-          "Melakukan stakeholder interview untuk mendefinisikan core journey pengguna.",
+          "Led the migration and adaptation of the core design system from BTN Conventional to align seamlessly with BTN Syariah’s distinct brand identity.",
+          "Designed critical, high-traffic mobile app screens, including Home, Payment, Confirmation, MPIN, and Receipt modules to ensure an optimal user experience.",
+          "Crafted custom 3D visual assets and icons optimized for mobile device interfaces, elevating the app’s overall visual appeal and engagement.",
+          "Fostered cross-functional collaboration with business analysts, product managers, and engineering teams to ensure accurate design execution and brand compliance.",
         ],
       },
       {
-        tabLabel: "BRI Design System",
-        name: "BRI Enterprise Design System",
-        category: "DESIGN SYSTEM — CROSS-PLATFORM",
-        status: "Live — Aktif dikembangkan",
+        tabLabel: "cimb-atm",
+        name: "CIMB ATM",
+        category: "INTERNAL PLATFORM — WEB DASHBOARD",
+        status: "Live — Deployed Internally",
         statusLive: true,
         description:
-          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
-        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
+          "An internal web dashboard management system designed for CIMB to monitor, manage, and streamline ATM network operations, system maintenance, and financial transaction analytics.",
+        scope: "Internal Operations — Operations & System Maintenance Team",
         contributions: [
-          "Memimpin scaling design system menggunakan variable design tokens.",
-          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
-          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+          "Structured intuitive user flows, sitemaps, and interactive prototypes for the web dashboard platform to streamline complex administrative operations.",
+          "Transformed complex raw data and heavy data tables into clean, visually digestible, and functional dashboard user interfaces.",
+          "Designed core mobile application screens focusing on Dashboard, Financial Transactions, and System Maintenance modules.",
+          "Conducted competitor analysis and design alignment sessions to benchmark UI/UX standards and effectively present mockups to corporate client stakeholders.",
         ],
       },
     ],
@@ -309,68 +220,21 @@ export const experiences: ExperienceEntry[] = [
       "Berkolaborasi langsung dengan developer untuk memastikan fidelitas desain dalam implementasi.",
       "Melakukan iterasi cepat berdasarkan feedback pengguna dan A/B testing.",
     ],
-    tags: ["E-commerce", "End-to-end", "Wireframing"],
+    tags: ["E-commerce", "End-to-end", "Wireframing","Design"],
     products: [
       {
         tabLabel: "BRISPOT",
-        name: "BRISPOT",
+        name: "Website E-commerce Malline",
         category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
+        status: "No Longer Available",
+        statusLive: false,
         description:
-          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
-        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+          "I founded a startup with my small team from campus, focused on e-commerce. I created the UI design concept for the home, category, product, cart, and order pages. I also assisted the front-end team in developing the website.",
+        scope: "B2C E-Commerce Platform",
         contributions: [
-          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
-          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
-          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
-          "Membangun UI digital signing (Digital Sign) dan pengajuan asuransi jiwa kredit (SPAJK), termasuk fallback handling untuk status pengajuan yang macet.",
-          "Memimpin migrasi legacy web view dari CodeIgniter ke React untuk modul verifikasi Checker & Signer.",
-        ],
-      },
-      {
-        tabLabel: "KPR Digital",
-        name: "KPR (Mortgage) Digital",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
-        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
-        contributions: [
-          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
-          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
-          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
-        ],
-      },
-      {
-        tabLabel: "BRImo & QITA",
-        name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
-        category: "CONSUMER-FACING — SUPER APP",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
-        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
-        contributions: [
-          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
-          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
-          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
-        ],
-      },
-      {
-        tabLabel: "BRI Design System",
-        name: "BRI Enterprise Design System",
-        category: "DESIGN SYSTEM — CROSS-PLATFORM",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
-        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
-        contributions: [
-          "Memimpin scaling design system menggunakan variable design tokens.",
-          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
-          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+          "Designed and implemented an admin dashboard from initial wireframing and high-fidelity mockups through to successful WordPress integration.",
+          "Conducted end-to-end user research, utilizing surveys, data analysis, and usability testing to gather actionable user insights and inform design decisions.",
+          "Established cohesive user interfaces by unifying visual design systems, including color palettes, typography, imagery guidelines, and micro-animations for an enhanced user experience.",
         ],
       },
     ],

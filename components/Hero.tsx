@@ -96,14 +96,14 @@ export function Hero() {
               </span>
 
               <p
-                className="text-lg md:text-xl mb-2"
+                className="text-lg md:text-xl mb-2 leading-relaxed"
                 style={{
-                  fontFamily: "'Urbanist', sans-serif",
+                  fontFamily: "'Urb', sans-serif",
                   fontWeight: 400,
                   color: "#3D4557",
                 }}
               >
-                Hi, I'm <span className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
+                Hi, I'm <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
               color: "#2B4EFF",
               fontWeight: 400, }}>Rahadian Maulana</span>
               </p>
@@ -132,14 +132,16 @@ export function Hero() {
               fontWeight: 400,
             }}
           >
-            Product Designer based in Indonesia, focused on solving complex problems with a user-centric approach with 5+ years experience.
+            Product Designer based in Indonesia, focused on <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
+              color: "#2B4EFF",
+              fontWeight: 400, }}>solving complex problems</span> with a user-centric approach with 5+ years experience.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#experience"
-              className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-200 hover:opacity-80"
+              className="group inline-flex items-center gap-2 px-6 py-3 transition-all duration-200"
               style={{
                 fontFamily: "'Urb', sans-serif",
                 fontWeight: 600,
@@ -148,10 +150,10 @@ export function Hero() {
                 fontSize: "15px",
               }}
             >
-              View Experience ↗
-              {/* <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg> */}
+              View Experience{" "}
+              <span className="text-white transition-colors duration-200 group-hover:text-[#5B7CFF]">
+                ↗
+              </span>
             </a>
           </div>
         </div>

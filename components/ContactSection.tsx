@@ -15,7 +15,7 @@ const primaryEmail = "rahadianm22@gmail.com";
 const secondaryLinks: SecondaryLink[] = [
   {
     category: "Professional",
-    handle: "/in/rahadianm22",
+    handle: "/rahadianm22",
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/rahadianm22/",
   },
@@ -27,7 +27,7 @@ const secondaryLinks: SecondaryLink[] = [
   },
   {
     category: "Showcase",
-    handle: "own.page/rahadianm22",
+    handle: "/rahadianm22",
     label: "Portfolio",
     href: "https://rahadianm22.vercel.app/",
   },

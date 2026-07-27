@@ -69,6 +69,14 @@ export default function ExperienceDetailPage() {
             <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280", fontWeight: 500 }}>
               {entry.role} · {entry.period}
             </p>
+            {entry.description && (
+              <p
+                className="text-sm mt-3 max-w-2xl leading-relaxed"
+                style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557", fontWeight: 400 }}
+              >
+                {entry.description}
+              </p>
+            )}
           </div>
 
           {/* Tabs (kalau ada beberapa product) */}

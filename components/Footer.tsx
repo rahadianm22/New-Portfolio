@@ -41,7 +41,7 @@ export function Footer() {
             letterSpacing: "0.05em",
           }}
         >
-          © {year} Rahadian Maulana — All rights reserved.
+          © {year} Rahadian Maulana.
         </span>
 
         {/* Tengah: Lokasi & Waktu Lokal Dinamis */}
@@ -65,7 +65,7 @@ export function Footer() {
         )}
 
         {/* Kanan: Tech Stack Info */}
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <span
             className="w-1.5 h-1.5 rounded-full"
             style={{ backgroundColor: "rgba(43,78,255,0.6)" }}
@@ -80,7 +80,7 @@ export function Footer() {
           >
             Built with Next.js — Deployed on Vercel
           </span>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
