@@ -51,10 +51,10 @@ export function Navbar() {
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-8">
           {[
-            { label: "Experience", href: "#experience" },
-            { label: "Skills", href: "#systems" },
-            { label: "Design Systems", href: "#side-project" },
-            { label: "Contact", href: "#contact" },
+            { label: "Experience", href: "/#experience" },
+            { label: "Skills", href: "/#systems" },
+            { label: "Design Systems", href: "/#side-project" },
+            { label: "Contact", href: "/#contact" },
           ].map((item) => (
             <a
               key={item.href}

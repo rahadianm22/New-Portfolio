@@ -30,7 +30,7 @@ export const experiences: ExperienceEntry[] = [
     company: "Bank Rakyat Indonesia (BRI)",
     period: "Dec 2023 — Jul 2026",
     duration: "2.5+ yr",
-    tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard"],
+    tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard", "Mobile Banking", "Credit & Lending"],
     highlights: [
       "En",
     ],
@@ -39,7 +39,7 @@ export const experiences: ExperienceEntry[] = [
         tabLabel: "BRISPOT",
         name: "BRISPOT",
         category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
+        status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
           "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
@@ -55,22 +55,22 @@ export const experiences: ExperienceEntry[] = [
         tabLabel: "KPR Digital",
         name: "KPR (Mortgage) Digital",
         category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — Aktif dikembangkan",
+        status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
-          "Digitalisasi alur pengelolaan KPR, dari mapping komite kredit hingga tracking lead konsumen, dioptimasi untuk penggunaan tablet oleh tim lapangan.",
-        scope: "scope: B2B Internal — tim pemutus KPR & tenaga pemasaran lapangan",
+          "Digital mortgage application platform by BRISPOT enabling customers to apply for BRI home loans, while streamlining internal workflows between initiators, decision-makers, and Notaries, optimized for web and tablet.",
+        scope: "scope: Internal — discovery to initial implementation phase",
         contributions: [
-          "Mendigitalisasi workflow pengelolaan KPR, termasuk mapping komite KPP dan proses pengambilan keputusan kredit.",
-          "Mendesain tracking lead konsumen (Leads Internal Konsumer KPR) yang dioptimasi untuk tablet.",
-          "Merancang alur mitigasi penolakan (PTK Tolak) beserta riwayat keputusan untuk transparansi proses.",
+          "Notary Order & Accessory Agreements: Designed flexible notary data entry workflows (single/multi-entry) with automated fee mapping and collateral document verification.",
+          "Leads Monitoring & Customer Visits: Created field activity reporting modules, financial analysis (P&L preview), and tracking for credit decision history.",
+          "Admin & Quota Management System: Architected a Role-Based Access Control (RBAC) system and a centralized dashboard for managing consumer gimmick and national quota allocations.",
         ],
       },
       {
         tabLabel: "BRImo & QITA",
         name: "BRImo (Super App) & QITA — Credit Card, Lifestyle, Biller",
         category: "CONSUMER-FACING — SUPER APP",
-        status: "Live — Aktif dikembangkan",
+        status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
           "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
@@ -82,32 +82,17 @@ export const experiences: ExperienceEntry[] = [
         ],
       },
       {
-        tabLabel: "BUM Desa",
-        name: "BUM Desa — Digital Platform",
-        category: "INTERNAL PLATFORM — 0→1",
-        status: "Completed — Transisi ke BRImo/QITA",
+        tabLabel: "BUMDes BRI",
+        name: "BUMDes BRI — Digital Platform",
+        category: "INTERNAL PLATFORM",
+        status: "Completed — Transition to Agen BRILink",
         statusLive: false,
         description:
-          "Platform digital baru yang dibangun dari nol (0→1), sebelum tim bertransisi fokus ke segmen BRImo/QITA.",
-        scope: "scope: Internal — fase discovery hingga implementasi awal",
+          "A digital platform designed to modernize BUMDes operational workflows, financial reporting, and educational resources, built before transitioning focus to the BRILink Agent segment.",
+        scope: "Internal — end-to-end design from discovery to MVP roll-out",
         contributions: [
-          "Memimpin arsitektur UX/UI platform baru dari tahap discovery hingga implementasi.",
-          "Melakukan stakeholder interview untuk mendefinisikan core journey pengguna.",
-        ],
-      },
-      {
-        tabLabel: "BRI Design System",
-        name: "BRI Enterprise Design System",
-        category: "DESIGN SYSTEM — CROSS-PLATFORM",
-        status: "Live — Aktif dikembangkan",
-        statusLive: true,
-        description:
-          "Design system berskala enterprise dengan variable design tokens, dipakai lintas modul BRISPOT dan BRImo/QITA untuk menjaga konsistensi dan mempercepat handover.",
-        scope: "scope: Cross-squad — dipakai di BRISPOT dan BRImo/QITA",
-        contributions: [
-          "Memimpin scaling design system menggunakan variable design tokens.",
-          "Menstandardisasi proses design-to-development handover di seluruh modul BRISPOT.",
-          "Menerapkan token system yang sama ke modul BRImo/QITA untuk konsistensi lintas squad.",
+          "Enhanced the core UI/UX across dashboard, educational content, and financial report pages by optimizing navigation hierarchy and reducing user click depth, ensuring a seamless experience for non-tech-savvy users in rural areas.",
+          "Built and maintained a comprehensive design system, establishing foundational design tokens for color styles and number systems (spacing, layout grids, corner radii) alongside reusable UI components (modals, forms, charts, and navigation) to streamline designer-developer handoff.",
         ],
       },
     ],
@@ -157,7 +142,7 @@ export const experiences: ExperienceEntry[] = [
       "Mendesain dashboard table-heavy untuk sistem manajemen ATM CIMB — termasuk filter multi-dimensi dan export report.",
       "Membuat custom 3D icon set di Blender untuk memperkaya visual identity aplikasi.",
     ],
-    tags: ["Banking", "Dashboard", "3D Illustration"],
+    tags: ["Banking", "Dashboard", "3D Illustration", "Mobile App Design", "Design System"],
     products: [
       {
         tabLabel: "BRISPOT",
