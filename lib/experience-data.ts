@@ -42,12 +42,15 @@ export const experiences: ExperienceEntry[] = [
         status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
-          "Platform operasional lending internal BRI, dipakai oleh agen dan analis kredit di seluruh cabang. Sistem multi-role dengan alur approval bertingkat sesuai regulasi.",
-        scope: "scope: B2B Internal — tim Pemrakarsa, Pemutus (CBM/PCP/Pinca/RCBH), dan Petugas ADK",
+          "Internal BRI lending platform for processing Briguna personal loan applications, streamlining end-to-end approval workflows, and optimizing Whitelist management, credit administration, and digital agreement signing.",
+        scope: "scope: B2B Internal — Initiators, Decision Makers, ADK Officers, & Sales Officers",
         contributions: [
-          "Merancang alur approval multi-role (Pemrakarsa → Pemutus → ADK) dengan state disbursement dan Early Warning System (EWS) yang kompleks.",
-          "Memimpin UX research dan desain untuk cross-bank installment autofill (fitur Crystal), whitelist nasabah, dan administrasi kuota nasional (peran Maker/Signer).",
-          "Membangun komponen dashboard analitik finansial dan reporting kunjungan nasabah dengan pipeline download/upload data neraca dan laba-rugi.",
+          "Approval Workflows & Risk Analysis: Redesigned the ARCI risk evaluation engine, multi-role approval flows (Initiator > Approver > ADK Officer), along with Early Warning System (EWS) and Taspen pre-retirement modules.",
+          "Whitelist & Open Flagging Management: Designed request, decision, and tracking modules for Briguna Whitelist data alongside cross-bank Open Flagging workflows to accelerate market acquisition.",
+          "Credit Administration & Digital Signing: Architected credit agreement flows, SPAJK insurance handling, and Digital Sign integration to digitize contract execution and administrative tasks.",
+          "Monitoring & Analytics Dashboards: Built comprehensive dashboards tracking loan funneling, disbursement status, gimmick promotion quotas, partner collaborations, and Sales Officer activity logs.",
+          "Digital Collection & Portfolio Tracking: Designed customer-level Digital Collection views and existing loan portfolio monitoring to enhance debt recovery tracking and asset supervision.",
+          "Web Migration & UI Modernization: Led UI revamp efforts during the legacy-to-React web migration, ensuring design system compliance, optimized performance, and scalable component architecture.",
           "Design System Scaling: Collaborated on scaling the internal enterprise design system by implementing robust design variable tokens to guarantee visual consistency, streamline design-to-development handovers for front-end teams, and ensure rapid component scalability across all BRISPOT modules.",
         ],
       },
@@ -73,12 +76,13 @@ export const experiences: ExperienceEntry[] = [
         status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
-          "Modul consumer-facing di super app BRImo dan QITA, mencakup Kartu Kredit, Lifestyle, dan Biller — termasuk fitur Ubah Cicilan (installment conversion).",
-        scope: "scope: Consumer-facing — modul Kartu Kredit, Lifestyle, dan Biller",
-        contributions: [
-          "Mendesain flow Ubah Cicilan: pemilihan tenor, detail transaksi, konfirmasi, hingga status/result, termasuk copy dan handling untuk edge case.",
-          "Menerapkan design system variable-token yang sama dari BRISPOT untuk menjaga konsistensi lintas squad.",
-          "Berkolaborasi dengan Product Owner dan engineer untuk menyelaraskan keputusan desain dengan kebutuhan teknis, serta menjalankan design QA terhadap hasil development.",
+          "Consumer-facing modules across BRImo and QITA super apps, covering Credit Card & Installment Conversion, physical debit card issuance journey, Biller payments, and Lifestyle features, optimized for seamless end-to-end user experience.",
+          scope: "Consumer-facing — Credit Card, Lifestyle, and Biller modules",        
+          contributions: [
+          "Redesigned the Credit Card & Installment Conversion flow by streamlining multi-step journeys into a frictionless experience, optimizing microcopy and edge-case feedback to minimize drop-offs and drive higher conversion rates.",
+          "Conducted competitive benchmarking and redesigned the end-to-end physical debit card journey covering request, live shipment tracking, activation, return handling, and in-app notifications streamlining screen flows to deliver a faster, more competitive user experience.",
+          "Collaborated with Product Owners and engineers to align design decisions with technical feasibility, while conducting rigorous Design QA to ensure visual accuracy and flawless UI implementation across BRImo and Qita features.",
+          "Standardized biller UI components using the design system while optimizing the payment flow hierarchy to enhance clarity, reduce user friction, and prevent transaction errors."
         ],
       },
       {
