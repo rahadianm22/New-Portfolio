@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -75,11 +74,12 @@ export function Navbar() {
         {/* CTA */}
         <a
           href="mailto:rahadianm22@gmail.com"
-          className="text-xs px-4 py-2 transition-all duration-150 hover:opacity-80"
+          className="text-xs px-4 py-2 rounded-md transition-all duration-150 hover:bg-[rgba(43,78,255,0.08)]"
           style={{
             fontFamily: "'Urbanist', sans-serif",
-            backgroundColor: "#2B4EFF",
-            color: "#FFFFFF",
+            backgroundColor: "transparent",
+            border: "1px solid #2B4EFF",
+            color: "#2B4EFF",
             textDecoration: "none",
             letterSpacing: "0.08em",
           }}

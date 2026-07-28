@@ -132,28 +132,43 @@ export function Hero() {
               fontWeight: 400,
             }}
           >
-            Product Designer based in Indonesia, focused on <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
+           5+ years designing regulated <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
               color: "#2B4EFF",
-              fontWeight: 400, }}>solving complex problems</span> with a user-centric approach with 5+ years experience.
+              fontWeight: 400, }}>fintech & banking products</span>, from internal lending tools to consumer credit card experiences. Every system built to scale. 
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#experience"
-              className="group inline-flex items-center gap-2 px-6 py-3 transition-all duration-200"
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#1937B3]"
               style={{
                 fontFamily: "'Urb', sans-serif",
                 fontWeight: 600,
-                backgroundColor: "#12151C",
+                backgroundColor: "#2B4EFF",
                 color: "#FFFFFF",
                 fontSize: "15px",
               }}
             >
               View Experience{" "}
-              <span className="text-white transition-colors duration-200 group-hover:text-[#5B7CFF]">
+              <span className="text-white transition-colors duration-200 group-hover:text-[#D6DFFF]">
                 ↗
               </span>
+            </a>
+
+            <a
+              href="mailto:rahadianm22@gmail.com"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#EAEFFF]"
+              style={{
+                fontFamily: "'Urb', sans-serif",
+                fontWeight: 600,
+                backgroundColor: "transparent",
+                border: "1px solid #2B4EFF",
+                color: "#2B4EFF",
+                fontSize: "15px",
+              }}
+            >
+              Let's talk
             </a>
           </div>
         </div>
