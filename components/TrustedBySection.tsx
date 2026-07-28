@@ -100,7 +100,7 @@ export function TrustedBySection() {
             letterSpacing: "-0.02em",
           }}
         >
-          Featured works and digital products.
+          Digital products shipped across fintech & banking.
         </h2>
 
         {/* Logo grid */}

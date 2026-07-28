@@ -49,7 +49,7 @@ export function ExperienceSection() {
               letterSpacing: "-0.02em",
             }}
           >
-            Featured works and digital products.
+            Professional Journey.
           </h2>
         </div>
 

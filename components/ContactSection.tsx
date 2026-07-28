@@ -26,6 +26,12 @@ const secondaryLinks: SecondaryLink[] = [
     href: "https://dribbble.com/rahadianm22",
   },
   {
+    category: "Personal",
+    handle: "/rahadianonly",
+    label: "Instagram",
+    href: "https://www.instagram.com/rahadianonly/",
+  },
+  {
     category: "Showcase",
     handle: "/rahadianm22",
     label: "Portfolio",
@@ -76,7 +82,7 @@ export function ContactSection() {
         <PrimaryContactCard email={primaryEmail} />
 
         {/* Secondary links grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 mt-6">
           {secondaryLinks.map((link, i) => (
             <SecondaryLinkCard key={link.label} link={link} isLast={i === secondaryLinks.length - 1} />
           ))}

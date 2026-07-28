@@ -67,7 +67,7 @@ export function SystemsSection() {
                 letterSpacing: "-0.02em",
               }}
             >
-              My Design Expertise.
+              Design Expertise.
             </h2>
           </div>
         </div>
