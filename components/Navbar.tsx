@@ -73,7 +73,9 @@ export function Navbar() {
 
         {/* CTA */}
         <a
-          href="mailto:rahadianm22@gmail.com"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=rahadianm22@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
           className="text-xs px-4 py-2 rounded-md transition-all duration-150 hover:bg-[rgba(43,78,255,0.08)]"
           style={{
             fontFamily: "'Urbanist', sans-serif",
