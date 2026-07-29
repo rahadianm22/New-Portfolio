@@ -214,7 +214,7 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BRISPOT",
         name: "Website E-commerce Malline",
-        category: "INTERNAL PLATFORM — LENDING",
+        category: "E-COMMERCE PLATFORM — B2C",
         status: "No Longer Available",
         statusLive: false,
         description:
