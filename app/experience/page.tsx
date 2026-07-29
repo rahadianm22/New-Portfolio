@@ -23,7 +23,7 @@ export default function ExperiencePage() {
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path d="M8 2L2 8M2 8H7M2 8V3" stroke="#2B4EFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            Kembali ke Beranda
+            Back to Homepage
           </Link>
 
           <span
@@ -36,7 +36,7 @@ export default function ExperiencePage() {
             className="text-4xl md:text-5xl"
             style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
           >
-            Semua pengalaman kerja.
+            Complete Work Experience.
           </h1>
         </div>
       </section>

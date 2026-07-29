@@ -242,6 +242,25 @@ export default function ExperienceDetailPage() {
           )}
         </div>
       </div>
+
+      {/* Back to Home button */}
+      <div className="max-w-3xl mx-auto px-6 md:px-10 mt-8 text-center">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-xs"
+          style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontWeight: 600,
+            color: "#FFFFFF",
+            backgroundColor: "#2B4EFF",
+          }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 6H9.5M2.5 6L5.5 3M2.5 6L5.5 9" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back to Home
+        </Link>
+      </div>
     </div>
   );
 }

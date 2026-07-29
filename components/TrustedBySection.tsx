@@ -76,7 +76,7 @@ const clients: Client[] = [
   },
 ];
 
-const VISIBLE_COUNT = 4;
+const VISIBLE_COUNT = 5;
 
 export function TrustedBySection() {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -208,7 +208,7 @@ export function TrustedBySection() {
           className="mt-6 text-[10px] tracking-wide text-center"
           style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}
         >
-          hover to reveal — token: --logo-grayscale-default
+          Click to reveal all portfolio
         </p>
       </div>
     </section>
