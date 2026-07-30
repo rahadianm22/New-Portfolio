@@ -37,7 +37,7 @@ export const experiences: ExperienceEntry[] = [
     products: [
       {
         tabLabel: "BRISPOT",
-        name: "BRISPOT",
+        name: "BRISPOT - BRIGUNA Internal Lending Platform",
         category: "INTERNAL PLATFORM — LENDING",
         status: "Live — On Deployment & Active Development",
         statusLive: true,
@@ -56,7 +56,7 @@ export const experiences: ExperienceEntry[] = [
       },
       {
         tabLabel: "KPR Digital",
-        name: "KPR (Mortgage) Digital",
+        name: "BRISPOT - KPR Digital (Internal Mortgage Application Platform)",
         category: "INTERNAL PLATFORM — LENDING",
         status: "Live — On Deployment & Active Development",
         statusLive: true,
