@@ -50,8 +50,8 @@ export const experiences: ExperienceEntry[] = [
           "Credit Administration & Digital Signing: Architected credit agreement flows, SPAJK insurance handling, and Digital Sign integration to digitize contract execution and administrative tasks.",
           "Monitoring & Analytics Dashboards: Built comprehensive dashboards tracking loan funneling, disbursement status, gimmick promotion quotas, partner collaborations, and Sales Officer activity logs.",
           "Digital Collection & Portfolio Tracking: Designed customer-level Digital Collection views and existing loan portfolio monitoring to enhance debt recovery tracking and asset supervision.",
-          "Web Migration & UI Modernization: Led UI revamp efforts during the legacy-to-React web migration, ensuring design system compliance, optimized performance, and scalable component architecture.",
-          "Design System Scaling: Collaborated on scaling the internal enterprise design system by implementing robust design variable tokens to guarantee visual consistency, streamline design-to-development handovers for front-end teams, and ensure rapid component scalability across all BRISPOT modules.",
+          "Web Migration & UI Modernization: Led UI revamp efforts during the legacy to React web migration, ensuring design system compliance, optimized performance, and scalable component architecture.",
+          "Design System Scaling: Collaborated on scaling the internal enterprise design system by implementing robust design variable tokens to guarantee visual consistency, streamline design to development handovers for front-end teams, and ensure rapid component scalability across all BRISPOT modules.",
         ],
       },
       {
