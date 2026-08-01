@@ -14,6 +14,12 @@ const primaryEmail = "rahadianm22@gmail.com";
 
 const secondaryLinks: SecondaryLink[] = [
   {
+    category: "Document",
+    handle: "PDF",
+    label: "Resume",
+    href: "/resume",
+  },
+  {
     category: "Professional",
     handle: "/rahadianm22",
     label: "LinkedIn",
@@ -88,7 +94,7 @@ export function ContactSection() {
         <PrimaryContactCard email={primaryEmail} />
 
         {/* Secondary links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-6">
           {secondaryLinks.map((link, i) => (
             <SecondaryLinkCard key={link.label} link={link} isLast={i === secondaryLinks.length - 1} />
           ))}
@@ -100,14 +106,9 @@ export function ContactSection() {
 
 function PrimaryContactCard({ email }: { email: string }) {
   const [hovered, setHovered] = useState(false);
-  const gmailComposeHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
-
-
   return (
     <a
-      href={gmailComposeHref}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`mailto:${email}`}
       className="relative block"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

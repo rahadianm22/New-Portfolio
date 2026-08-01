@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const SITE_URL = "https://rahadianm22.vercel.app";
+const TITLE = "Rahadian Maulana — Senior Product Designer";
+const DESCRIPTION =
+  "Senior Product Designer with 5+ years designing regulated fintech & banking products.";
+
 export const metadata: Metadata = {
-  title: "Rahadian Maulana Portfolio",
-  description:
-    "Senior Product Designer with 5+ years designing regulated fintech & banking products.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Rahadian Maulana Portfolio",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({

@@ -30,6 +30,21 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+  }
+
+  #resume-sheet {
+    border: none !important;
+    padding: 0 !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

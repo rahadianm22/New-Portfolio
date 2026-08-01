@@ -5,7 +5,7 @@ import { experiences } from "@/lib/experience-data";
 
 export const metadata = {
   title: "Experience — Rahadian Maulana",
-  description: "Detail lengkap pengalaman kerja Rahadian Maulana.",
+  description: "Full work experience and case studies from Rahadian Maulana.",
 };
 
 export default function ExperiencePage() {

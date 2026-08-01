@@ -93,7 +93,7 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.02",
     role: "Product Designer",
     company: "Bank Syariah Indonesia (BSI)",
-    period: "Agu 2022 — Jul 2023",
+    period: "Aug 2022 — Jul 2023",
     duration: "1 yr",
     highlights: [
       "Membangun dan mendokumentasikan design system BSI Mobile Banking dari nol — komponen library, token warna, dan panduan tipografi.",
@@ -103,21 +103,20 @@ export const experiences: ExperienceEntry[] = [
     tags: ["Mobile Banking", "Design System", "User Research"],
     products: [
       {
-        tabLabel: "BRISPOT",
-        name: "BYOND by BSI",
-        category: "MOBILE BANKING — SHARIA SUPER APP",
+        tabLabel: "BYOND",
+        name: "BYOND by BSI — Mobile Banking App",
+        category: "MOBILE BANKING — POST-MERGER REBRAND",
         status: "Live — Released on Google Play & App Store",
         statusLive: true,
         description:
-          "Contributed to the digital transformation of Bank Syariah Indonesia (BSI) by designing core mobile banking features and scaling the enterprise design system. Focused on establishing advanced Figma workflows, component libraries, and Auto Layout architecture to drive UI consistency and accelerate cross-functional production.",
+          "BSI Mobile Banking App — post-merger design system consolidation & rebranding, taking over and rebuilding the enterprise component library after BSI's bank merger.",
         scope: "B2C Mobile Banking — Retail Customers & General Public",
         contributions: [
-          "Streamlined and maintained the enterprise design system library to accelerate design-to-development handoffs and ensure component scalability across platforms.",
-          "Architected intuitive user flows and wireframes for upcoming products, ensuring seamless integration and alignment with Bank BSI's core application ecosystem and user behaviors.",
-          "Fostered cross-functional collaboration with Product Owners, Business Analysts, stakeholders, and end-users to successfully translate complex business requirements into user-centered design solutions.",
-          "Conducted comprehensive user research and usability testing to gather actionable insights and evaluate the long-term impact of new features on the Bank BSI application's user experience.",
-          "Optimized design workflow and file architecture by structuring Figma files around specific epics, significantly improving team collaboration efficiency and project organization.",
+          "Took over the enterprise design system after the merger and rebuilt the parts of the component library that had drifted out of sync with the new brand.",
+          "Ran usability testing on core banking flows and used what came out of it to shape what actually made it into the post-rebrand roadmap, rather than working off assumptions.",
+          "Reorganized the Figma files around product epics instead of loose screens — made it noticeably easier for new designers joining mid-project to find their footing.",
         ],
+        tech: "Figma, Auto Layout, FigJam, Design System Library",
       },
     ],
   },
@@ -125,7 +124,7 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.03",
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
-    period: "Mar 2021 — Mei 2022",
+    period: "Mar 2021 — May 2022",
     description:
       "Merancang sistem desain untuk BTN Conventional & Syariah, serta dashboard analitik multi-dimensi untuk sistem manajemen ATM CIMB.",
     duration: "1+ yr",
@@ -137,7 +136,7 @@ export const experiences: ExperienceEntry[] = [
     tags: ["Banking", "Dashboard", "3D Illustration", "Mobile App Design", "Design System"],
     products: [
       {
-        tabLabel: "BRISPOT",
+        tabLabel: "btn-conventional",
         name: "BTN Conventional (bale by BTN)",
         category: "DIGITAL BANKING — RETAIL SERVICES",
         status: "Live — Released on Google Play & App Store",
@@ -188,7 +187,7 @@ export const experiences: ExperienceEntry[] = [
   },
   {
     docId: "DOC.04",
-    role: "UI/UX Designer",
+    role: "Co-Founder & UI/UX Designer",
     company: "Malline Indonesia",
     period: "Sep 2019 — Feb 2021",
     duration: "1.5+ yr",
@@ -222,3 +221,39 @@ export const experiences: ExperienceEntry[] = [
 export function getExperienceByDocId(docId: string): ExperienceEntry | undefined {
   return experiences.find((e) => e.docId.toLowerCase() === docId.toLowerCase());
 }
+
+export const profileSummary =
+  "Senior Product Designer with 5+ years in regulated, high-stakes financial products — consumer banking apps on one side, internal lending operations tools on the other. Most of what I do well is untangling requirements that arrive fragmented and highly technical, then turning them into product logic that both end users and back-office operators can actually work with: multi-role approval flows, dense operational dashboards, processes with more edge cases than happy paths. That's been the throughline across BRI's national lending platform, BSI's post-merger design system, and a couple of internal banking tools before that.";
+
+export const keyAchievements: string[] = [
+  "The multi-role approval workflow I redesigned for BRISPOT is still what credit ops uses to process loan applications at national scale.",
+  "Reworking the card issuance and installment conversion journeys on BRImo/QITA brought drop-off down enough that the flow became a reference point for other lifestyle features on the app.",
+  "Helped move BRI's design system from scattered one-off styles to a token-based system now shared across multiple product squads.",
+  "Led the UI side of moving disbursement verification (Checker & Signer) off legacy infrastructure onto React, without disrupting access for the ops teams who depend on it daily.",
+];
+
+export interface SkillGroup {
+  label: string;
+  items: string;
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    label: "Systems & platform design",
+    items: "multi-role/back-office workflows, data-heavy dashboards, design token architecture, edge-case mapping",
+  },
+  {
+    label: "Design systems & tools",
+    items: "Figma, FigJam, Variable Tokens, Auto Layout, component architecture",
+  },
+  { label: "Process", items: "user research, usability testing, rapid prototyping, design QA" },
+  {
+    label: "Working with others",
+    items: "partnering with PMs, engineers, data scientists, and ops teams inside regulated environments (Jira, Confluence, Notion)",
+  },
+  {
+    label: "Also picking up",
+    items: "AI-assisted design-to-code workflows (Claude Code), enough front-end coding to prototype interactions myself",
+  },
+  { label: "Languages", items: "Indonesian (native), English (intermediate)" },
+];

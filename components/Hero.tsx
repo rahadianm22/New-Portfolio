@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -98,12 +98,12 @@ export function Hero() {
               <p
                 className="text-lg md:text-xl mb-2 leading-relaxed"
                 style={{
-                  fontFamily: "'Urb', sans-serif",
+                  fontFamily: "'Urbanist', sans-serif",
                   fontWeight: 400,
                   color: "#3D4557",
                 }}
               >
-                Hi, I'm <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
+                Hi, I'm <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urbanist', sans-serif",
               color: "#2B4EFF",
               fontWeight: 400, }}>Rahadian Maulana</span>
               </p>
@@ -127,12 +127,12 @@ export function Hero() {
           <p
             className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
             style={{
-              fontFamily: "'Urb', sans-serif",
+              fontFamily: "'Urbanist', sans-serif",
               color: "#3D4557",
               fontWeight: 400,
             }}
           >
-           5+ years designing regulated <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urb', sans-serif",
+           5+ years designing regulated <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urbanist', sans-serif",
               color: "#2B4EFF",
               fontWeight: 400, }}>fintech & banking products</span>, from internal lending tools to consumer credit card experiences. Every system built to scale. 
           </p>
@@ -143,7 +143,7 @@ export function Hero() {
               href="#experience"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#1937B3]"
               style={{
-                fontFamily: "'Urb', sans-serif",
+                fontFamily: "'Urbanist', sans-serif",
                 fontWeight: 600,
                 backgroundColor: "#2B4EFF",
                 color: "#FFFFFF",
@@ -157,12 +157,10 @@ export function Hero() {
             </a>
 
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=rahadianm22@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:rahadianm22@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#EAEFFF]"
               style={{
-                fontFamily: "'Urb', sans-serif",
+                fontFamily: "'Urbanist', sans-serif",
                 fontWeight: 600,
                 backgroundColor: "transparent",
                 border: "1px solid #2B4EFF",

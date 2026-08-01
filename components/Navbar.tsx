@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const NAV_LINKS = [
+  { label: "About", href: "/#about" },
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#systems" },
   { label: "Design Systems", href: "/#side-project" },
   { label: "Contact", href: "/#contact" },
+  { label: "Resume", href: "/resume" },
 ];
 
 export function Navbar() {
@@ -60,7 +62,7 @@ export function Navbar() {
               letterSpacing: "0.02em",
             }}
           >
-            Rahadianm22
+            Rahadian Maulana
           </span>
         </a>
 
@@ -86,9 +88,7 @@ export function Navbar() {
         {/* CTA + Hamburger */}
         <div className="flex items-center gap-3">
           <a
-             href="https://mail.google.com/mail/?view=cm&fs=1&to=rahadianm22@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
+             href="mailto:rahadianm22@gmail.com"
             className="text-xs px-4 py-2 rounded-md transition-all duration-150 hover:bg-[rgba(43,78,255,0.08)]"
             style={{
               fontFamily: "'Urbanist', sans-serif",
