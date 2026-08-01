@@ -14,12 +14,6 @@ const primaryEmail = "rahadianm22@gmail.com";
 
 const secondaryLinks: SecondaryLink[] = [
   {
-    category: "Document",
-    handle: "PDF",
-    label: "Resume",
-    href: "/resume",
-  },
-  {
     category: "Professional",
     handle: "/rahadianm22",
     label: "LinkedIn",
