@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   scope: string;
   contributions: string[];
+  tech?: string;
 }
 
 export interface ExperienceEntry {
@@ -32,42 +33,28 @@ export const experiences: ExperienceEntry[] = [
     duration: "2.5+ yr",
     tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard", "Mobile Banking", "Credit & Lending"],
     highlights: [
-      "En",
+      "Merancang ulang alur approval multi-role (Initiator, Approver, Credit Admin Officer) untuk BRISPOT, termasuk ARCI risk-evaluation engine dan logika Early Warning System.",
+      "Memimpin sisi UI migrasi legacy-to-React modul disbursement Checker & Signer, menjaga stabilitas antarmuka bagi pengguna harian saat akses dipindah ke single sign-on gateway.",
+      "Membantu men-scale design system enterprise BRI dengan variable tokens, mempercepat design-to-dev handoff, serta menyederhanakan alur Credit Card Installment Conversion dan kartu debit di BRImo/QITA.",
     ],
     products: [
       {
         tabLabel: "BRISPOT",
-        name: "BRISPOT - BRIGUNA Internal Lending Platform",
-        category: "INTERNAL PLATFORM — LENDING",
+        name: "BRISPOT — Internal Lending Platform",
+        category: "BRIGUNA & KPR",
         status: "Live — On Deployment & Active Development",
         statusLive: true,
         description:
-          "Internal BRI lending platform for processing Briguna personal loan applications, streamlining end-to-end approval workflows, and optimizing Whitelist management, credit administration, and digital agreement signing.",
+          "Comprehensive internal lending platform for processing BRI personal loan (Briguna) and mortgage (KPR) applications, streamlining end-to-end approval workflows and optimizing Whitelist management, credit administration, and digital agreement signing across both products.",
         scope: "scope: B2B Internal — Initiators, Decision Makers, ADK Officers, & Sales Officers",
         contributions: [
-          "Approval Workflows & Risk Analysis: Redesigned the ARCI risk evaluation engine, multi-role approval flows (Initiator > Approver > ADK Officer), along with Early Warning System (EWS) and Taspen pre-retirement modules.",
-          "Whitelist & Open Flagging Management: Designed request, decision, and tracking modules for Briguna Whitelist data alongside cross-bank Open Flagging workflows to accelerate market acquisition.",
-          "Credit Administration & Digital Signing: Architected credit agreement flows, SPAJK insurance handling, and Digital Sign integration to digitize contract execution and administrative tasks.",
-          "Monitoring & Analytics Dashboards: Built comprehensive dashboards tracking loan funneling, disbursement status, gimmick promotion quotas, partner collaborations, and Sales Officer activity logs.",
-          "Digital Collection & Portfolio Tracking: Designed customer-level Digital Collection views and existing loan portfolio monitoring to enhance debt recovery tracking and asset supervision.",
-          "Web Migration & UI Modernization: Led UI revamp efforts during the legacy to React web migration, ensuring design system compliance, optimized performance, and scalable component architecture.",
-          "Design System Scaling: Collaborated on scaling the internal enterprise design system by implementing robust design variable tokens to guarantee visual consistency, streamline design to development handovers for front-end teams, and ensure rapid component scalability across all BRISPOT modules.",
+          "The loan approval process had too many disconnected hand-offs between roles, so I redesigned the workflow across Initiator, Approver, and Credit Admin Officer, along with the ARCI risk-evaluation engine and Early Warning System logic that feed into it.",
+          "Designed the Whitelist and cross-bank Open Flagging modules so credit ops could pre-qualify leads without manually cross-checking eligibility against multiple bank records.",
+          "Worked closely with engineering through the legacy-to-React migration of the Checker & Signer disbursement modules, the priority was keeping the interface stable for daily users while access moved onto a single sign-on gateway.",
+          "Helped scale BRI's enterprise design system with variable tokens, which took a lot of the guesswork out of design-to-dev handoff for the front-end teams building against it.",
+          "Later extended into KPR Digital, designing the notary order workflow and an RBAC-based system for managing national quota allocations.",
         ],
-      },
-      {
-        tabLabel: "KPR Digital",
-        name: "BRISPOT - KPR Digital (Internal Mortgage Application Platform)",
-        category: "INTERNAL PLATFORM — LENDING",
-        status: "Live — On Deployment & Active Development",
-        statusLive: true,
-        description:
-          "Digital mortgage application platform by BRISPOT enabling customers to apply for BRI home loans, while streamlining internal workflows between initiators, decision-makers, and Notaries, optimized for web and tablet.",
-        scope: "scope: Internal — discovery to initial implementation phase",
-        contributions: [
-          "Notary Order & Accessory Agreements: Designed flexible notary data entry workflows (single/multi-entry) with automated fee mapping and collateral document verification.",
-          "Leads Monitoring & Customer Visits: Created field activity reporting modules, financial analysis (P&L preview), and tracking for credit decision history.",
-          "Admin & Quota Management System: Architected a Role-Based Access Control (RBAC) system and a centralized dashboard for managing consumer gimmick and national quota allocations.",
-        ],
+        tech: "Figma, FigJam, Design Variable Tokens, Auto Layout, Jira, Confluence, Notion",
       },
       {
         tabLabel: "BRImo & QITA",
@@ -77,13 +64,14 @@ export const experiences: ExperienceEntry[] = [
         statusLive: true,
         description:
           "Consumer-facing modules across BRImo and QITA super apps, covering Credit Card & Installment Conversion, physical debit card issuance journey, Biller payments, and Lifestyle features, optimized for seamless end-to-end user experience.",
-          scope: "Consumer-facing — Credit Card, Lifestyle, and Biller modules",        
+          scope: "Consumer-facing — Credit Card, Lifestyle, and Biller modules",
           contributions: [
-          "Redesigned the Credit Card & Installment Conversion flow by streamlining multi-step journeys into a frictionless experience, optimizing microcopy and edge-case feedback to minimize drop-offs and drive higher conversion rates.",
-          "Conducted competitive benchmarking and redesigned the end-to-end physical debit card journey covering request, live shipment tracking, activation, return handling, and in-app notifications streamlining screen flows to deliver a faster, more competitive user experience.",
-          "Collaborated with Product Owners and engineers to align design decisions with technical feasibility, while conducting rigorous Design QA to ensure visual accuracy and flawless UI implementation across BRImo and Qita features.",
-          "Standardized biller UI components using the design system while optimizing the payment flow hierarchy to enhance clarity, reduce user friction, and prevent transaction errors."
+          "Simplified the Credit Card Installment Conversion journey, fewer steps, clearer copy at each edge case, to bring down where people were dropping off mid-flow.",
+          "Benchmarked competitor debit card journeys before rebuilding BRI's own request-to-activation flow, including live shipment tracking, return handling, and the in-app notifications around it.",
+          "Standardized the biller payment components in the design system so the flow felt consistent across billers instead of each one following its own pattern.",
+          "Sat in on design QA regularly with engineering to catch implementation drift before release, which mattered more here than on most products given the transaction risk involved.",
         ],
+        tech: "Figma, FigJam, Design Variable Tokens, Notion",
       },
       {
         tabLabel: "BUMDes BRI",
@@ -212,7 +200,7 @@ export const experiences: ExperienceEntry[] = [
     tags: ["E-commerce", "End-to-end", "Wireframing","Design"],
     products: [
       {
-        tabLabel: "BRISPOT",
+        tabLabel: "Malline",
         name: "Website E-commerce Malline",
         category: "E-COMMERCE PLATFORM — B2C",
         status: "No Longer Available",
@@ -221,10 +209,10 @@ export const experiences: ExperienceEntry[] = [
           "I founded a startup with my small team from campus, focused on e-commerce. I created the UI design concept for the home, category, product, cart, and order pages. I also assisted the front-end team in developing the website.",
         scope: "B2C E-Commerce Platform",
         contributions: [
-          "Designed and implemented an admin dashboard from initial wireframing and high-fidelity mockups through to successful WordPress integration.",
-          "Conducted end-to-end user research, utilizing surveys, data analysis, and usability testing to gather actionable user insights and inform design decisions.",
-          "Established cohesive user interfaces by unifying visual design systems, including color palettes, typography, imagery guidelines, and micro-animations for an enhanced user experience.",
+          "Designed the shopping experience end to end — home, category, product, cart, checkout — and the admin dashboard, then worked with our front-end team to get it live on WordPress.",
+          "Ran surveys and usability tests throughout, which is where most of our early product decisions came from before we had any real usage data to go on.",
         ],
+        tech: "E-commerce, WordPress, Adobe XD",
       },
     ],
   },
