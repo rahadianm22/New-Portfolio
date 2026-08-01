@@ -54,7 +54,7 @@ export function Hero() {
               color: "#6B7280",
             }}
           >
-            Tangerang / Jakarta, ID
+            Jakarta, Indonesia
           </span>
         </div>
 
