@@ -88,7 +88,7 @@ export function ContactSection() {
         <PrimaryContactCard email={primaryEmail} />
 
         {/* Secondary links grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-6">
           {secondaryLinks.map((link, i) => (
             <SecondaryLinkCard key={link.label} link={link} isLast={i === secondaryLinks.length - 1} />
           ))}
