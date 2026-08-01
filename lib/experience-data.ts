@@ -48,7 +48,7 @@ export const experiences: ExperienceEntry[] = [
           "Comprehensive internal lending platform for processing BRI personal loan (Briguna) and mortgage (KPR) applications, streamlining end-to-end approval workflows and optimizing Whitelist management, credit administration, and digital agreement signing across both products.",
         scope: "scope: B2B Internal — Initiators, Decision Makers, ADK Officers, & Sales Officers",
         contributions: [
-          "The loan approval process had too many disconnected hand-offs between roles, so I redesigned the workflow across Initiator, Approver, and Credit Admin Officer, along with the ARCI risk-evaluation engine and Early Warning System logic that feed into it.",
+          "The loan approval process had too many disconnected hand-offs between roles, stretching timelines to around 3 weeks — I redesigned the workflow across Initiator, Approver, and Credit Admin Officer (plus the ARCI risk-evaluation engine and Early Warning System logic feeding into it), bringing that down to 3-5 days.",
           "Designed the Whitelist and cross-bank Open Flagging modules so credit ops could pre-qualify leads without manually cross-checking eligibility against multiple bank records.",
           "Worked closely with engineering through the legacy-to-React migration of the Checker & Signer disbursement modules, the priority was keeping the interface stable for daily users while access moved onto a single sign-on gateway.",
           "Helped scale BRI's enterprise design system with variable tokens, which took a lot of the guesswork out of design-to-dev handoff for the front-end teams building against it.",
@@ -226,7 +226,7 @@ export const profileSummary =
   "Senior Product Designer with 5+ years in regulated, high-stakes financial products — consumer banking apps on one side, internal lending operations tools on the other. Most of what I do well is untangling requirements that arrive fragmented and highly technical, then turning them into product logic that both end users and back-office operators can actually work with: multi-role approval flows, dense operational dashboards, processes with more edge cases than happy paths. That's been the throughline across BRI's national lending platform, BSI's post-merger design system, and a couple of internal banking tools before that.";
 
 export const keyAchievements: string[] = [
-  "The multi-role approval workflow I redesigned for BRISPOT is still what credit ops uses to process loan applications at national scale.",
+  "Redesigned BRISPOT's multi-role approval workflow, cutting loan approval time from ~3 weeks to 3-5 days — still what credit ops uses to process applications at national scale today.",
   "Reworking the card issuance and installment conversion journeys on BRImo/QITA brought drop-off down enough that the flow became a reference point for other lifestyle features on the app.",
   "Helped move BRI's design system from scattered one-off styles to a token-based system now shared across multiple product squads.",
   "Led the UI side of moving disbursement verification (Checker & Signer) off legacy infrastructure onto React, without disrupting access for the ops teams who depend on it daily.",
