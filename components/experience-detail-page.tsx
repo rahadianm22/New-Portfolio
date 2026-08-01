@@ -172,6 +172,19 @@ export default function ExperienceDetailPage() {
                     </li>
                   ))}
                 </ul>
+
+                {product.tech && (
+                  <p
+                    className="text-xs mt-6 pt-4"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#9CA3AF",
+                      borderTop: "1px solid rgba(18, 21, 28, 0.1)",
+                    }}
+                  >
+                    Tech: {product.tech}
+                  </p>
+                )}
               </>
             ) : (
               <>
