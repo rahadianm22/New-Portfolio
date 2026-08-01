@@ -28,7 +28,7 @@ export default function ResumePage() {
           style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}
         >
           {/* Header */}
-          <div className="flex items-start justify-between gap-4 flex-wrap mb-8 pb-8" style={{ borderBottom: "2px solid #12151C" }}>
+          <div className="flex items-start justify-between gap-4 flex-wrap mb-8 pb-8" style={{ borderBottom: "1px solid #D1D5DB" }}>
             <div>
               <h1
                 className="text-3xl md:text-4xl"
