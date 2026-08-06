@@ -117,7 +117,7 @@ export function TrustedBySection() {
                   : {})}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
+                className="reveal-child flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
                 style={{
                   width: "150px",
                   backgroundColor: isHovered ? "rgba(43, 78, 255, 0.06)" : "#FFFFFF",

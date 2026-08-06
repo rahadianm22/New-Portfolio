@@ -85,7 +85,7 @@ export function ExperienceSection() {
                 href={`/experience#${entry.docId}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5 transition-all duration-200"
+                className="reveal-child grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5 transition-all duration-200"
                 style={{
                   borderBottom: "1px solid rgba(18, 21, 28, 0.08)",
                   borderLeft: isHovered ? "3px solid #2B4EFF" : "3px solid transparent",

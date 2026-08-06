@@ -30,6 +30,157 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* ---------------------------------------------------------------
+   Hero: soft drifting aurora blobs
+   --------------------------------------------------------------- */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.hero-blob-1 {
+  width: 480px;
+  height: 480px;
+  top: -140px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(43, 78, 255, 0.22), transparent 70%);
+  animation: blob-drift-a 26s ease-in-out infinite;
+}
+
+.hero-blob-2 {
+  width: 420px;
+  height: 420px;
+  bottom: -160px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(255, 75, 51, 0.14), transparent 70%);
+  animation: blob-drift-b 32s ease-in-out infinite;
+}
+
+.hero-blob-3 {
+  width: 520px;
+  height: 520px;
+  top: 30%;
+  left: 45%;
+  background: radial-gradient(circle, rgba(43, 78, 255, 0.12), transparent 70%);
+  animation: blob-drift-c 38s ease-in-out infinite;
+}
+
+@keyframes blob-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(60px, 40px, 0) scale(1.12);
+  }
+}
+
+@keyframes blob-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-70px, -50px, 0) scale(1.08);
+  }
+}
+
+@keyframes blob-drift-c {
+  0%,
+  100% {
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-40%, -60px, 0) scale(1.15);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Hero: staggered entrance on mount
+   --------------------------------------------------------------- */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-stagger[data-mounted="true"] > * {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-stagger[data-mounted="true"] > *:nth-child(1) {
+  transition-delay: 0.08s;
+}
+.hero-stagger[data-mounted="true"] > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.hero-stagger[data-mounted="true"] > *:nth-child(3) {
+  transition-delay: 0.32s;
+}
+.hero-stagger[data-mounted="true"] > *:nth-child(4) {
+  transition-delay: 0.44s;
+}
+.hero-stagger[data-mounted="true"] > *:nth-child(n + 5) {
+  transition-delay: 0.56s;
+}
+
+/* ---------------------------------------------------------------
+   Reveal on scroll: staggered children inside a revealed block
+   --------------------------------------------------------------- */
+[data-revealed] .reveal-child {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-revealed="true"] .reveal-child {
+  opacity: 1;
+  transform: none;
+}
+
+[data-revealed="true"] .reveal-child:nth-child(1) {
+  transition-delay: 0.05s;
+}
+[data-revealed="true"] .reveal-child:nth-child(2) {
+  transition-delay: 0.13s;
+}
+[data-revealed="true"] .reveal-child:nth-child(3) {
+  transition-delay: 0.21s;
+}
+[data-revealed="true"] .reveal-child:nth-child(4) {
+  transition-delay: 0.29s;
+}
+[data-revealed="true"] .reveal-child:nth-child(5) {
+  transition-delay: 0.37s;
+}
+[data-revealed="true"] .reveal-child:nth-child(6) {
+  transition-delay: 0.45s;
+}
+[data-revealed="true"] .reveal-child:nth-child(n + 7) {
+  transition-delay: 0.53s;
+}
+
+/* Thin scroll-progress bar at the very top of the page */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 100;
+  background: linear-gradient(90deg, #2b4eff, #ff4b33);
+  transform-origin: left center;
+  will-change: transform;
+  pointer-events: none;
+}
+
 @media print {
   .no-print {
     display: none !important;

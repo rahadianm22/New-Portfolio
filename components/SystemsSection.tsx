@@ -88,7 +88,7 @@ export function SystemsSection() {
             {services.map((service, i) => (
               <div
                 key={service.code}
-                className="p-6 md:p-8 flex flex-col"
+                className="reveal-child p-6 md:p-8 flex flex-col"
                 style={{
                   borderRight: i < services.length - 1 ? "1px dashed rgba(43, 78, 255, 0.2)" : undefined,
                 }}

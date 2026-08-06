@@ -189,7 +189,7 @@ function SecondaryLinkCard({ link, isLast }: { link: SecondaryLink; isLast: bool
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="px-6 py-5 flex flex-col gap-2"
+      className="reveal-child px-6 py-5 flex flex-col gap-2"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{

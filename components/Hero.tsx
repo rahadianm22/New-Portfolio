@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { ParticleField } from "./ParticleField";
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -29,13 +30,26 @@ export function Hero() {
         }}
       />
 
+      {/* Soft drifting aurora blobs behind the dots */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="hero-blob hero-blob-1" />
+        <div className="hero-blob hero-blob-2" />
+        <div className="hero-blob hero-blob-3" />
+      </div>
+
+      {/* Soft moving dot field */}
+      <ParticleField />
+
       {/* Registration marks at corners */}
       <CornerMark position="top-left" />
       <CornerMark position="top-right" />
       <CornerMark position="bottom-left" />
       <CornerMark position="bottom-right" />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-6 md:px-12 py-24">
+      <div
+        className="relative z-10 max-w-6xl mx-auto w-full px-6 md:px-12 py-24 hero-stagger"
+        data-mounted={mounted ? "true" : "false"}
+      >
         {/* Top meta row */}
         <div className="flex items-center justify-between mb-16">
           <span
