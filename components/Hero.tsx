@@ -8,7 +8,23 @@ export function Hero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Hold the hero entrance until the intro curtain has lifted, so the
+    // stagger isn't wasted behind the preloader.
+    const done = (window as unknown as { __introDone?: boolean }).__introDone;
+    if (done) {
+      setMounted(true);
+      return;
+    }
+
+    const onDone = () => setMounted(true);
+    window.addEventListener("intro:done", onDone);
+    // Safety net: never leave the hero invisible if the intro never fires.
+    const fallback = window.setTimeout(() => setMounted(true), 3500);
+
+    return () => {
+      window.removeEventListener("intro:done", onDone);
+      clearTimeout(fallback);
+    };
   }, []);
 
   return (

@@ -31,6 +31,224 @@ button:focus-visible {
 }
 
 /* ---------------------------------------------------------------
+   Intro preloader — cinematic dark with glow
+   --------------------------------------------------------------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #08080e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 800ms cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.intro[data-phase="wiping"] {
+  transform: translate3d(0, -100%, 0);
+}
+
+/* Subtle film grain / noise overlay */
+.intro-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  pointer-events: none;
+  animation: intro-fade 0.8s ease-out 0.05s forwards;
+}
+
+/* Soft radial glow behind the name */
+.intro-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 500px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(43, 78, 255, 0.15) 0%,
+    rgba(43, 78, 255, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  animation: intro-glow-pulse 0.9s ease-out 0.4s forwards;
+}
+
+@keyframes intro-glow-pulse {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.8);
+  }
+  60% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.45;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+}
+
+.intro-mark {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  animation: intro-fade 0.6s ease-out 0.2s forwards;
+}
+
+.intro-mark-tl {
+  top: 32px;
+  left: 32px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.intro-mark-tr {
+  top: 32px;
+  right: 32px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+.intro-mark-bl {
+  bottom: 32px;
+  left: 32px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+}
+.intro-mark-br {
+  bottom: 32px;
+  right: 32px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.intro-inner {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  padding: 0 32px;
+  z-index: 1;
+}
+
+.intro-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Urbanist", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  opacity: 0;
+  animation: intro-fade 0.6s ease-out 0.2s forwards;
+}
+
+.intro-name {
+  margin: 22px 0 24px;
+}
+
+.intro-word {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 0.92;
+}
+
+.intro-letter {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.intro-letter-inner {
+  display: inline-block;
+  font-family: "Urbanist", sans-serif;
+  font-size: clamp(40px, 9.5vw, 92px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  transform: translate3d(0, 110%, 0);
+  filter: blur(4px);
+  animation: intro-letter-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.intro-letter-inner.text-white {
+  color: #f0f1f5;
+}
+
+.intro-letter-inner.text-accent {
+  color: #4d6bff;
+}
+
+@keyframes intro-letter-up {
+  0% {
+    transform: translate3d(0, 110%, 0);
+    filter: blur(4px);
+    opacity: 0.3;
+  }
+  60% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+.intro-foot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  opacity: 0;
+  animation: intro-fade 0.6s ease-out 0.9s forwards;
+}
+
+.intro-count {
+  font-variant-numeric: tabular-nums;
+  color: #ff4b33;
+}
+
+.intro-track {
+  margin-top: 14px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.06);
+  opacity: 0;
+  animation: intro-fade 0.5s ease-out 0.9s forwards;
+}
+
+.intro-bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #4d6bff, #ff4b33);
+}
+
+@keyframes intro-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Keep the page from flashing behind the curtain while the intro runs. */
+html[data-intro="running"] {
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------
    Hero: soft drifting aurora blobs
    --------------------------------------------------------------- */
 .hero-blob {

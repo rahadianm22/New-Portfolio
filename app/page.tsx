@@ -8,10 +8,12 @@ import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { Preloader } from "@/components/Preloader";
 
 export default function Home() {
   return (
     <main>
+      <Preloader />
       <ScrollProgress />
       <Navbar />
       <Hero />
