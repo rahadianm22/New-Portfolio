@@ -133,7 +133,7 @@ export function Preloader() {
 
         {/* Name — main event */}
         <div className="intro-name">
-          <div className="intro-word">{renderWord(FIRST, "text-white")}</div>
+          <div className="intro-word">{renderWord(FIRST, "text-dark")}</div>
           <div className="intro-word">{renderWord(LAST, "text-accent")}</div>
         </div>
 
