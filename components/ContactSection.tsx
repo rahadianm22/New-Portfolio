@@ -39,9 +39,9 @@ const secondaryLinks: SecondaryLink[] = [
   },
   {
     category: "Showcase",
-    handle: "/rahadianm22",
-    label: "Portfolio",
-    href: "https://rahadianm22.vercel.app/",
+    handle: "/case-studies",
+    label: "Case Studies",
+    href: "https://rahadianm22.vercel.app/case-studies",
   },
 ];
 
