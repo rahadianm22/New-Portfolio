@@ -261,6 +261,18 @@ export default function YoutubeDownloadCaseStudy() {
                 estimates.
               </p>
             </div>
+
+            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+              I also considered two options I didn&apos;t ship. An auto-save toggle that would let a
+              video skip the expiry countdown entirely — closer to a real fix for the &ldquo;videos
+              vanishing&rdquo; complaint — but it meant reworking how the app manages local storage
+              limits, further than I could responsibly scope without access to YouTube&apos;s actual
+              storage architecture. And a dedicated &ldquo;manage downloads&rdquo; screen, separate from
+              the main library — cleaner in isolation, but it added a screen to remember instead of
+              removing friction from the one people already use. Swipe-to-delete and drag-to-reorder won
+              because they fixed the two most-cited complaints without asking Haikal to learn a new part
+              of the app.
+            </p>
           </div>
         </section>
       </Reveal>
@@ -297,7 +309,11 @@ export default function YoutubeDownloadCaseStudy() {
               Not every case study starts with a client brief. This one started with being annoyed on
               the same train ride for months. Treating my own friction as a real research question —
               checking it against other people instead of assuming they felt it too — is what turned a
-              complaint into something worth showing.
+              complaint into something worth showing. The honest limit: I validated the problem with
+              other commuters, but the solution itself was only ever tested against my own workflow and a
+              prototype — no usability testing loop, because there was no team or budget behind it. I&apos;d
+              treat that gap the same way on a real job: ship the fix, then go find out if it actually
+              holds up once people who aren&apos;t me are using it.
             </p>
           </div>
         </section>

@@ -284,6 +284,14 @@ export default function NatunaDigilabCaseStudy() {
               — pulling together the variant patterns that kept recurring, not copying any one system
               wholesale.
             </p>
+
+            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+              The trade-off of building this alone: governance that a team-owned design system gets by
+              default — a review before a new variant ships, versioning discipline, deprecation notices —
+              I have to hold myself accountable for, with nobody else catching what I miss. So far that&apos;s
+              kept it small enough to manage single-handedly. It&apos;s the first thing I&apos;d formalize
+              if Natuna Digilab ever gets adopted by a team, or before I add more component categories.
+            </p>
           </div>
         </section>
       </Reveal>
@@ -375,7 +383,11 @@ export default function NatunaDigilabCaseStudy() {
               If the other case studies show the <em>result</em> of a solid design system — a workflow
               that stays consistent, hand-offs that don&apos;t drift — Natuna Digilab shows{" "}
               <em>how</em> I build that foundation in the first place. From zero, not just inheriting
-              whatever a company hands me.
+              whatever a company hands me. It&apos;s also the project most likely to look
+              &ldquo;unfinished&rdquo; next to the others — no shipped product, no team validating it
+              under deadline pressure. I&apos;m fine with that tension; a personal foundation is supposed
+              to keep evolving, and freezing it into a &ldquo;finished&rdquo; v1 would defeat the reason I
+              built it.
             </p>
           </div>
         </section>

@@ -124,9 +124,11 @@ export default function BrispotCaseStudy() {
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
               BRISPOT is BRI&apos;s national internal lending platform — credit ops use it to move a
-              Briguna (personal loan) application from submission to disbursement. Not consumer-facing,
-              but every friction point inside it delays a real person waiting on money. This case study
-              covers the Briguna approval workflow only; KPR (mortgage) is a separate product.
+              Briguna (personal loan) application from submission to disbursement. BRI (Bank Rakyat
+              Indonesia) is Indonesia&apos;s largest bank by branch network, and Briguna is one of its
+              highest-volume personal lending products nationwide. Not consumer-facing, but every friction
+              point inside it delays a real person waiting on money. This case study covers the Briguna
+              approval workflow only; KPR (mortgage) is a separate product.
             </p>
           </div>
         </section>
@@ -223,6 +225,19 @@ export default function BrispotCaseStudy() {
               national quota allocation — platform context, not the focus here.
             </p>
 
+            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+              Before landing on role-based screens, I considered two other directions. One was a single
+              long-form screen with progressive disclosure — collapsing sections instead of splitting by
+              role — which worked fine for a single approver but broke down once Credit Admin Officers
+              needed to jump between nine analysis areas without losing their place. The other was
+              automating more of the judgment calls themselves, flagging applications as pre-approved
+              based on the same data ARCI and the Early Warning System already produced. I pushed back on
+              that one: automating a credit decision on a lending platform this size raises compliance
+              questions well beyond a UI call, and it wasn&apos;t mine to make unilaterally. Splitting by
+              role — administrative hand-offs separated from ones needing real judgment — was the version
+              that survived contact with how credit ops actually worked.
+            </p>
+
             {/* Redesigned flows — RM, Putusan Kredit, Analisa Data Kredit, top to bottom */}
             <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
               <Image
@@ -303,7 +318,9 @@ export default function BrispotCaseStudy() {
               On a platform this high-stakes, I default to what&apos;s already in the design system
               rather than improvising — UI stability matters more here than anywhere else. When thousands
               of applications move through it daily, consistency isn&apos;t a nice-to-have; it&apos;s
-              what keeps people running it fast.
+              what keeps people running it fast. If I were starting this over, I&apos;d push earlier for
+              direct time-in-queue instrumentation instead of relying on stakeholder estimates for the
+              before number — 3 weeks held up, but I&apos;d rather have measured it than asked for it.
             </p>
           </div>
         </section>

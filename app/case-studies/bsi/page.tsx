@@ -118,11 +118,12 @@ export default function BsiCaseStudy() {
               className="mt-6 text-base md:text-lg leading-relaxed max-w-3xl"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              I joined BSI right after its three-bank merger, taking over a component library that had
-              drifted out of sync with the new brand. Most of the work was systems-level — rebuilding
-              shared components, running usability tests on core banking flows. This case study is about
-              one screen that came out of that work: PIN Confirmation, the last step of every transaction
-              in the app.
+              I joined BSI — Bank Syariah Indonesia, formed from the merger of three state-owned Islamic
+              banks and now one of the largest Islamic banks in Southeast Asia — right after that merger,
+              taking over a component library that had drifted out of sync with the new brand. Most of
+              the work was systems-level — rebuilding shared components, running usability tests on core
+              banking flows. This case study is about one screen that came out of that work: PIN
+              Confirmation, the last step of every transaction in the app.
             </p>
           </div>
         </section>
@@ -217,6 +218,17 @@ export default function BsiCaseStudy() {
               that changes state.
             </p>
 
+            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+              Before settling on moving all feedback to the dot row, I sketched two other directions.
+              Randomizing the number pad layout on each entry would have defeated shoulder-surfing on its
+              own, but it breaks the muscle memory people build for a screen they use several times a
+              day — trading one risk for a worse everyday cost. Haptic-only feedback, dropping visual
+              confirmation entirely, felt safer on paper but left no visible cue that a tap had
+              registered — exactly the kind of ambiguity you don&apos;t want on a PIN screen. Keeping the
+              dots as the only visible state change closed the leak without asking anyone to unlearn how
+              they already used the pad.
+            </p>
+
             {/* Shipped screen — dots progressing while the number pad stays neutral throughout */}
             <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
               <Image
@@ -291,7 +303,11 @@ export default function BsiCaseStudy() {
               The most dangerous feedback is the kind that feels right. That teal flash matched every
               other button in the app — consistent, expected, and exactly why nobody had questioned it.
               Security work isn&apos;t always about adding a warning; sometimes it&apos;s noticing which
-              pattern doesn&apos;t belong on this one screen.
+              pattern doesn&apos;t belong on this one screen. What I&apos;d do differently: I fixed the
+              instance but didn&apos;t push to turn it into a system-wide guideline before I left — flag
+              every screen where a &ldquo;consistent&rdquo; pattern might carry unintended meaning
+              elsewhere in the app, so the next designer doesn&apos;t have to notice it by accident the
+              way I did.
             </p>
           </div>
         </section>
