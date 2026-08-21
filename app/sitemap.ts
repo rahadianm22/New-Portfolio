@@ -19,5 +19,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/case-studies`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/case-studies/natuna-digilab`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/case-studies/brispot`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/case-studies/bsi`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/case-studies/youtube-download`,
+      lastModified: new Date(),
+      priority: 0.7,
+    },
   ];
 }
