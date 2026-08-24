@@ -61,6 +61,16 @@ const CASE_STUDIES: CaseStudy[] = [
     status: "live",
     href: "/case-studies/youtube-download",
   },
+  {
+    id: "card-delivery-status",
+    eyebrow: "Digital Banking · Under NDA",
+    title: "Card Delivery Status — Closing a Visibility Gap",
+    summary:
+      "Benchmarking three banks that already shipped card delivery tracking, then designing the state most of them still handle badly: the delivery that fails. Client and screens withheld until launch.",
+    tags: ["Benchmarking", "Edge-case Design", "Mobile Banking"],
+    status: "live",
+    href: "/case-studies/card-delivery-status",
+  },
 ];
 
 export default function CaseStudiesPage() {
