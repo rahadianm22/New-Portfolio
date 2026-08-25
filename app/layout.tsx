@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const SITE_URL = "https://rahadianm22.vercel.app";
 const TITLE = "Rahadian Maulana — Senior Product Designer";
@@ -52,6 +53,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased" style={{ backgroundColor: "#EDEFF5" }}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
