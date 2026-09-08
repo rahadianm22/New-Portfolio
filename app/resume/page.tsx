@@ -4,7 +4,7 @@ import { DownloadResumeButton } from "@/components/DownloadResumeButton";
 import { experiences, profileSummary, keyAchievements, skillGroups } from "@/lib/experience-data";
 
 export const metadata = {
-  title: "Resume — Rahadian Maulana",
+  title: "Resume · Rahadian Maulana",
   description: "Resume summary and downloadable PDF for Rahadian Maulana, Senior Product Designer.",
 };
 
@@ -37,7 +37,7 @@ export default function ResumePage() {
                 Rahadian Maulana
               </h1>
               <p className="mt-2 text-base" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                Senior Product Designer — Fintech &amp; Digital Banking
+                Senior Product Designer · Fintech &amp; Digital Banking
               </p>
             </div>
             <DownloadResumeButton />
@@ -46,7 +46,7 @@ export default function ResumePage() {
           {/* Contact */}
           <div className="flex flex-wrap gap-x-6 gap-y-1 mb-10 text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
             <span>rahadianm22@gmail.com</span>
-            <span>rahadianm22.vercel.app</span>
+            <span>rahadianm22.my.id</span>
             <span>Jakarta, Indonesia</span>
           </div>
 
@@ -60,7 +60,7 @@ export default function ResumePage() {
             </p>
           </div>
 
-          {/* Experience — condensed timeline, full detail lives on /experience and the PDF */}
+          {/* Experience: condensed timeline, full detail lives on /experience and the PDF */}
           <div className="mb-10">
             <h2 className="text-xs tracking-widest uppercase mb-4" style={sectionLabelStyle}>
               Experience

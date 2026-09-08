@@ -41,13 +41,13 @@ const secondaryLinks: SecondaryLink[] = [
     category: "Showcase",
     handle: "/case-studies",
     label: "Case Studies",
-    href: "https://rahadianm22.vercel.app/case-studies",
+    href: "https://rahadianm22.my.id/case-studies",
   },
   {
     category: "Profile",
     handle: "/resume",
     label: "Resume",
-    href: "https://rahadianm22.vercel.app/resume",
+    href: "https://rahadianm22.my.id/resume",
   },
 ];
 
@@ -133,7 +133,7 @@ function PrimaryContactCard({ email }: { email: string }) {
           className="text-xs tracking-widest uppercase block mb-3"
           style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.12em" }}
         >
-          // Primary — Channel: Email
+          // Primary · Channel: Email
         </span>
 
         <div className="flex items-center justify-between gap-4">
@@ -174,7 +174,7 @@ function PrimaryContactCard({ email }: { email: string }) {
           className="text-xs"
           style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px" }}
         >
-          response time: &lt; 24h — token: --contact-primary
+          response time: &lt; 24h · token: --contact-primary
         </span>
         <span
           className="text-xs hidden md:block"

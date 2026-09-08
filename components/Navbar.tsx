@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const NAV_LINKS = [
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Experience", href: "/#experience" },
   { label: "Skills", href: "/#systems" },
   { label: "Design Systems", href: "/#side-project" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Contact", href: "/#contact" },
   { label: "Resume", href: "/resume" },
 ];
@@ -88,10 +88,11 @@ export function Navbar() {
         {/* CTA + Hamburger */}
         <div className="flex items-center gap-3">
           <a
-             href="mailto:rahadianm22@gmail.com"
-            className="text-xs px-4 py-2 rounded-md transition-all duration-150 hover:bg-[rgba(43,78,255,0.08)]"
+            href="mailto:rahadianm22@gmail.com"
+            className="hidden sm:inline-block text-xs px-4 py-2 rounded-md transition-all duration-150 hover:opacity-90"
             style={{
               fontFamily: "'Urbanist', sans-serif",
+              fontWeight: 600,
               backgroundColor: "transparent",
               border: "1px solid #2B4EFF",
               color: "#2B4EFF",
@@ -99,7 +100,7 @@ export function Navbar() {
               letterSpacing: "0.08em",
             }}
           >
-            Let's talk
+            Let&apos;s talk
           </a>
 
           {/* Hamburger — hanya muncul di mobile */}

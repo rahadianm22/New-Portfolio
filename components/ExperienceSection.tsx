@@ -61,13 +61,13 @@ export function ExperienceSection() {
             borderBottom: "1px solid rgba(18, 21, 28, 0.1)",
           }}
         >
-          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
+          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
             Period
           </span>
-          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
+          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
             Company
           </span>
-          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
+          <span className="text-xs tracking-widest uppercase" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
             Role
           </span>
           <span />
@@ -156,17 +156,6 @@ export function ExperienceSection() {
             );
           })}
         </div>
-
-        {/* Entry point to the full detail page */}
-        {/* <div className="flex justify-center mt-10">
-          <Link
-            href="/experience"
-            className="text-xs tracking-wider uppercase"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", textDecoration: "underline" }}
-          >
-            Lihat semua pengalaman kerja →
-          </Link>
-        </div> */}
       </div>
     </section>
   );

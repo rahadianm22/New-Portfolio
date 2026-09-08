@@ -59,28 +59,10 @@ export function Footer() {
                 letterSpacing: "0.05em",
               }}
             >
-              Tangerang, ID — {time} WIB
+              Tangerang, ID · {time} WIB
             </span>
           </div>
         )}
-
-        {/* Kanan: Tech Stack Info */}
-        {/* <div className="flex items-center gap-2">
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ backgroundColor: "rgba(43,78,255,0.6)" }}
-          />
-          <span
-            className="text-xs"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "rgba(255,255,255,0.35)",
-              letterSpacing: "0.05em",
-            }}
-          >
-            Built with Next.js — Deployed on Vercel
-          </span>
-        </div> */}
       </div>
     </footer>
   );

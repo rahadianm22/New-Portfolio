@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { experiences } from "@/lib/experience-data";
 
 export const metadata = {
-  title: "Experience — Rahadian Maulana",
+  title: "Experience · Rahadian Maulana",
   description: "Full work experience and case studies from Rahadian Maulana.",
 };
 
@@ -103,69 +103,54 @@ export default function ExperiencePage() {
 
               {/* Body */}
               <div className="px-6 md:px-10 py-8">
-                {entry.products ? (
-                  <div className="space-y-10">
-                    {entry.products.map((product) => (
-                      <div key={product.tabLabel}>
-                        <div className="flex items-start justify-between gap-4 mb-2">
-                          <h3
-                            className="text-lg"
-                            style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                          >
-                            {product.name}
-                          </h3>
-                          <span
-                            className="flex-shrink-0 flex items-center gap-1.5 text-xs"
-                            style={{ fontFamily: "'Urbanist', sans-serif", color: product.statusLive ? "#16A34A" : "#6B7280" }}
-                          >
-                            <span
-                              className="w-1.5 h-1.5 rounded-full"
-                              style={{ backgroundColor: product.statusLive ? "#16A34A" : "#9CA3AF" }}
-                            />
-                            {product.status}
-                          </span>
-                        </div>
-                        <span
-                          className="block text-xs tracking-wider mb-3"
-                          style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
+                <div className="space-y-10">
+                  {entry.products.map((product) => (
+                    <div key={product.tabLabel}>
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h3
+                          className="text-lg"
+                          style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
                         >
-                          {product.category}
-                        </span>
-                        <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                          {product.description}
-                        </p>
-                        <ul className="space-y-2 mb-3">
-                          {product.contributions.map((c, i) => (
-                            <li
-                              key={i}
-                              className="flex items-start gap-3 text-sm leading-relaxed"
-                              style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
-                            >
-                              <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
-                              {c}
-                            </li>
-                          ))}
-                        </ul>
-                        <span className="text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
-                          {product.scope}
+                          {product.name}
+                        </h3>
+                        <span
+                          className="flex-shrink-0 flex items-center gap-1.5 text-xs"
+                          style={{ fontFamily: "'Urbanist', sans-serif", color: product.statusLive ? "#16A34A" : "#6B7280" }}
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full"
+                            style={{ backgroundColor: product.statusLive ? "#16A34A" : "#6B7280" }}
+                          />
+                          {product.status}
                         </span>
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <ul className="space-y-2">
-                    {entry.highlights.map((highlight, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-3 text-sm leading-relaxed"
-                        style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                      <span
+                        className="block text-xs tracking-wider mb-3"
+                        style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
                       >
-                        <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                        {product.category}
+                      </span>
+                      <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                        {product.description}
+                      </p>
+                      <ul className="space-y-2 mb-3">
+                        {product.contributions.map((c, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-3 text-sm leading-relaxed"
+                            style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                          >
+                            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                      <span className="text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
+                        {product.scope}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

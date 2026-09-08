@@ -125,18 +125,18 @@ export function Hero() {
                 token: --heading-xl
               </span>
 
-              <p
-                className="text-lg md:text-xl mb-2 leading-relaxed"
-                style={{
-                  fontFamily: "'Urbanist', sans-serif",
-                  fontWeight: 400,
-                  color: "#3D4557",
-                }}
-              >
-                Hi, I'm <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urbanist', sans-serif",
-              color: "#2B4EFF",
-              fontWeight: 400, }}>Rahadian Maulana</span>
-              </p>
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                </span>
+                <span
+                  className="text-sm tracking-wide"
+                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
+                >
+                  Open to remote roles · Based in Indonesia (GMT+7)
+                </span>
+              </div>
               <h1
                 className="text-4xl md:text-6xl leading-[1.05]"
                 style={{
@@ -146,9 +146,9 @@ export function Hero() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Architecting <span className="bg-[#2B4EFF] text-white px-2 py-0.5 rounded">
-    Scalable
-  </span> Design Systems & Brand Strategies
+                Designing <span className="bg-[#2B4EFF] text-white px-2 py-0.5 rounded">
+    Fintech
+  </span> Products Across Lending and Digital Banking
               </h1>
             </div>
           </div>
@@ -164,13 +164,13 @@ export function Hero() {
           >
            5+ years designing regulated <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urbanist', sans-serif",
               color: "#2B4EFF",
-              fontWeight: 400, }}>fintech & banking products</span>, from internal lending tools to consumer credit card experiences. Every system built to scale. 
+              fontWeight: 400, }}>fintech & banking products</span>, from internal lending tools to consumer credit card experiences, for Indonesia's largest banks.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 justify-center">
             <a
-              href="#experience"
+              href="/case-studies"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#1937B3]"
               style={{
                 fontFamily: "'Urbanist', sans-serif",
@@ -180,9 +180,9 @@ export function Hero() {
                 fontSize: "15px",
               }}
             >
-              View Experience{" "}
+              View Case Studies{" "}
               <span className="text-white transition-colors duration-200 group-hover:text-[#D6DFFF]">
-                ↗
+                →
               </span>
             </a>
 
@@ -198,7 +198,7 @@ export function Hero() {
                 fontSize: "15px",
               }}
             >
-              Let's talk
+              Let&apos;s talk
             </a>
           </div>
         </div>
@@ -210,11 +210,11 @@ export function Hero() {
             className="text-xs tracking-widest uppercase"
             style={{
               fontFamily: "'Urbanist', sans-serif",
-              color: "rgba(43, 78, 255, 0.4)",
+              color: "#6B7280",
               fontSize: "10px",
             }}
           >
-            scroll to explore — DOC.00
+            scroll to explore, DOC.00
           </span>
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.15)" }} />
         </div>

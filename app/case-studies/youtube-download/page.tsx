@@ -5,15 +5,15 @@ import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
-  title: "YouTube — Redesigning the Download Feature — Rahadian Maulana",
+  title: "YouTube: Redesigning the Download Feature · Rahadian Maulana",
   description:
-    "An independent case study on YouTube's offline download feature — validating commuter frustrations through interviews, then redesigning deletion and reordering to cut the steps down.",
+    "An independent case study on YouTube's offline download feature: validating commuter frustrations through interviews, then redesigning deletion and reordering to cut the steps down.",
 };
 
 const QUICK_FACTS = [
   { label: "Role", value: "UX/UI Designer" },
   { label: "Type", value: "Independent Case Study" },
-  { label: "Platform", value: "YouTube — Download Feature" },
+  { label: "Platform", value: "YouTube: Download Feature" },
   { label: "Timeline", value: "2023" },
 ];
 
@@ -24,14 +24,14 @@ const PROBLEMS = [
   },
   {
     label: "What made it worse",
-    body: "Deleting was one video at a time, no batch option. Resolution couldn't be changed after downloading. Reordering a queue of a few videos took 10 taps across 11 screens — more effort than just rewatching whatever was already first in line.",
+    body: "Deleting was one video at a time, no batch option. Resolution couldn't be changed after downloading. Reordering a queue of a few videos took 10 taps across 11 screens, more effort than just rewatching whatever was already first in line.",
   },
 ];
 
 const PROCESS = [
   {
     title: "Checking it wasn't just me",
-    body: "Before designing anything, I ran interviews and a survey with other people who download YouTube videos for offline viewing. The same five complaints came up independently — this wasn't one commuter's pet peeve.",
+    body: "Before designing anything, I ran interviews and a survey with other people who download YouTube videos for offline viewing. The same five complaints came up independently. This wasn't one commuter's pet peeve.",
   },
   {
     title: "Mapping the real cost in steps",
@@ -39,7 +39,7 @@ const PROCESS = [
   },
   {
     title: "Designing around Haikal",
-    body: "Built the redesign around Haikal, a 27-year-old commuter persona pulled from the interviews — an hour each way, tutorial and gaming content, wants videos ready to go without fighting the app to manage them.",
+    body: "Built the redesign around Haikal, a 27-year-old commuter persona pulled from the interviews: an hour each way, tutorial and gaming content, wants videos ready to go without fighting the app to manage them.",
   },
 ];
 
@@ -77,7 +77,7 @@ export default function YoutubeDownloadCaseStudy() {
             className="text-4xl md:text-6xl mb-6"
             style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
           >
-            YouTube — Redesigning the Download Feature.
+            YouTube: Redesigning the Download Feature.
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
@@ -85,7 +85,7 @@ export default function YoutubeDownloadCaseStudy() {
           >
             I commute an hour each way and rely on YouTube&apos;s offline downloads to get through it.
             Videos vanishing on their own and deleting them one at a time kept bothering me enough that
-            I turned it into a full case study — interviews, a redesigned deletion flow, a faster way to
+            I turned it into a full case study: interviews, a redesigned deletion flow, a faster way to
             reorder.
           </p>
 
@@ -98,7 +98,7 @@ export default function YoutubeDownloadCaseStudy() {
               <div key={fact.label}>
                 <span
                   className="block text-[10px] tracking-widest uppercase mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF", letterSpacing: "0.1em" }}
+                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", letterSpacing: "0.1em" }}
                 >
                   {fact.label}
                 </span>
@@ -111,6 +111,29 @@ export default function YoutubeDownloadCaseStudy() {
               </div>
             ))}
           </div>
+
+          {/* Link to original Medium write-up */}
+          <a
+            href="https://medium.com/@Rahadianm22/case-study-redesigning-feature-of-youtube-download-3f4d7e63a8e0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 transition-all duration-150 hover:bg-[#1937B3]"
+            style={{
+              fontFamily: "'Urbanist', sans-serif",
+              fontWeight: 600,
+              fontSize: "13px",
+              backgroundColor: "#2B4EFF",
+              border: "1px solid #2B4EFF",
+              color: "#FFFFFF",
+              textDecoration: "none",
+              letterSpacing: "0.02em",
+            }}
+          >
+            Read the original write-up on Medium
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+              <path d="M2 9L9 2M9 2H3.5M9 2V7.5" stroke="#FFFFFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
       </section>
 
@@ -123,17 +146,9 @@ export default function YoutubeDownloadCaseStudy() {
               className="mt-6 text-base md:text-lg leading-relaxed max-w-3xl"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              This wasn&apos;t a client brief — it&apos;s an independent case study I ran on a feature I
+              This wasn&apos;t a client brief. It&apos;s an independent case study I ran on a feature I
               use almost daily. I interviewed and surveyed other commuters who download YouTube videos
-              for offline viewing, then designed and prototyped a fix in Figma.{" "}
-              <a
-                href="https://medium.com/@Rahadianm22/case-study-redesigning-feature-of-youtube-download-3f4d7e63a8e0"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "#2B4EFF", textDecoration: "underline" }}
-              >
-                The original write-up is on Medium →
-              </a>
+              for offline viewing, then designed and prototyped a fix in Figma.
             </p>
           </div>
         </section>
@@ -212,14 +227,14 @@ export default function YoutubeDownloadCaseStudy() {
               through a separate screen for every move.
             </p>
 
-            {/* Honest before/after — step counts pulled straight from the flow mapping, not a mockup screenshot */}
+            {/* Honest before/after: step counts pulled straight from the flow mapping, not a mockup screenshot */}
             <div className="mt-6 p-6 md:p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
               <div className="space-y-8">
                 {TAP_COMPARISON.map((row) => (
                   <div key={row.task}>
                     <p
                       className="text-xs tracking-wider uppercase mb-3"
-                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF", letterSpacing: "0.08em" }}
+                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", letterSpacing: "0.08em" }}
                     >
                       {row.task}
                     </p>
@@ -256,23 +271,11 @@ export default function YoutubeDownloadCaseStudy() {
                   </div>
                 ))}
               </div>
-              <p className="pt-6 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
-                Step counts mapped directly from the existing flow vs. the redesigned one — not
+              <p className="pt-6 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
+                Step counts mapped directly from the existing flow vs. the redesigned one, not
                 estimates.
               </p>
             </div>
-
-            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              I also considered two options I didn&apos;t ship. An auto-save toggle that would let a
-              video skip the expiry countdown entirely — closer to a real fix for the &ldquo;videos
-              vanishing&rdquo; complaint — but it meant reworking how the app manages local storage
-              limits, further than I could responsibly scope without access to YouTube&apos;s actual
-              storage architecture. And a dedicated &ldquo;manage downloads&rdquo; screen, separate from
-              the main library — cleaner in isolation, but it added a screen to remember instead of
-              removing friction from the one people already use. Swipe-to-delete and drag-to-reorder won
-              because they fixed the two most-cited complaints without asking Haikal to learn a new part
-              of the app.
-            </p>
           </div>
         </section>
       </Reveal>
@@ -283,7 +286,7 @@ export default function YoutubeDownloadCaseStudy() {
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// Outcome" />
             <p className="mt-6 text-sm leading-relaxed max-w-2xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              This was a proposal, not a shipped feature — YouTube doesn&apos;t take outside redesigns,
+              This was a proposal, not a shipped feature. YouTube doesn&apos;t take outside redesigns,
               and I don&apos;t have adoption numbers to report. What it did do: turn a recurring commute
               annoyance into a fully scoped problem with real numbers behind it, and confirm through
               other commuters that the friction wasn&apos;t just in my head.
@@ -307,13 +310,9 @@ export default function YoutubeDownloadCaseStudy() {
               style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 500, color: "#FFFFFF" }}
             >
               Not every case study starts with a client brief. This one started with being annoyed on
-              the same train ride for months. Treating my own friction as a real research question —
-              checking it against other people instead of assuming they felt it too — is what turned a
-              complaint into something worth showing. The honest limit: I validated the problem with
-              other commuters, but the solution itself was only ever tested against my own workflow and a
-              prototype — no usability testing loop, because there was no team or budget behind it. I&apos;d
-              treat that gap the same way on a real job: ship the fix, then go find out if it actually
-              holds up once people who aren&apos;t me are using it.
+              the same train ride for months. Treating my own friction as a real research question,
+              checking it against other people instead of assuming they felt it too, is what turned a
+              complaint into something worth showing.
             </p>
           </div>
         </section>
@@ -327,7 +326,7 @@ export default function YoutubeDownloadCaseStudy() {
               More case studies.
             </h3>
             <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-              See the rest of the portfolio — design systems, dashboards, and everything in between.
+              See the rest of the portfolio: design systems, dashboards, and everything in between.
             </p>
           </div>
           <Link

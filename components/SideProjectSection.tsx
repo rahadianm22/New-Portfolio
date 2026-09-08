@@ -53,7 +53,7 @@ export function SideProjectSection() {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b" }} />
-              v1.0 — building
+              v1.0 (building)
             </span>
           </div>
         </div>

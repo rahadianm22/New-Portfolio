@@ -6,45 +6,49 @@ import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
-  title: "BSI: PIN Confirmation Security · Rahadian Maulana",
+  title: "BSI: QRIS Domestik Payment Flow · Rahadian Maulana",
   description:
-    "Catching a tap-feedback pattern that leaked a customer's PIN through color alone, validating it with internal BSI users, and redesigning the confirmation screen so the number pad gives away nothing.",
+    "Mapping two QRIS payment paths (Open Amount and Closed Amount) into one flow, with PIN confirmation, tip handling, and every failure state a scan can hit.",
 };
 
 const QUICK_FACTS = [
   { label: "Role", value: "Product Designer" },
   { label: "Company", value: "Bank Syariah Indonesia" },
   { label: "Platform", value: "BSI Mobile Banking App" },
-  { label: "Timeline", value: "Aug 2022 – Jul 2023" },
+  { label: "Scope", value: "QRIS Domestik: Open & Closed Amount" },
 ];
 
 const PROBLEMS = [
   {
-    label: "The pattern",
-    body: "BSI's number pad used the app's standard tap-feedback: press a digit, it fills solid teal; release, it goes back to white. Consistent with every other button in the app, which is exactly why nobody had questioned it on this screen.",
+    label: "Two payment shapes, one scanner",
+    body: "A QRIS code doesn't tell the user upfront whether the merchant fixed the amount or left it open. Closed Amount (a coffee shop with a set price) and Open Amount (a donation box, a street vendor) need different next steps right after the scan, but the entry point, the camera screen, looks identical either way.",
   },
   {
-    label: "The risk",
-    body: "On a PIN confirmation screen, that color change maps one-to-one to the digit being entered. Anyone glancing at the phone, over a shoulder or on a photo taken after the fact, could read the PIN off the flashing buttons without ever reading a number.",
+    label: "A transaction with no undo",
+    body: "Every branch off the main path (expired QR, insufficient balance, a transaction that fails mid-process, a code the scanner can't read) needed its own screen and its own way back, because there's no forgiving retry on a payment flow the way there is on, say, a form.",
   },
 ];
 
 const PROCESS = [
   {
-    title: "A pattern that looked right everywhere else",
-    body: "Noticed it during routine design QA on the confirmation flow: the same tap-feedback used app-wide, applied without a second thought to a screen where it wasn't just cosmetic.",
+    title: "Separating the two amount types before the first screen",
+    body: "Open Amount and Closed Amount diverge as early as the confirmation step: one needs a numeric input for the nominal, the other only needs a confirm. Mapping both as parallel tracks from the scan screen, rather than one flow with a conditional branch buried in the middle, kept each path readable on its own.",
   },
   {
-    title: "Testing the concern before pitching a fix",
-    body: "Ran A/B testing on the PIN screen with internal BSI users before proposing anything. The shoulder-surfing worry came up unprompted, in their own words: public places, PIN entry, someone standing close.",
+    title: "Designing for the failure before the success",
+    body: "QR tidak dikenali, kode kadaluarsa, saldo tidak mencukupi, transaksi gagal di sisi sistem, PIN salah: each of these needed to be a real screen with a real way forward, not a generic error toast. The error and info cards use a consistent color code (yellow for a recoverable notice, red for a hard failure) so the user can read severity before reading the text.",
   },
   {
-    title: "Bringing data to my lead, not just an instinct",
-    body: "Took the test results to my lead along with a proposal: strip color feedback off the number pad entirely, and move all visible state to the dot row above it.",
+    title: "Tip as an optional branch, not a forced step",
+    body: "Tip only appears where it makes sense for the transaction type, and skipping it doesn't reset progress or send the user back a screen. Optional steps that don't feel optional are one of the more common ways a payment flow loses people right before the confirmation step.",
+  },
+  {
+    title: "Closing the loop after Konfirmasi PIN",
+    body: "Success and failure after PIN confirmation split into their own branches: one leading to a receipt with share/download actions and an email confirmation, the other back to a clear retry point. Neither branch leaves the user looking at a spinner with no sense of what happens next.",
   },
 ];
 
-export default function BsiCaseStudy() {
+export default function QrisDomestikCaseStudy() {
   return (
     <main>
       <Navbar />
@@ -67,21 +71,21 @@ export default function BsiCaseStudy() {
             className="block text-xs tracking-widest uppercase mb-3"
             style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
           >
-            // BSI · PIN Confirmation Security
+            // BSI · QRIS Domestik Payment Flow
           </span>
           <h1
             className="text-4xl md:text-6xl mb-6"
             style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
           >
-            BSI: PIN Confirmation Security.
+            BSI: QRIS Domestik Payment Flow.
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
             style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
           >
-            Every digit on BSI&apos;s PIN confirmation screen lit up teal the moment it was pressed:
-            standard tap-feedback, used everywhere in the app. On this one screen, it also meant the
-            PIN was readable off the colors alone. I proposed removing it entirely.
+            One scanner, two payment shapes. I mapped BSI Mobile&apos;s QRIS Domestik flow across
+            Open Amount and Closed Amount transactions: scan, confirm, PIN, and every failure state
+            in between, as one connected system instead of two separate features.
           </p>
 
           {/* Quick facts */}
@@ -118,11 +122,13 @@ export default function BsiCaseStudy() {
               className="mt-6 text-base md:text-lg leading-relaxed max-w-3xl"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
             >
-              I joined BSI right after its three-bank merger, taking over a component library that had
-              drifted out of sync with the new brand. Most of the work was systems-level: rebuilding
-              shared components, running usability tests on core banking flows. This case study is about
-              one screen that came out of that work: PIN Confirmation, the last step of every transaction
-              in the app.
+              QRIS Domestik is BSI Mobile&apos;s scan-to-pay feature for Indonesia&apos;s national QR
+              payment standard: the same code format used across banks and e-wallets, read through
+              BSI&apos;s own camera and confirmed with BSI&apos;s own PIN. The flow splits into two
+              transaction types depending on how the merchant generated the code: Closed Amount, where
+              the nominal is already fixed, and Open Amount, where the customer enters it themselves.
+              This case study covers both paths end to end, from opening the camera to the confirmation
+              email that closes the loop.
             </p>
           </div>
         </section>
@@ -148,22 +154,6 @@ export default function BsiCaseStudy() {
                 </div>
               ))}
             </div>
-
-            {/* Visual proof: the digit lighting up solid teal on press */}
-            <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
-              <Image
-                src="/case-studies/bsi/pin-color-change-mockup.png"
-                alt="PIN Confirmation comparison: the resting state next to the digit '1' turning solid teal the instant it's pressed"
-                width={624}
-                height={490}
-                className="w-full h-auto max-w-lg mx-auto"
-                sizes="(min-width: 768px) 512px, 100vw"
-              />
-              <p className="pt-3 px-1 text-xs text-center" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
-                Resting vs. pressed. That teal fill was the entire problem. It told you which number
-                had just been tapped.
-              </p>
-            </div>
           </div>
         </section>
       </Reveal>
@@ -173,11 +163,11 @@ export default function BsiCaseStudy() {
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// Process" />
-            <div className="mt-8 space-y-8">
+            <div className="mt-8 flex flex-col gap-8">
               {PROCESS.map((item, i) => (
                 <div key={item.title} className="flex gap-5">
                   <span
-                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs"
+                    className="flex-shrink-0 flex items-center justify-center w-9 h-9 text-xs"
                     style={{
                       fontFamily: "'Urbanist', sans-serif",
                       fontWeight: 700,
@@ -205,71 +195,88 @@ export default function BsiCaseStudy() {
         </section>
       </Reveal>
 
-      {/* The Solution */}
+      {/* The Solution: full flow */}
       <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
           <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// The Solution" />
+            <SectionLabel label="// The Flow" />
             <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              The number pad now stays completely neutral, pressed or not: no fill, no color, nothing
-              that changes with which digit was tapped. All the feedback moved to the six dots above it:
-              they fill in one at a time as the PIN is entered, and that&apos;s the only thing on screen
-              that changes state.
+              Both transaction types run through the same shape (Dashboard, Camera, Konfirmasi QR,
+              Konfirmasi PIN) but branch at nearly every step. Closed Amount skips straight to
+              confirming a fixed nominal; Open Amount adds a numeric input first. From there, both
+              paths carry the same set of failure states: QR not recognized, insufficient balance,
+              a transaction that fails on the system side, an expired code. Success on either path ends
+              at a receipt screen with share and download actions, followed by an email confirmation.
             </p>
 
-            {/* Shipped screen: dots progressing while the number pad stays neutral throughout */}
             <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
               <Image
-                src="/case-studies/bsi/pin-solution-progression.png"
-                alt="The shipped PIN Confirmation screen at three points during entry: the dots above the keypad filling in from zero to five, while the number pad itself never changes color"
-                width={2442}
-                height={1400}
+                src="/case-studies/qris-domestik/qris1-full-flow.png"
+                alt="Full QRIS Domestik flow diagram: Open Amount and Closed Amount tracks, each moving from Dashboard through Camera, QR confirmation, PIN confirmation, success/failure branches, and email feedback"
+                width={2200}
+                height={2895}
                 className="w-full h-auto"
                 sizes="(min-width: 768px) 896px, 100vw"
               />
               <p className="pt-3 px-1 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
-                Same screen, mid-entry, from the shipped app. The dots move. The keypad doesn&apos;t,
-                by design.
+                Full flow: both Open Amount (top) and Closed Amount (bottom) tracks, with every error
+                and success branch mapped between them.
               </p>
             </div>
           </div>
         </section>
       </Reveal>
 
-      {/* Outcome */}
+      {/* Key decisions */}
       <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// Outcome" />
-            <div className="mt-8 grid sm:grid-cols-2 gap-6 mb-4">
-              <div>
-                <span
-                  className="block text-3xl md:text-4xl mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                >
-                  Teal on press → No color at all
-                </span>
-                <span className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-                  the only change made to the number pad, everything else on the screen stayed the same
-                </span>
+            <SectionLabel label="// Key Decisions" />
+            <div className="mt-8 grid md:grid-cols-2 gap-4">
+              <div className="p-6" style={{ backgroundColor: "#F5F6FA", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
+                <p className="text-xs tracking-wider uppercase mb-3" style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.06em" }}>
+                  Two amount types, one component set
+                </p>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                  Rather than building Open and Closed Amount as separate features, they share the same
+                  confirmation card, PIN screen, and receipt layout, only the input step differs. That
+                  kept the two paths visually and behaviorally consistent, and meant a fix to one
+                  benefited both.
+                </p>
               </div>
-              <div>
-                <span
-                  className="block text-3xl md:text-4xl mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                >
-                  Validated first, shipped second
-                </span>
-                <span className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-                  internal BSI users flagged the same shoulder-surfing risk unprompted, before the fix was ever proposed
-                </span>
+              <div className="p-6" style={{ backgroundColor: "#F5F6FA", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
+                <p className="text-xs tracking-wider uppercase mb-3" style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.06em" }}>
+                  A color code for severity
+                </p>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                  Yellow notice cards for recoverable states (no tip selected, a QR the camera hasn&apos;t
+                  focused on yet) and red cards for hard failures (insufficient balance, a failed
+                  transaction) let the user read urgency before reading the copy, a pattern reused
+                  across the error states rather than invented per screen.
+                </p>
+              </div>
+              <div className="p-6" style={{ backgroundColor: "#F5F6FA", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
+                <p className="text-xs tracking-wider uppercase mb-3" style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.06em" }}>
+                  PIN as the single gate
+                </p>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                  Every path (Open or Closed Amount, with or without tip) converges on the same PIN
+                  confirmation step before a transaction can process. One security checkpoint instead of
+                  several meant fewer places for a user to get stuck, and fewer surfaces to keep in sync
+                  if the PIN pattern itself changed.
+                </p>
+              </div>
+              <div className="p-6" style={{ backgroundColor: "#F5F6FA", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
+                <p className="text-xs tracking-wider uppercase mb-3" style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.06em" }}>
+                  Closing the loop past the app
+                </p>
+                <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                  A successful transaction doesn&apos;t end at the in-app receipt. It&apos;s followed by
+                  an email confirmation with the same details. For a payment flow, that second, durable
+                  record matters as much as the on-screen one.
+                </p>
               </div>
             </div>
-            <p className="mt-4 text-sm leading-relaxed max-w-2xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              I don&apos;t have a dashboard number for this one. It&apos;s not the kind of fix that
-              moves a chart. What it did was close a side-channel that had no reason to exist on a
-              transaction PIN screen, using feedback from the same users it was protecting.
-            </p>
           </div>
         </section>
       </Reveal>
@@ -288,10 +295,11 @@ export default function BsiCaseStudy() {
               className="text-xl md:text-2xl leading-relaxed"
               style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 500, color: "#FFFFFF" }}
             >
-              The most dangerous feedback is the kind that feels right. That teal flash matched every
-              other button in the app: consistent, expected, and exactly why nobody had questioned it.
-              Security work isn&apos;t always about adding a warning; sometimes it&apos;s noticing which
-              pattern doesn&apos;t belong on this one screen.
+              A payment flow is mostly the paths that don&apos;t succeed. The scan-and-confirm part is
+              maybe a third of this map. The rest is what happens when the balance is short, the code
+              is dead, or the transaction fails somewhere the user can&apos;t see. Designing that half
+              properly, with the same care as the happy path, is what actually determines whether people
+              trust the feature the second time they use it.
             </p>
           </div>
         </section>

@@ -5,9 +5,9 @@ import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
-  title: "Case Studies — Rahadian Maulana",
+  title: "Case Studies · Rahadian Maulana",
   description:
-    "In-depth case studies from Rahadian Maulana — the problems, process, and outcomes behind fintech products and design systems.",
+    "In-depth case studies from Rahadian Maulana: the problems, process, and outcomes behind fintech products and design systems.",
 };
 
 type CaseStudy = {
@@ -22,21 +22,11 @@ type CaseStudy = {
 
 const CASE_STUDIES: CaseStudy[] = [
   {
-    id: "natuna-digilab",
-    eyebrow: "Design System · Personal",
-    title: "Natuna Digilab — Unbranded Design System",
-    summary:
-      "A token-first, unbranded design system built from the recurring weak points I kept hitting across four banking teams — 1,600+ components, five token categories, built on its own terms.",
-    tags: ["Design Tokens", "Figma Variables", "Component Architecture"],
-    status: "live",
-    href: "/case-studies/natuna-digilab",
-  },
-  {
     id: "brispot",
     eyebrow: "BRI · Internal Lending Platform",
-    title: "BRISPOT — Internal Lending Platform",
+    title: "BRISPOT: Internal Lending Platform",
     summary:
-      "Redesigning BRISPOT's Briguna approval workflow — closing the hand-off gaps between Initiator, Approver, and Credit Admin Officer — for a workflow now handling 1,000–3,000 applications a day per branch.",
+      "Redesigning BRISPOT's Briguna approval workflow to close the hand-off gaps between Initiator, Approver, and Credit Admin Officer, for a workflow now handling 1,000–3,000 applications a day per branch.",
     tags: ["Workflow Design", "Multi-role Systems", "Fintech Ops"],
     status: "live",
     href: "/case-studies/brispot",
@@ -44,7 +34,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     id: "bsi",
     eyebrow: "Bank Syariah Indonesia",
-    title: "BSI — PIN Confirmation Security",
+    title: "BSI: PIN Confirmation Security",
     summary:
       "Catching a tap-feedback pattern that leaked a customer's PIN through color alone, validating the risk with internal BSI users, and redesigning the confirmation screen so the number pad gives away nothing.",
     tags: ["Security UX", "Usability Testing", "Mobile Banking"],
@@ -52,11 +42,21 @@ const CASE_STUDIES: CaseStudy[] = [
     href: "/case-studies/bsi",
   },
   {
+    id: "qris-domestik",
+    eyebrow: "Bank Syariah Indonesia",
+    title: "BSI: QRIS Domestik Payment Flow",
+    summary:
+      "Mapping two QRIS payment paths (Open Amount and Closed Amount) into one connected flow, with PIN confirmation, optional tipping, and every failure state a scan can hit.",
+    tags: ["Payment Flow", "Edge-case Design", "Mobile Banking"],
+    status: "live",
+    href: "/case-studies/qris-domestik",
+  },
+  {
     id: "youtube-download",
     eyebrow: "YouTube · Personal Project",
-    title: "YouTube — Redesigning the Download Feature",
+    title: "YouTube: Redesigning the Download Feature",
     summary:
-      "An independent case study on YouTube's offline download feature — validating commuter frustrations through interviews, then cutting deletion and reordering down from double-digit taps to a few.",
+      "An independent case study on YouTube's offline download feature: validating commuter frustrations through interviews, then cutting deletion and reordering down from double-digit taps to a few.",
     tags: ["Personal Project", "Mobile UX", "User Research"],
     status: "live",
     href: "/case-studies/youtube-download",
@@ -64,12 +64,22 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     id: "card-delivery-status",
     eyebrow: "Digital Banking · Under NDA",
-    title: "Card Delivery Status — Closing a Visibility Gap",
+    title: "Card Delivery Status: Closing a Visibility Gap",
     summary:
       "Benchmarking three banks that already shipped card delivery tracking, then designing the state most of them still handle badly: the delivery that fails. Client and screens withheld until launch.",
     tags: ["Benchmarking", "Edge-case Design", "Mobile Banking"],
     status: "live",
     href: "/case-studies/card-delivery-status",
+  },
+  {
+    id: "natuna-digilab",
+    eyebrow: "Design System · Personal",
+    title: "Natuna Digilab: Unbranded Design System",
+    summary:
+      "A token-first, unbranded design system built from the recurring weak points I kept hitting across four banking teams. 1,600+ components, five token categories, built on its own terms.",
+    tags: ["Design Tokens", "Figma Variables", "Component Architecture"],
+    status: "live",
+    href: "/case-studies/natuna-digilab",
   },
 ];
 
@@ -108,7 +118,7 @@ export default function CaseStudiesPage() {
             className="text-base md:text-lg max-w-2xl leading-relaxed"
             style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}
           >
-            Not just before/after screens — the problem that started it, the constraints that shaped it,
+            Not just before/after screens: the problem that started it, the constraints that shaped it,
             and what actually happened once it shipped. This is a separate space from the rest of the
             portfolio, built for the projects that deserve a full walkthrough instead of a summary.
           </p>

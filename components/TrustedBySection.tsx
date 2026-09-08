@@ -134,7 +134,7 @@ export function TrustedBySection() {
                     height: "40px",
                     borderRadius: "8px",
                     backgroundColor: client.logo ? "transparent" : isHovered ? "transparent" : "#D1D5DB",
-                    color: isHovered ? client.color : "#9CA3AF",
+                    color: isHovered ? client.color : "#6B7280",
                   }}
                 >
                   {client.logo ? (
@@ -206,7 +206,7 @@ export function TrustedBySection() {
 
         <p
           className="mt-6 text-[10px] tracking-wide text-center"
-          style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}
+          style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
         >
           Click to reveal all portfolio
         </p>

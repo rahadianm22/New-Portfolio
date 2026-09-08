@@ -5,7 +5,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
-  title: "Card Delivery Status — Closing a Visibility Gap — Rahadian Maulana",
+  title: "Card Delivery Status: Closing a Visibility Gap · Rahadian Maulana",
   description:
     "Benchmarking how digital banks communicate physical card delivery, then designing the status tracking, including what happens when the delivery fails. Client and product details withheld under NDA.",
 };
@@ -84,7 +84,7 @@ export default function CardDeliveryStatusCaseStudy() {
             className="text-4xl md:text-6xl mb-6"
             style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
           >
-            Card Delivery Status — Closing a Visibility Gap.
+            Card Delivery Status: Closing a Visibility Gap.
           </h1>
           <p
             className="text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
@@ -105,7 +105,7 @@ export default function CardDeliveryStatusCaseStudy() {
               <div key={fact.label}>
                 <span
                   className="block text-[10px] tracking-widest uppercase mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF", letterSpacing: "0.1em" }}
+                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", letterSpacing: "0.1em" }}
                 >
                   {fact.label}
                 </span>
@@ -237,7 +237,7 @@ export default function CardDeliveryStatusCaseStudy() {
               sitting right there instead of sending anyone to call support.
             </p>
 
-            {/* Structural diagram — not the interface, the state sequence behind it */}
+            {/* Structural diagram, not the interface, the state sequence behind it */}
             <div className="mt-6 p-6 md:p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
               <div className="space-y-0">
                 {STAGES.map((stage) => (
@@ -268,14 +268,14 @@ export default function CardDeliveryStatusCaseStudy() {
                   </div>
                   <p
                     className="text-xs tracking-wider uppercase pt-2"
-                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF", letterSpacing: "0.08em" }}
+                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", letterSpacing: "0.08em" }}
                   >
                     Then one of two outcomes
                   </p>
                 </div>
               </div>
 
-              {/* branch — two possible endings */}
+              {/* branch: two possible endings */}
               <div className="mt-4 pl-7 grid sm:grid-cols-2 gap-3">
                 {OUTCOMES.map((outcome) => {
                   const isFail = outcome.tone === "fail";
@@ -300,7 +300,7 @@ export default function CardDeliveryStatusCaseStudy() {
                 })}
               </div>
 
-              <p className="pt-6 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#9CA3AF" }}>
+              <p className="pt-6 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
                 The state sequence, not the interface. Redrawn here since the screens stay private
                 until launch.
               </p>
@@ -356,7 +356,7 @@ export default function CardDeliveryStatusCaseStudy() {
               More case studies.
             </h3>
             <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-              See the rest of the portfolio — design systems, dashboards, and everything in between.
+              See the rest of the portfolio: design systems, dashboards, and everything in between.
             </p>
           </div>
           <Link

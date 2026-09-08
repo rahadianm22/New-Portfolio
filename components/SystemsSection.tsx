@@ -7,7 +7,6 @@ interface ServiceItem {
   description: string;
   deliverables: string[];
   tools: string[];
-  scope: string;
 }
 
 const services: ServiceItem[] = [
@@ -18,7 +17,6 @@ const services: ServiceItem[] = [
     description: "Token-based systems that align design and engineering.",
     deliverables: ["Design Tokens & Variables", "Component Library", "Governance & Version Control"],
     tools: ["Figma", "Tokens Studio", "Confluence"],
-    scope: "4–8 weeks",
   },
   {
     code: "SVC.02",
@@ -27,7 +25,6 @@ const services: ServiceItem[] = [
     description: "Turning dense, multi-role workflows into intuitive experiences.",
     deliverables: ["UX Audits & Flow Mapping", "Data-Dense Dashboards", "Usability Testing"],
     tools: ["FigJam", "Maze", "Jira"],
-    scope: "2–6 weeks",
   },
   {
     code: "SVC.03",
@@ -36,7 +33,6 @@ const services: ServiceItem[] = [
     description: "Dev-friendly handoffs that cut implementation friction.",
     deliverables: ["Clean Token Exports", "Dev Mode Annotations", "Design System QA"],
     tools: ["Figma Dev Mode", "Claude Code", "Storybook"],
-    scope: "1–3 weeks",
   },
 ];
 
@@ -185,21 +181,6 @@ export function SystemsSection() {
                     ))}
                   </div>
 
-                  {/* Scope */}
-                  {/* <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}>
-                    <span
-                      className="text-xs tracking-widest uppercase"
-                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.1em" }}
-                    >
-                      Scope
-                    </span>
-                    <span
-                      className="text-sm"
-                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#12151C", fontWeight: 700 }}
-                    >
-                      {service.scope}
-                    </span>
-                  </div> */}
                 </div>
               </div>
             ))}

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
-const SITE_URL = "https://rahadianm22.vercel.app";
-const TITLE = "Rahadian Maulana — Senior Product Designer";
+const SITE_URL = "https://rahadianm22.my.id";
+const TITLE = "Rahadian Maulana · Senior Product Designer";
 const DESCRIPTION =
   "Senior Product Designer with 5+ years designing regulated fintech & banking products.";
 
