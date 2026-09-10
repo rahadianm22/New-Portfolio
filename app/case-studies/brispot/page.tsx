@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
@@ -115,7 +114,6 @@ export default function BrispotCaseStudy() {
       </section>
 
       {/* Context */}
-      <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// Context" />
@@ -130,10 +128,8 @@ export default function BrispotCaseStudy() {
             </p>
           </div>
         </section>
-      </Reveal>
 
       {/* Problem */}
-      <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// The Problem" />
@@ -169,10 +165,8 @@ export default function BrispotCaseStudy() {
             </div>
           </div>
         </section>
-      </Reveal>
 
       {/* Process */}
-      <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// Process" />
@@ -206,10 +200,8 @@ export default function BrispotCaseStudy() {
             </div>
           </div>
         </section>
-      </Reveal>
 
       {/* The Solution */}
-      <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// The Solution" />
@@ -308,10 +300,8 @@ export default function BrispotCaseStudy() {
             </div>
           </div>
         </section>
-      </Reveal>
 
       {/* Outcome */}
-      <Reveal variant="up" duration={800}>
         <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="max-w-4xl mx-auto">
             <SectionLabel label="// Outcome" />
@@ -349,10 +339,8 @@ export default function BrispotCaseStudy() {
             </p>
           </div>
         </section>
-      </Reveal>
 
       {/* Reflection */}
-      <Reveal variant="up" duration={800}>
         <section className="py-20 px-6 md:px-12" style={{ backgroundColor: "#12151C" }}>
           <div className="max-w-3xl mx-auto text-center">
             <span
@@ -372,7 +360,6 @@ export default function BrispotCaseStudy() {
             </p>
           </div>
         </section>
-      </Reveal>
 
       {/* CTA back to case studies */}
       <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>

@@ -1,31 +1,11 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { ParticleField } from "./ParticleField";
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    // Hold the hero entrance until the intro curtain has lifted, so the
-    // stagger isn't wasted behind the preloader.
-    const done = (window as unknown as { __introDone?: boolean }).__introDone;
-    if (done) {
-      setMounted(true);
-      return;
-    }
-
-    const onDone = () => setMounted(true);
-    window.addEventListener("intro:done", onDone);
-    // Safety net: never leave the hero invisible if the intro never fires.
-    const fallback = window.setTimeout(() => setMounted(true), 3500);
-
-    return () => {
-      window.removeEventListener("intro:done", onDone);
-      clearTimeout(fallback);
-    };
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   return (
     <section
@@ -46,16 +26,6 @@ export function Hero() {
         }}
       />
 
-      {/* Soft drifting aurora blobs behind the dots */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="hero-blob hero-blob-1" />
-        <div className="hero-blob hero-blob-2" />
-        <div className="hero-blob hero-blob-3" />
-      </div>
-
-      {/* Soft moving dot field */}
-      <ParticleField />
-
       {/* Registration marks at corners */}
       <CornerMark position="top-left" />
       <CornerMark position="top-right" />
@@ -67,7 +37,7 @@ export function Hero() {
         data-mounted={mounted ? "true" : "false"}
       >
         {/* Top meta row */}
-        <div className="flex items-center justify-between mb-16">
+        <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between mb-16">
           <span
             className="text-xs tracking-widest uppercase"
             style={{
@@ -78,13 +48,14 @@ export function Hero() {
             Product Designer
           </span>
           <span
-            className="text-xs tracking-widest uppercase"
+            className="flex items-center gap-2 text-xs tracking-widest uppercase"
             style={{
               fontFamily: "'Urbanist', sans-serif",
               color: "#6B7280",
             }}
           >
-            Jakarta, Indonesia
+            <span className="inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+            Open to remote roles · Jakarta (GMT+7)
           </span>
         </div>
 
@@ -125,18 +96,6 @@ export function Hero() {
                 token: --heading-xl
               </span>
 
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                </span>
-                <span
-                  className="text-sm tracking-wide"
-                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
-                >
-                  Open to remote roles · Based in Indonesia (GMT+7)
-                </span>
-              </div>
               <h1
                 className="text-4xl md:text-6xl leading-[1.05]"
                 style={{

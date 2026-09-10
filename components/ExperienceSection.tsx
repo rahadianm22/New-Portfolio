@@ -1,12 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { experiences } from "@/lib/experience-data";
+import { HeadingRise } from "./HeadingRise";
 
 export function SectionLabel({ label, meta }: { label: string; meta?: string }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [drawn, setDrawn] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDrawn(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setDrawn(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.6 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="flex items-center gap-3">
+    <div ref={ref} className="flex items-center gap-3">
       <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
       <span
         className="text-xs tracking-widest uppercase whitespace-nowrap"
@@ -14,7 +38,18 @@ export function SectionLabel({ label, meta }: { label: string; meta?: string }) 
       >
         {label}
       </span>
-      <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.2)" }} />
+      {/* The measure line draws itself as each section is reached: the page's only
+          entrance gesture, taken from the technical-drawing motif rather than a generic
+          fade-up, so the content stays put and only the drawing moves. */}
+      <div
+        className="h-px flex-1"
+        style={{
+          backgroundColor: "rgba(43, 78, 255, 0.2)",
+          transform: drawn ? "scaleX(1)" : "scaleX(0)",
+          transformOrigin: "left center",
+          transition: "transform 900ms cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      />
       {meta && (
         <span
           className="text-xs whitespace-nowrap"
@@ -39,19 +74,21 @@ export function ExperienceSection() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <SectionLabel label="// Experience" />
 
-        <div className="mt-6 mb-12">
-          <h2
-            className="text-3xl md:text-4xl mb-10"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 700,
-              color: "#12151C",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Professional Journey.
-          </h2>
-        </div>
+        <HeadingRise>
+          <div className="mt-6 mb-12">
+            <h2
+              className="text-3xl md:text-4xl mb-10"
+              style={{
+                fontFamily: "'Urbanist', sans-serif",
+                fontWeight: 700,
+                color: "#12151C",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Professional Journey.
+            </h2>
+          </div>
+        </HeadingRise>
 
         {/* Column headers (desktop only) */}
         <div
@@ -85,7 +122,7 @@ export function ExperienceSection() {
                 href={`/experience#${entry.docId}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="reveal-child grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5 transition-all duration-200"
+                className="grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5 transition-all duration-200"
                 style={{
                   borderBottom: "1px solid rgba(18, 21, 28, 0.08)",
                   borderLeft: isHovered ? "3px solid #2B4EFF" : "3px solid transparent",

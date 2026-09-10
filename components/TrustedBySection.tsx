@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { HeadingRise } from "./HeadingRise";
 import Image from "next/image";
 import { SectionLabel } from "./ExperienceSection";
 
@@ -84,24 +85,26 @@ export function TrustedBySection() {
   const visibleClients = showAll ? clients : clients.slice(0, VISIBLE_COUNT);
 
   return (
-    <section className="py-20 md:py-24" style={{ backgroundColor: "#F5F6FA" }}>
+    <section className="py-16 md:py-20" style={{ backgroundColor: "#F5F6FA" }}>
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Label row */}
         <div className="mb-8">
           <SectionLabel label="// Projects Handled" meta={`count: ${clients.length}`} />
         </div>
 
-        <h2
-          className="text-3xl md:text-4xl mb-10"
-          style={{
-            fontFamily: "'Urbanist', sans-serif",
-            fontWeight: 700,
-            color: "#12151C",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Digital products shipped across fintech & banking.
-        </h2>
+        <HeadingRise>
+          <h2
+            className="text-3xl md:text-4xl mb-10"
+            style={{
+              fontFamily: "'Urbanist', sans-serif",
+              fontWeight: 700,
+              color: "#12151C",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Digital products shipped across fintech & banking.
+          </h2>
+        </HeadingRise>
 
         {/* Logo grid */}
         <div className="flex flex-wrap justify-center gap-3">
@@ -117,7 +120,7 @@ export function TrustedBySection() {
                   : {})}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="reveal-child flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
+                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
                 style={{
                   width: "150px",
                   backgroundColor: isHovered ? "rgba(43, 78, 255, 0.06)" : "#FFFFFF",

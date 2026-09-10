@@ -1,4 +1,5 @@
 import { SectionLabel } from "./ExperienceSection";
+import { HeadingRise } from "./HeadingRise";
 
 interface ServiceItem {
   code: string;
@@ -46,26 +47,28 @@ export function SystemsSection() {
   return (
     <section
       id="systems"
-      className="py-24 md:py-32"
+      className="py-20 md:py-24"
       style={{ backgroundColor: "#F5F6FA" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Header row */}
         <div className="mb-16">
           <SectionLabel label="// Technical Capabilities" />
-          <div className="mt-6 mb-10">
-            <h2
-              className="text-3xl md:text-4xl"
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                fontWeight: 700,
-                color: "#12151C",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Design Expertise.
-            </h2>
-          </div>
+          <HeadingRise>
+            <div className="mt-6 mb-10">
+              <h2
+                className="text-3xl md:text-4xl"
+                style={{
+                  fontFamily: "'Urbanist', sans-serif",
+                  fontWeight: 700,
+                  color: "#12151C",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                Design Expertise.
+              </h2>
+            </div>
+          </HeadingRise>
         </div>
 
         {/* Card container with corner marks + meta line */}
@@ -84,7 +87,7 @@ export function SystemsSection() {
             {services.map((service, i) => (
               <div
                 key={service.code}
-                className="reveal-child p-6 md:p-8 flex flex-col"
+                className="p-6 md:p-8 flex flex-col"
                 style={{
                   borderRight: i < services.length - 1 ? "1px dashed rgba(43, 78, 255, 0.2)" : undefined,
                 }}

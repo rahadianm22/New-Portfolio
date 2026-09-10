@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SectionLabel } from "./ExperienceSection";
+import { HeadingRise } from "./HeadingRise";
 
 interface SecondaryLink {
   category: string;
@@ -76,19 +77,21 @@ export function ContactSection() {
         </div>
 
         {/* Headline */}
-        <div className="mt-6 mb-10">
-          <h2
-            className="text-3xl md:text-4xl"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 700,
-              color: "#12151C",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Let's build something precise.
-          </h2>
-        </div>
+        <HeadingRise>
+          <div className="mt-6 mb-10">
+            <h2
+              className="text-3xl md:text-4xl"
+              style={{
+                fontFamily: "'Urbanist', sans-serif",
+                fontWeight: 700,
+                color: "#12151C",
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Let&apos;s build something precise.
+            </h2>
+          </div>
+        </HeadingRise>
 
         {/* Primary contact card */}
         <PrimaryContactCard email={primaryEmail} />
@@ -195,7 +198,7 @@ function SecondaryLinkCard({ link, isLast }: { link: SecondaryLink; isLast: bool
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="reveal-child px-6 py-5 flex flex-col gap-2"
+      className="px-6 py-5 flex flex-col gap-2"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{

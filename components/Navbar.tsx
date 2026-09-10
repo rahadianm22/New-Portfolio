@@ -25,7 +25,7 @@ export function Navbar() {
   // Tutup menu mobile otomatis kalau layar di-resize ke desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) setMobileOpen(false);
+      if (window.innerWidth >= 1024) setMobileOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -67,7 +67,7 @@ export function Navbar() {
         </a>
 
         {/* Nav links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
             <a
               key={item.href}
@@ -109,7 +109,7 @@ export function Navbar() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="md:hidden flex flex-col items-center justify-center gap-[5px] w-8 h-8"
+            className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-8 h-8"
           >
             <span
               className="block w-5 h-[1.5px] transition-all duration-200"
@@ -138,7 +138,7 @@ export function Navbar() {
 
       {/* Mobile dropdown menu */}
       <div
-        className="md:hidden overflow-hidden transition-all duration-300"
+        className="lg:hidden overflow-hidden transition-all duration-300"
         style={{
           maxHeight: mobileOpen ? "320px" : "0px",
           backgroundColor: "rgba(237, 239, 245, 0.98)",

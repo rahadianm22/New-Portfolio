@@ -1,4 +1,5 @@
 import { SectionLabel } from "./ExperienceSection";
+import { HeadingRise } from "./HeadingRise";
 
 const tags = ["Shared DS", "Token-first", "Unbranded"];
 
@@ -14,13 +15,14 @@ export function SideProjectSection() {
   return (
     <section
       id="side-project"
-      className="py-24 md:py-32"
+      className="py-28 md:py-40"
       style={{ backgroundColor: "#FFFFFF" }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Section label */}
         <SectionLabel label="// Design System" />
 
+        <HeadingRise>
         <div className="mt-6 mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center gap-3 flex-wrap">
             <h2
@@ -57,6 +59,7 @@ export function SideProjectSection() {
             </span>
           </div>
         </div>
+        </HeadingRise>
 
         {/* Foundation card */}
         <div

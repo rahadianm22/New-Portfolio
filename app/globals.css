@@ -31,302 +31,14 @@ button:focus-visible {
 }
 
 /* ---------------------------------------------------------------
-   Intro preloader — clean white, matching site theme
-   --------------------------------------------------------------- */
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: transform 800ms cubic-bezier(0.76, 0, 0.24, 1);
-  will-change: transform;
-}
-
-.intro[data-phase="wiping"] {
-  transform: translate3d(0, -100%, 0);
-}
-
-/* Subtle blueprint dot-grid — mirrors the hero section */
-.intro-noise {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background-image:
-    linear-gradient(rgba(43, 78, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(43, 78, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  animation: intro-fade 0.8s ease-out 0.05s forwards;
-}
-
-/* Soft radial glow behind the name */
-.intro-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  width: 500px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(43, 78, 255, 0.08) 0%,
-    rgba(43, 78, 255, 0.02) 40%,
-    transparent 70%
-  );
-  pointer-events: none;
-  opacity: 0;
-  animation: intro-glow-pulse 0.9s ease-out 0.4s forwards;
-}
-
-@keyframes intro-glow-pulse {
-  0% {
-    opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(0.8);
-  }
-  60% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 0.45;
-    transform: translate3d(-50%, -50%, 0) scale(1);
-  }
-}
-
-.intro-mark {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-color: rgba(43, 78, 255, 0.2);
-  opacity: 0;
-  animation: intro-fade 0.6s ease-out 0.2s forwards;
-}
-
-.intro-mark-tl {
-  top: 32px;
-  left: 32px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-.intro-mark-tr {
-  top: 32px;
-  right: 32px;
-  border-top: 1px solid;
-  border-right: 1px solid;
-}
-.intro-mark-bl {
-  bottom: 32px;
-  left: 32px;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-}
-.intro-mark-br {
-  bottom: 32px;
-  right: 32px;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-}
-
-.intro-inner {
-  position: relative;
-  width: 100%;
-  max-width: 780px;
-  padding: 0 32px;
-  z-index: 1;
-}
-
-.intro-meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: "Urbanist", sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #6b7280;
-  opacity: 0;
-  animation: intro-fade 0.6s ease-out 0.2s forwards;
-}
-
-.intro-name {
-  margin: 22px 0 24px;
-}
-
-.intro-word {
-  display: flex;
-  flex-wrap: wrap;
-  line-height: 0.92;
-}
-
-.intro-letter {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
-.intro-letter-inner {
-  display: inline-block;
-  font-family: "Urbanist", sans-serif;
-  font-size: clamp(40px, 9.5vw, 92px);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  transform: translate3d(0, 110%, 0);
-  filter: blur(4px);
-  animation: intro-letter-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.intro-letter-inner.text-dark {
-  color: #12151c;
-}
-
-.intro-letter-inner.text-accent {
-  color: #2b4eff;
-}
-
-@keyframes intro-letter-up {
-  0% {
-    transform: translate3d(0, 110%, 0);
-    filter: blur(4px);
-    opacity: 0.3;
-  }
-  60% {
-    filter: blur(0px);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-
-.intro-foot {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  font-family: "Urbanist", sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #6b7280;
-  opacity: 0;
-  animation: intro-fade 0.6s ease-out 0.9s forwards;
-}
-
-.intro-count {
-  font-variant-numeric: tabular-nums;
-  color: #ff4b33;
-}
-
-.intro-track {
-  margin-top: 14px;
-  height: 2px;
-  background-color: rgba(43, 78, 255, 0.08);
-  opacity: 0;
-  animation: intro-fade 0.5s ease-out 0.9s forwards;
-}
-
-.intro-bar {
-  display: block;
-  height: 100%;
-  width: 100%;
-  transform: scaleX(0);
-  transform-origin: left center;
-  background: linear-gradient(90deg, #2b4eff, #ff4b33);
-}
-
-@keyframes intro-fade {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Keep the page from flashing behind the curtain while the intro runs. */
-html[data-intro="running"] {
-  overflow: hidden;
-}
-
-/* ---------------------------------------------------------------
-   Hero: soft drifting aurora blobs
-   --------------------------------------------------------------- */
-.hero-blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.5;
-  will-change: transform;
-}
-
-.hero-blob-1 {
-  width: 480px;
-  height: 480px;
-  top: -140px;
-  left: -120px;
-  background: radial-gradient(circle, rgba(43, 78, 255, 0.22), transparent 70%);
-  animation: blob-drift-a 26s ease-in-out infinite;
-}
-
-.hero-blob-2 {
-  width: 420px;
-  height: 420px;
-  bottom: -160px;
-  right: -100px;
-  background: radial-gradient(circle, rgba(255, 75, 51, 0.14), transparent 70%);
-  animation: blob-drift-b 32s ease-in-out infinite;
-}
-
-.hero-blob-3 {
-  width: 520px;
-  height: 520px;
-  top: 30%;
-  left: 45%;
-  background: radial-gradient(circle, rgba(43, 78, 255, 0.12), transparent 70%);
-  animation: blob-drift-c 38s ease-in-out infinite;
-}
-
-@keyframes blob-drift-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(60px, 40px, 0) scale(1.12);
-  }
-}
-
-@keyframes blob-drift-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-70px, -50px, 0) scale(1.08);
-  }
-}
-
-@keyframes blob-drift-c {
-  0%,
-  100% {
-    transform: translate3d(-50%, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-40%, -60px, 0) scale(1.15);
-  }
-}
-
-/* ---------------------------------------------------------------
    Hero: staggered entrance on mount
    --------------------------------------------------------------- */
 .hero-stagger > * {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
+  transform: translate3d(0, 10px, 0);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-stagger[data-mounted="true"] > * {
@@ -335,57 +47,16 @@ html[data-intro="running"] {
 }
 
 .hero-stagger[data-mounted="true"] > *:nth-child(1) {
-  transition-delay: 0.08s;
+  transition-delay: 0.04s;
 }
 .hero-stagger[data-mounted="true"] > *:nth-child(2) {
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 .hero-stagger[data-mounted="true"] > *:nth-child(3) {
-  transition-delay: 0.32s;
+  transition-delay: 0.16s;
 }
-.hero-stagger[data-mounted="true"] > *:nth-child(4) {
-  transition-delay: 0.44s;
-}
-.hero-stagger[data-mounted="true"] > *:nth-child(n + 5) {
-  transition-delay: 0.56s;
-}
-
-/* ---------------------------------------------------------------
-   Reveal on scroll: staggered children inside a revealed block
-   --------------------------------------------------------------- */
-[data-revealed] .reveal-child {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-[data-revealed="true"] .reveal-child {
-  opacity: 1;
-  transform: none;
-}
-
-[data-revealed="true"] .reveal-child:nth-child(1) {
-  transition-delay: 0.05s;
-}
-[data-revealed="true"] .reveal-child:nth-child(2) {
-  transition-delay: 0.13s;
-}
-[data-revealed="true"] .reveal-child:nth-child(3) {
-  transition-delay: 0.21s;
-}
-[data-revealed="true"] .reveal-child:nth-child(4) {
-  transition-delay: 0.29s;
-}
-[data-revealed="true"] .reveal-child:nth-child(5) {
-  transition-delay: 0.37s;
-}
-[data-revealed="true"] .reveal-child:nth-child(6) {
-  transition-delay: 0.45s;
-}
-[data-revealed="true"] .reveal-child:nth-child(n + 7) {
-  transition-delay: 0.53s;
+.hero-stagger[data-mounted="true"] > *:nth-child(n + 4) {
+  transition-delay: 0.22s;
 }
 
 /* Thin scroll-progress bar at the very top of the page */
@@ -395,7 +66,7 @@ html[data-intro="running"] {
   left: 0;
   height: 2px;
   z-index: 100;
-  background: linear-gradient(90deg, #2b4eff, #ff4b33);
+  background: #2b4eff;
   transform-origin: left center;
   will-change: transform;
   pointer-events: none;

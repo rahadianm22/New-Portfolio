@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Reveal } from "@/components/Reveal";
 import { SectionLabel } from "@/components/ExperienceSection";
 
 export const metadata = {
@@ -131,10 +130,8 @@ export default function CaseStudiesPage() {
           <SectionLabel label="// Full Index" meta={`${CASE_STUDIES.length} projects`} />
 
           <div className="mt-8 flex flex-col gap-5">
-            {CASE_STUDIES.map((study, i) => (
-              <Reveal key={study.id} variant="up" duration={700} delay={i * 60}>
-                <CaseStudyCard study={study} />
-              </Reveal>
+            {CASE_STUDIES.map((study) => (
+              <CaseStudyCard key={study.id} study={study} />
             ))}
           </div>
         </div>
