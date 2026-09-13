@@ -2,8 +2,6 @@ import { SectionLabel } from "./ExperienceSection";
 import { HeadingRise } from "./HeadingRise";
 
 interface ServiceItem {
-  code: string;
-  status: "AVAILABLE" | "BOOKED" | "WAITLIST";
   title: string;
   description: string;
   deliverables: string[];
@@ -12,36 +10,24 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
   {
-    code: "SVC.01",
-    status: "AVAILABLE",
     title: "Design System Architecture",
     description: "Token-based systems that align design and engineering.",
     deliverables: ["Design Tokens & Variables", "Component Library", "Governance & Version Control"],
     tools: ["Figma", "Tokens Studio", "Confluence"],
   },
   {
-    code: "SVC.02",
-    status: "AVAILABLE",
     title: "Complex Systems & Dashboard Design",
     description: "Turning dense, multi-role workflows into intuitive experiences.",
     deliverables: ["UX Audits & Flow Mapping", "Data-Dense Dashboards", "Usability Testing"],
     tools: ["FigJam", "Maze", "Jira"],
   },
   {
-    code: "SVC.03",
-    status: "AVAILABLE",
     title: "Design to Code Bridge",
     description: "Dev-friendly handoffs that cut implementation friction.",
     deliverables: ["Clean Token Exports", "Dev Mode Annotations", "Design System QA"],
     tools: ["Figma Dev Mode", "Claude Code", "Storybook"],
   },
 ];
-
-const statusColor: Record<ServiceItem["status"], string> = {
-  AVAILABLE: "#22C55E",
-  BOOKED: "#EF4444",
-  WAITLIST: "#F59E0B",
-};
 
 export function SystemsSection() {
   return (
@@ -86,34 +72,12 @@ export function SystemsSection() {
 
             {services.map((service, i) => (
               <div
-                key={service.code}
+                key={service.title}
                 className="p-6 md:p-8 flex flex-col"
                 style={{
                   borderRight: i < services.length - 1 ? "1px dashed rgba(43, 78, 255, 0.2)" : undefined,
                 }}
               >
-                {/* Top meta row */}
-                <div className="flex items-center justify-between mb-6">
-                  <span
-                    className="text-xs tracking-widest"
-                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", opacity: 0.6, letterSpacing: "0.1em" }}
-                  >
-                    {service.code}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full"
-                      style={{ backgroundColor: statusColor[service.status] }}
-                    />
-                    <span
-                      className="text-xs tracking-wider"
-                      style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", fontSize: "10px" }}
-                    >
-                      {service.status}
-                    </span>
-                  </div>
-                </div>
-
                 {/* Title */}
                 <h3
                   className="text-xl md:text-2xl mb-4"
@@ -145,14 +109,12 @@ export function SystemsSection() {
                     Deliverables
                   </span>
                   <ul className="space-y-2">
-                    {service.deliverables.map((item, idx) => (
+                    {service.deliverables.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <span
-                          className="text-xs mt-0.5"
-                          style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", fontSize: "10px", opacity: 0.7 }}
-                        >
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
+                          className="w-1 h-1 rounded-full mt-2 shrink-0"
+                          style={{ backgroundColor: "#2B4EFF", opacity: 0.7 }}
+                        />
                         <span
                           className="text-sm"
                           style={{ fontFamily: "'Inter', sans-serif", color: "#12151C", fontWeight: 500 }}

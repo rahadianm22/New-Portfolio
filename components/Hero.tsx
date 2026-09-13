@@ -75,27 +75,6 @@ export function Hero() {
               <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
               <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
 
-              <span
-                className="absolute -top-5 left-0 text-xs"
-                style={{
-                  fontFamily: "'Urbanist', sans-serif",
-                  color: "#2B4EFF",
-                  fontSize: "10px",
-                }}
-              >
-                width: auto
-              </span>
-              <span
-                className="absolute -bottom-5 right-0 text-xs"
-                style={{
-                  fontFamily: "'Urbanist', sans-serif",
-                  color: "#2B4EFF",
-                  fontSize: "10px",
-                }}
-              >
-                token: --heading-xl
-              </span>
-
               <h1
                 className="text-4xl md:text-6xl leading-[1.05]"
                 style={{
@@ -173,7 +152,7 @@ export function Hero() {
               fontSize: "10px",
             }}
           >
-            scroll to explore, DOC.00
+            DOC.00
           </span>
           <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.15)" }} />
         </div>

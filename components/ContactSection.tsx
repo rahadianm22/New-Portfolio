@@ -5,7 +5,6 @@ import { SectionLabel } from "./ExperienceSection";
 import { HeadingRise } from "./HeadingRise";
 
 interface SecondaryLink {
-  category: string;
   handle: string;
   label: string;
   href: string;
@@ -15,37 +14,31 @@ const primaryEmail = "rahadianm22@gmail.com";
 
 const secondaryLinks: SecondaryLink[] = [
   {
-    category: "Professional",
     handle: "/rahadianm22",
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/rahadianm22/",
   },
   {
-    category: "Visual",
     handle: "/rahadianm22",
     label: "Dribbble",
     href: "https://dribbble.com/rahadianm22",
   },
   {
-    category: "Personal",
     handle: "/rahadianonly",
     label: "Instagram",
     href: "https://www.instagram.com/rahadianonly/",
   },
   {
-    category: "Writing",
     handle: "/@Rahadianm22",
     label: "Medium",
     href: "https://medium.com/@Rahadianm22",
   },
   {
-    category: "Showcase",
     handle: "/case-studies",
     label: "Case Studies",
     href: "https://rahadianm22.my.id/case-studies",
   },
   {
-    category: "Profile",
     handle: "/resume",
     label: "Resume",
     href: "https://rahadianm22.my.id/resume",
@@ -71,7 +64,7 @@ export function ContactSection() {
               className="text-xs tracking-wider whitespace-nowrap"
               style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557", fontSize: "12px" }}
             >
-              Open for projects
+              Open to remote roles
             </span>
           </div>
         </div>
@@ -136,7 +129,7 @@ function PrimaryContactCard({ email }: { email: string }) {
           className="text-xs tracking-widest uppercase block mb-3"
           style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px", letterSpacing: "0.12em" }}
         >
-          // Primary · Channel: Email
+          // Email
         </span>
 
         <div className="flex items-center justify-between gap-4">
@@ -177,13 +170,7 @@ function PrimaryContactCard({ email }: { email: string }) {
           className="text-xs"
           style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px" }}
         >
-          response time: &lt; 24h · token: --contact-primary
-        </span>
-        <span
-          className="text-xs hidden md:block"
-          style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px" }}
-        >
-          click to open mail client
+          I usually reply within a day.
         </span>
       </div>
     </a>
@@ -210,26 +197,17 @@ function SecondaryLinkCard({ link, isLast }: { link: SecondaryLink; isLast: bool
         textDecoration: "none",
       }}
     >
-      <div className="flex items-center justify-between">
-        <span
-          className="text-xs tracking-widest uppercase"
-          style={{
-            fontFamily: "'Urbanist', sans-serif",
-            color: hovered ? "#2B4EFF" : "#9AA1B1",
-            fontSize: "10px",
-            letterSpacing: "0.1em",
-            transition: "color 0.15s ease",
-          }}
-        >
-          {link.category}
-        </span>
-        <span
-          className="text-xs"
-          style={{ fontFamily: "'Urbanist', sans-serif", color: "#9AA1B1", fontSize: "10px" }}
-        >
-          {link.handle}
-        </span>
-      </div>
+      <span
+        className="text-xs"
+        style={{
+          fontFamily: "'Urbanist', sans-serif",
+          color: hovered ? "#2B4EFF" : "#9AA1B1",
+          fontSize: "10px",
+          transition: "color 0.15s ease",
+        }}
+      >
+        {link.handle}
+      </span>
       <div className="flex items-center justify-between">
         <span
           className="text-base"

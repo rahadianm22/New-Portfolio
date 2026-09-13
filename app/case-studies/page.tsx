@@ -127,7 +127,7 @@ export default function CaseStudiesPage() {
       {/* Case study list */}
       <section className="pb-24 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
         <div className="max-w-4xl mx-auto">
-          <SectionLabel label="// Full Index" meta={`${CASE_STUDIES.length} projects`} />
+          <SectionLabel label="// Full Index" />
 
           <div className="mt-8 flex flex-col gap-5">
             {CASE_STUDIES.map((study) => (

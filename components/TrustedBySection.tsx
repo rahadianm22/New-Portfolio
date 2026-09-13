@@ -89,7 +89,7 @@ export function TrustedBySection() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         {/* Label row */}
         <div className="mb-8">
-          <SectionLabel label="// Projects Handled" meta={`count: ${clients.length}`} />
+          <SectionLabel label="// Projects Handled" />
         </div>
 
         <HeadingRise>
@@ -207,12 +207,14 @@ export function TrustedBySection() {
           </div>
         )}
 
-        <p
-          className="mt-6 text-[10px] tracking-wide text-center"
-          style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
-        >
-          Click to reveal all portfolio
-        </p>
+        {!showAll && clients.length > VISIBLE_COUNT && (
+          <p
+            className="mt-6 text-[10px] tracking-wide text-center"
+            style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
+          >
+            See all {clients.length} projects
+          </p>
+        )}
       </div>
     </section>
   );

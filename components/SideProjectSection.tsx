@@ -7,7 +7,6 @@ const colorSwatches = ["#2B4EFF", "#DBEAFE", "#DE4D34", "#FCE4E0", "#12151C", "#
 
 const stats = [
   { label: "Components", value: "1600+" },
-  { label: "Variable Support", value: "Full" },
   { label: "Token Categories", value: "5" },
 ];
 
@@ -55,7 +54,7 @@ export function SideProjectSection() {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#f5740b" }} />
-              v1.0 (building)
+              v1.0
             </span>
           </div>
         </div>
@@ -190,10 +189,6 @@ export function SideProjectSection() {
             className="mt-6 pt-4 flex items-center justify-between flex-wrap gap-3"
             style={{ borderTop: "1px solid rgba(43, 78, 255, 0.12)" }}
           >
-            <span style={{ fontFamily: "'Urbanist', sans-serif", color: "rgba(43, 78, 255, 0.5)", fontSize: "10px" }}>
-              token: --natuna-foundation-v1 · figma variables: full
-            </span>
-
             <a
               href="https://www.figma.com/community/file/1660946308636540525"
               target="_blank"
