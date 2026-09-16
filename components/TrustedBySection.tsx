@@ -120,7 +120,7 @@ export function TrustedBySection() {
                   : {})}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
+                className={`${hasUrl ? "press" : ""} flex flex-col items-center justify-center gap-3 py-8 px-4`}
                 style={{
                   width: "150px",
                   backgroundColor: isHovered ? "rgba(43, 78, 255, 0.06)" : "#FFFFFF",
@@ -128,6 +128,9 @@ export function TrustedBySection() {
                   borderRadius: "12px",
                   textDecoration: "none",
                   cursor: hasUrl ? "pointer" : "default",
+                  transform: isHovered ? "translateY(-3px)" : "none",
+                  boxShadow: isHovered ? "0 12px 24px rgba(18, 21, 28, 0.08)" : "0 0 0 rgba(0,0,0,0)",
+                  transition: "background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               >
                 <div
@@ -193,7 +196,7 @@ export function TrustedBySection() {
           <div className="flex justify-center mt-6">
             <button
               onClick={() => setShowAll((v) => !v)}
-              className="flex items-center gap-2 px-5 py-2.5 transition-colors duration-200"
+              className="press flex items-center gap-2 px-5 py-2.5"
               style={{ border: "1px dashed rgba(43, 78, 255, 0.3)", borderRadius: "8px" }}
             >
               <span style={{ color: "#2B4EFF" }}>{showAll ? "−" : "+"}</span>

@@ -105,7 +105,7 @@ function PrimaryContactCard({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="relative block"
+      className="press relative block"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{ textDecoration: "none" }}
@@ -115,7 +115,9 @@ function PrimaryContactCard({ email }: { email: string }) {
         style={{
           border: "1.5px dashed rgba(18, 21, 28, 0.15)",
           backgroundColor: "#FFFFFF",
-          transition: "border-color 0.15s ease",
+          transform: hovered ? "translateY(-2px)" : "none",
+          boxShadow: hovered ? "0 10px 30px rgba(18, 21, 28, 0.08)" : "0 0 0 rgba(0,0,0,0)",
+          transition: "border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
           borderColor: hovered ? "rgba(43, 78, 255, 0.5)" : "rgba(18, 21, 28, 0.15)",
         }}
       >
@@ -185,15 +187,17 @@ function SecondaryLinkCard({ link, isLast }: { link: SecondaryLink; isLast: bool
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="px-6 py-5 flex flex-col gap-2"
+      className="press px-6 py-5 flex flex-col gap-2"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         border: "1px solid rgba(18, 21, 28, 0.1)",
         borderColor: hovered ? "rgba(43, 78, 255, 0.35)" : "rgba(18, 21, 28, 0.1)",
         marginLeft: isLast ? undefined : "-1px",
-        backgroundColor: "#FFFFFF",
-        transition: "border-color 0.15s ease",
+        backgroundColor: hovered ? "#FAFBFF" : "#FFFFFF",
+        position: "relative",
+        zIndex: hovered ? 1 : 0,
+        transition: "border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1)",
         textDecoration: "none",
       }}
     >

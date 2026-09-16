@@ -109,7 +109,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="/case-studies"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#1937B3]"
+              className="group press inline-flex items-center gap-2 px-6 py-3 rounded-md hover:bg-[#1937B3]"
               style={{
                 fontFamily: "'Urbanist', sans-serif",
                 fontWeight: 600,
@@ -126,7 +126,7 @@ export function Hero() {
 
             <a
               href="mailto:rahadianm22@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#EAEFFF]"
+              className="press inline-flex items-center gap-2 px-6 py-3 rounded-md hover:bg-[#EAEFFF]"
               style={{
                 fontFamily: "'Urbanist', sans-serif",
                 fontWeight: 600,

@@ -122,12 +122,13 @@ export function ExperienceSection() {
                 href={`/experience#${entry.docId}`}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
-                className="grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5 transition-all duration-200"
+                className="press grid md:grid-cols-[180px_1fr_1fr_120px] items-center gap-2 md:gap-4 px-6 py-5"
                 style={{
                   borderBottom: "1px solid rgba(18, 21, 28, 0.08)",
                   borderLeft: isHovered ? "3px solid #2B4EFF" : "3px solid transparent",
                   backgroundColor: isHovered ? "#FFFFFF" : "transparent",
                   textDecoration: "none",
+                  transition: "border-color 0.2s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s cubic-bezier(0.22, 1, 0.36, 1)",
                 }}
               >
                 {/* Period */}

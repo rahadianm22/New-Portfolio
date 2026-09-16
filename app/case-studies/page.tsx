@@ -152,7 +152,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <Wrapper
       {...(wrapperProps as any)}
-      className="group block relative p-6 md:p-8 transition-all duration-200"
+      className={`group block relative p-6 md:p-8 ${isLive ? "press case-study-card" : ""}`}
       style={{
         backgroundColor: "#FFFFFF",
         border: "1px solid rgba(18, 21, 28, 0.1)",

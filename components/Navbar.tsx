@@ -33,11 +33,13 @@ export function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
-        backgroundColor: scrolled ? "rgba(237, 239, 245, 0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+        backgroundColor: scrolled ? "rgba(237, 239, 245, 0.72)" : "transparent",
+        backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
         borderBottom: scrolled ? "1px solid rgba(43, 78, 255, 0.1)" : "1px solid transparent",
+        transition: "background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
       }}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between">
@@ -72,7 +74,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="text-xs tracking-widest uppercase transition-colors duration-150 hover:opacity-60"
+              className="press text-xs tracking-widest uppercase hover:opacity-60"
               style={{
                 fontFamily: "'Urbanist', sans-serif",
                 color: "#12151C",
@@ -89,7 +91,7 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <a
             href="mailto:rahadianm22@gmail.com"
-            className="hidden sm:inline-block text-xs px-4 py-2 rounded-md transition-all duration-150 hover:opacity-90"
+            className="press hidden sm:inline-block text-xs px-4 py-2 rounded-md hover:opacity-90"
             style={{
               fontFamily: "'Urbanist', sans-serif",
               fontWeight: 600,
@@ -109,7 +111,7 @@ export function Navbar() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-8 h-8"
+            className="press lg:hidden flex flex-col items-center justify-center gap-[5px] w-8 h-8"
           >
             <span
               className="block w-5 h-[1.5px] transition-all duration-200"
@@ -138,12 +140,14 @@ export function Navbar() {
 
       {/* Mobile dropdown menu */}
       <div
-        className="lg:hidden overflow-hidden transition-all duration-300"
+        className="lg:hidden overflow-hidden"
         style={{
           maxHeight: mobileOpen ? "320px" : "0px",
-          backgroundColor: "rgba(237, 239, 245, 0.98)",
-          backdropFilter: "blur(12px)",
+          backgroundColor: "rgba(237, 239, 245, 0.85)",
+          backdropFilter: "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
           borderBottom: mobileOpen ? "1px solid rgba(43, 78, 255, 0.1)" : "1px solid transparent",
+          transition: "max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         <div className="flex flex-col px-6 py-4 gap-4">

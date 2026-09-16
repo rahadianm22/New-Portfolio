@@ -193,7 +193,7 @@ export function SideProjectSection() {
               href="https://www.figma.com/community/file/1660946308636540525"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 transition-colors duration-150 hover:opacity-90"
+              className="press flex items-center gap-2 px-5 py-2.5 hover:opacity-90"
               style={{
                 fontFamily: "'Urbanist', sans-serif",
                 fontSize: "12px",
