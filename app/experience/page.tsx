@@ -13,72 +13,69 @@ export default function ExperiencePage() {
     <main>
       <Navbar />
 
-      <section className="pt-32 pb-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
+      <section className="pt-32 pb-16 px-6 md:px-12" style={{ backgroundColor: "var(--surface-alt)" }}>
         <div className="max-w-4xl mx-auto">
           <Link
             href="/#experience"
-            className="inline-flex items-center gap-2 text-xs tracking-wider uppercase mb-8"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", textDecoration: "none" }}
+            className="inline-flex items-center min-h-11 gap-2 text-sm mb-6"
+            style={{ color: "var(--accent)", textDecoration: "none" }}
           >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M8 2L2 8M2 8H7M2 8V3" stroke="#2B4EFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M8 2L2 8M2 8H7M2 8V3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             Back to Homepage
           </Link>
 
           <span
-            className="block text-xs tracking-widest uppercase mb-3"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
-          >
-            // Full Archive
+            className="block text-xs mb-3"
+            style={{ color: "var(--accent)" }}
+          >Full Archive
           </span>
           <h1
             className="text-4xl md:text-5xl"
-            style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
+            style={{ fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}
           >
             Complete Work Experience.
           </h1>
         </div>
       </section>
 
-      <section className="pb-24 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
+      <section className="pb-24 px-6 md:px-12" style={{ backgroundColor: "var(--surface-alt)" }}>
         <div className="max-w-4xl mx-auto space-y-16">
           {experiences.map((entry) => (
             <div
               key={entry.docId}
               id={entry.docId}
               className="scroll-mt-24"
-              style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}
+              style={{ backgroundColor: "var(--surface)", border: "1px solid var(--line)" }}
             >
               {/* Header */}
-              <div className="px-6 md:px-10 pt-8 pb-6" style={{ borderBottom: "1px solid rgba(18, 21, 28, 0.08)" }}>
+              <div className="px-6 md:px-10 pt-8 pb-6" style={{ borderBottom: "1px solid var(--line)" }}>
                 <div className="flex items-center gap-3 mb-3">
                   <span
-                    className="text-sm tracking-widest"
-                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", fontWeight: 600 }}
+                    className="text-sm"
+                    style={{ color: "var(--accent)", fontWeight: 600 }}
                   >
                     {entry.docId}
                   </span>
                   <span
                     className="text-xs px-2 py-0.5"
                     style={{
-                      fontFamily: "'Urbanist', sans-serif",
-                      color: "#FF4B33",
-                      backgroundColor: "rgba(255, 75, 51, 0.1)",
-                      border: "1px solid rgba(255, 75, 51, 0.2)",
-                      fontSize: "10px",
-                    }}
+                      color: "var(--status-warn)",
+                      backgroundColor: "var(--status-warn-bg)",
+                      border: "1px solid var(--line)",
+                      fontSize: "10px" }}
                   >
                     {entry.duration}
                   </span>
                 </div>
                 <h2
                   className="text-2xl md:text-3xl mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
+                  style={{ fontWeight: 700, color: "var(--ink)" }}
                 >
                   {entry.company}
                 </h2>
-                <p className="text-sm mb-4" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280", fontWeight: 500 }}>
+                <p className="text-sm mb-4" style={{ color: "var(--ink-3)", fontWeight: 500 }}>
                   {entry.role} · {entry.period}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -87,13 +84,10 @@ export default function ExperiencePage() {
                       key={tag}
                       className="text-xs px-2 py-1 tracking-wide uppercase"
                       style={{
-                        fontFamily: "'Urbanist', sans-serif",
-                        color: "#6B7280",
-                        backgroundColor: "rgba(107, 114, 128, 0.08)",
-                        border: "1px solid rgba(107, 114, 128, 0.2)",
-                        fontSize: "10px",
-                        letterSpacing: "0.08em",
-                      }}
+                        color: "var(--ink-3)",
+                        backgroundColor: "var(--surface-alt)",
+                        border: "1px solid var(--line)",
+                        fontSize: "10px" }}
                     >
                       {tag}
                     </span>
@@ -106,31 +100,31 @@ export default function ExperiencePage() {
                 <div className="space-y-10">
                   {entry.products.map((product) => (
                     <div key={product.tabLabel}>
-                      <div className="flex items-start justify-between gap-4 mb-2">
+                      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1 mb-2">
                         <h3
                           className="text-lg"
-                          style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
+                          style={{ fontWeight: 700, color: "var(--ink)" }}
                         >
                           {product.name}
                         </h3>
                         <span
-                          className="flex-shrink-0 flex items-center gap-1.5 text-xs"
-                          style={{ fontFamily: "'Urbanist', sans-serif", color: product.statusLive ? "#16A34A" : "#6B7280" }}
+                          className="flex items-center gap-1.5 text-xs"
+                          style={{ color: product.statusLive ? "var(--status-live)" : "var(--ink-3)" }}
                         >
                           <span
                             className="w-1.5 h-1.5 rounded-full"
-                            style={{ backgroundColor: product.statusLive ? "#16A34A" : "#6B7280" }}
+                            style={{ backgroundColor: product.statusLive ? "var(--status-live)" : "var(--ink-3)" }}
                           />
                           {product.status}
                         </span>
                       </div>
                       <span
-                        className="block text-xs tracking-wider mb-3"
-                        style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF" }}
+                        className="block text-xs mb-3"
+                        style={{ color: "var(--accent)" }}
                       >
                         {product.category}
                       </span>
-                      <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
+                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--ink-2)" }}>
                         {product.description}
                       </p>
                       <ul className="space-y-2 mb-3">
@@ -138,14 +132,14 @@ export default function ExperiencePage() {
                           <li
                             key={i}
                             className="flex items-start gap-3 text-sm leading-relaxed"
-                            style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
+                            style={{ color: "var(--ink-2)" }}
                           >
-                            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+                            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--accent)" }} />
                             {c}
                           </li>
                         ))}
                       </ul>
-                      <span className="text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
+                      <span className="text-xs" style={{ color: "var(--ink-3)" }}>
                         {product.scope}
                       </span>
                     </div>

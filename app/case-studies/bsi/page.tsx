@@ -1,8 +1,19 @@
-import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { SectionLabel } from "@/components/ExperienceSection";
+import {
+  CaseHero,
+  CaseSection,
+  Lead,
+  Body,
+  ProblemGrid,
+  ProcessSteps,
+  Figure,
+  StatGrid,
+  Reflection,
+  NextCase,
+} from "@/components/case-study/Kit";
 
 export const metadata = {
   title: "BSI: PIN Confirmation Security · Rahadian Maulana",
@@ -14,7 +25,7 @@ const QUICK_FACTS = [
   { label: "Role", value: "Product Designer" },
   { label: "Company", value: "Bank Syariah Indonesia" },
   { label: "Platform", value: "BSI Mobile Banking App" },
-  { label: "Timeline", value: "Aug 2022 – Jul 2023" },
+  { label: "Timeline", value: "Aug 2022 - Jul 2023" },
 ];
 
 const PROBLEMS = [
@@ -43,276 +54,137 @@ const PROCESS = [
   },
 ];
 
+const BEFORE = {
+  src: "/case-studies/bsi/pin-color-change-mockup.png",
+  alt: "PIN Confirmation comparison: the resting state next to the digit '1' turning solid teal the instant it's pressed",
+  width: 624,
+  height: 490,
+};
+
+const AFTER = {
+  src: "/case-studies/bsi/pin-solution-progression.png",
+  alt: "The shipped PIN Confirmation screen at three points during entry: the dots above the keypad filling in, while the number pad itself never changes color",
+  width: 2442,
+  height: 1400,
+};
+
+function Cover() {
+  return (
+    <div className="relative h-[440px] overflow-hidden rounded-lg bg-tint-blue sm:h-[520px] md:h-[600px]">
+      <span className="absolute left-5 top-5 z-[2] rounded-full bg-status-warn-bg px-3.5 py-1.5 text-sm font-semibold text-status-warn md:left-8 md:top-8">
+        Before: the PIN leaks through color
+      </span>
+
+      <div className="absolute left-[5%] top-20 w-[70%] -rotate-2 overflow-hidden rounded-md bg-surface shadow-lift ring-1 ring-line md:left-[7%] md:top-24 md:w-[40%]">
+        <Image src={BEFORE.src} alt={BEFORE.alt} width={BEFORE.width} height={BEFORE.height} priority sizes="(max-width: 768px) 70vw, 470px" className="h-auto w-full" />
+      </div>
+
+      <span
+        aria-hidden="true"
+        className="absolute left-[47%] top-1/2 z-[2] hidden h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-surface text-accent shadow-lift md:flex"
+      >
+        <ArrowRight size={24} strokeWidth={2} />
+      </span>
+
+      <div className="absolute -right-[10%] bottom-6 w-[78%] rotate-1 overflow-hidden rounded-md bg-surface shadow-lift ring-1 ring-line md:bottom-auto md:right-[4%] md:top-32 md:w-[44%]">
+        <Image src={AFTER.src} alt={AFTER.alt} width={AFTER.width} height={AFTER.height} priority sizes="(max-width: 768px) 80vw, 520px" className="h-auto w-full" />
+      </div>
+
+      <span className="absolute bottom-5 right-5 z-[2] rounded-full bg-accent px-3.5 py-1.5 text-sm font-semibold text-on-accent md:bottom-8 md:right-8">
+        After: only the dots move
+      </span>
+    </div>
+  );
+}
+
 export default function BsiCaseStudy() {
   return (
     <main>
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-32 pb-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
-        <div className="max-w-4xl mx-auto">
-          <Link
-            href="/case-studies"
-            className="inline-flex items-center gap-2 text-xs tracking-wider uppercase mb-8"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", textDecoration: "none" }}
-          >
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M8 2L2 8M2 8H7M2 8V3" stroke="#2B4EFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Case Studies
-          </Link>
-
-          <span
-            className="block text-xs tracking-widest uppercase mb-3"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
-          >
-            // BSI · PIN Confirmation Security
-          </span>
-          <h1
-            className="text-4xl md:text-6xl mb-6"
-            style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
-          >
-            BSI: PIN Confirmation Security.
-          </h1>
-          <p
-            className="text-lg md:text-xl max-w-2xl leading-relaxed mb-10"
-            style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
-          >
+      <CaseHero
+        eyebrow="BSI · PIN Confirmation Security"
+        title="BSI: PIN Confirmation Security."
+        intro={
+          <>
             Every digit on BSI&apos;s PIN confirmation screen lit up teal the moment it was pressed:
-            standard tap-feedback, used everywhere in the app. On this one screen, it also meant the
-            PIN was readable off the colors alone. I proposed removing it entirely.
-          </p>
+            standard tap-feedback, used everywhere in the app. On this one screen, it also meant the PIN
+            was readable off the colors alone. I proposed removing it entirely.
+          </>
+        }
+        facts={QUICK_FACTS}
+        cover={<Cover />}
+      />
 
-          {/* Quick facts */}
-          <div
-            className="flex flex-wrap gap-x-8 gap-y-4 p-6"
-            style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}
-          >
-            {QUICK_FACTS.map((fact) => (
-              <div key={fact.label}>
-                <span
-                  className="block text-[10px] tracking-widest uppercase mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280", letterSpacing: "0.1em" }}
-                >
-                  {fact.label}
-                </span>
-                <span
-                  className="text-sm"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 600, color: "#12151C" }}
-                >
-                  {fact.value}
-                </span>
-              </div>
-            ))}
-          </div>
+      <CaseSection label="Context" title="One screen, at the end of every transaction.">
+        <Lead>
+          I joined BSI right after its three-bank merger, taking over a component library that had
+          drifted out of sync with the new brand. Most of the work was systems-level: rebuilding shared
+          components, running usability tests on core banking flows. This case study is about one screen
+          that came out of that work: PIN Confirmation, the last step of every transaction in the app.
+        </Lead>
+      </CaseSection>
+
+      <CaseSection label="The problem" title="Feedback that told everyone which digit you pressed." tone="alt">
+        <ProblemGrid items={PROBLEMS} />
+        <div className="mt-6">
+          <Figure
+            image={BEFORE}
+            canvasClassName="md:px-24 lg:px-48"
+            caption="Resting vs. pressed. That teal fill was the entire problem. It told you which number had just been tapped."
+          />
         </div>
-      </section>
+      </CaseSection>
 
-      {/* Context */}
-        <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// Context" />
-            <p
-              className="mt-6 text-base md:text-lg leading-relaxed max-w-3xl"
-              style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
-            >
-              I joined BSI right after its three-bank merger, taking over a component library that had
-              drifted out of sync with the new brand. Most of the work was systems-level: rebuilding
-              shared components, running usability tests on core banking flows. This case study is about
-              one screen that came out of that work: PIN Confirmation, the last step of every transaction
-              in the app.
-            </p>
-          </div>
-        </section>
+      <CaseSection label="Process" title="Validated before it was pitched.">
+        <ProcessSteps items={PROCESS} />
+      </CaseSection>
 
-      {/* Problem */}
-        <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
-          <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// The Problem" />
-            <div className="mt-8 grid md:grid-cols-2 gap-4">
-              {PROBLEMS.map((p) => (
-                <div key={p.label} className="p-6" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
-                  <p
-                    className="text-xs tracking-wider uppercase mb-3"
-                    style={{ fontFamily: "'Urbanist', sans-serif", color: "#FF4B33", letterSpacing: "0.06em" }}
-                  >
-                    {p.label}
-                  </p>
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                    {p.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Visual proof: the digit lighting up solid teal on press */}
-            <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
-              <Image
-                src="/case-studies/bsi/pin-color-change-mockup.png"
-                alt="PIN Confirmation comparison: the resting state next to the digit '1' turning solid teal the instant it's pressed"
-                width={624}
-                height={490}
-                className="w-full h-auto max-w-lg mx-auto"
-                sizes="(min-width: 768px) 512px, 100vw"
-              />
-              <p className="pt-3 px-1 text-xs text-center" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
-                Resting vs. pressed. That teal fill was the entire problem. It told you which number
-                had just been tapped.
-              </p>
-            </div>
-          </div>
-        </section>
-
-      {/* Process */}
-        <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// Process" />
-            <div className="mt-8 space-y-8">
-              {PROCESS.map((item, i) => (
-                <div key={item.title} className="flex gap-5">
-                  <span
-                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-xs"
-                    style={{
-                      fontFamily: "'Urbanist', sans-serif",
-                      fontWeight: 700,
-                      color: "#2B4EFF",
-                      border: "1.5px solid rgba(43, 78, 255, 0.3)",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3
-                      className="text-lg mb-2"
-                      style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed max-w-2xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-      {/* The Solution */}
-        <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
-          <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// The Solution" />
-            <p className="mt-6 text-base leading-relaxed max-w-3xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              The number pad now stays completely neutral, pressed or not: no fill, no color, nothing
-              that changes with which digit was tapped. All the feedback moved to the six dots above it:
-              they fill in one at a time as the PIN is entered, and that&apos;s the only thing on screen
-              that changes state.
-            </p>
-
-            {/* Shipped screen: dots progressing while the number pad stays neutral throughout */}
-            <div className="mt-6 p-3" style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}>
-              <Image
-                src="/case-studies/bsi/pin-solution-progression.png"
-                alt="The shipped PIN Confirmation screen at three points during entry: the dots above the keypad filling in from zero to five, while the number pad itself never changes color"
-                width={2442}
-                height={1400}
-                className="w-full h-auto"
-                sizes="(min-width: 768px) 896px, 100vw"
-              />
-              <p className="pt-3 px-1 text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
-                Same screen, mid-entry, from the shipped app. The dots move. The keypad doesn&apos;t,
-                by design.
-              </p>
-            </div>
-          </div>
-        </section>
-
-      {/* Outcome */}
-        <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="max-w-4xl mx-auto">
-            <SectionLabel label="// Outcome" />
-            <div className="mt-8 grid sm:grid-cols-2 gap-6 mb-4">
-              <div>
-                <span
-                  className="block text-3xl md:text-4xl mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                >
-                  Teal on press → No color at all
-                </span>
-                <span className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-                  the only change made to the number pad, everything else on the screen stayed the same
-                </span>
-              </div>
-              <div>
-                <span
-                  className="block text-3xl md:text-4xl mb-1"
-                  style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}
-                >
-                  Validated first, shipped second
-                </span>
-                <span className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-                  internal BSI users flagged the same shoulder-surfing risk unprompted, before the fix was ever proposed
-                </span>
-              </div>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed max-w-2xl" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              I don&apos;t have a dashboard number for this one. It&apos;s not the kind of fix that
-              moves a chart. What it did was close a side-channel that had no reason to exist on a
-              transaction PIN screen, using feedback from the same users it was protecting.
-            </p>
-          </div>
-        </section>
-
-      {/* Reflection */}
-        <section className="py-20 px-6 md:px-12" style={{ backgroundColor: "#12151C" }}>
-          <div className="max-w-3xl mx-auto text-center">
-            <span
-              className="block text-xs tracking-widest uppercase mb-6"
-              style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", letterSpacing: "0.15em" }}
-            >
-              // Reflection
-            </span>
-            <p
-              className="text-xl md:text-2xl leading-relaxed"
-              style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 500, color: "#FFFFFF" }}
-            >
-              The most dangerous feedback is the kind that feels right. That teal flash matched every
-              other button in the app: consistent, expected, and exactly why nobody had questioned it.
-              Security work isn&apos;t always about adding a warning; sometimes it&apos;s noticing which
-              pattern doesn&apos;t belong on this one screen.
-            </p>
-          </div>
-        </section>
-
-      {/* CTA back to case studies */}
-      <section className="py-16 px-6 md:px-12" style={{ backgroundColor: "#EDEFF5" }}>
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-8" style={{ border: "1.5px dashed rgba(43, 78, 255, 0.3)", backgroundColor: "#F5F6FA" }}>
-          <div>
-            <h3 className="text-xl mb-1" style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C" }}>
-              More case studies.
-            </h3>
-            <p className="text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#6B7280" }}>
-              See the rest of the portfolio: design systems, dashboards, and everything in between.
-            </p>
-          </div>
-          <Link
-            href="/case-studies"
-            className="flex-shrink-0 flex items-center gap-2 px-6 py-3 transition-colors duration-150 hover:opacity-90"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.04em",
-              color: "#FFFFFF",
-              backgroundColor: "#2B4EFF",
-              textDecoration: "none",
-            }}
-          >
-            Back to Case Studies →
-          </Link>
+      <CaseSection label="The solution" title="A keypad that gives nothing away." tone="alt">
+        <Body>
+          The number pad now stays completely neutral, pressed or not: no fill, no color, nothing that
+          changes with which digit was tapped. All the feedback moved to the six dots above it: they fill
+          in one at a time as the PIN is entered, and that&apos;s the only thing on screen that changes
+          state.
+        </Body>
+        <div className="mt-10">
+          <Figure
+            image={AFTER}
+            caption="Same screen, mid-entry, from the shipped app. The dots move. The keypad doesn't, by design."
+          />
         </div>
-      </section>
+      </CaseSection>
 
+      <CaseSection label="Outcome" title="A side-channel closed, with users' own words behind it.">
+        <StatGrid
+          stats={[
+            {
+              value: "Teal on press → no color at all",
+              label: "the only change made to the number pad, everything else on the screen stayed the same",
+            },
+            {
+              value: "Validated first, shipped second",
+              label: "internal BSI users flagged the same shoulder-surfing risk unprompted, before the fix was ever proposed",
+            },
+          ]}
+        />
+        <div className="mt-8">
+          <Body>
+            I don&apos;t have a dashboard number for this one. It&apos;s not the kind of fix that moves a
+            chart. What it did was close a side-channel that had no reason to exist on a transaction PIN
+            screen, using feedback from the same users it was protecting.
+          </Body>
+        </div>
+      </CaseSection>
+
+      <Reflection>
+        The most dangerous feedback is the kind that feels right. That teal flash matched every other
+        button in the app, which is exactly why nobody had questioned it. Security work isn&apos;t always
+        about adding a warning; sometimes it&apos;s noticing which pattern doesn&apos;t belong on this one
+        screen.
+      </Reflection>
+
+      <NextCase currentId="bsi" />
       <Footer />
     </main>
   );

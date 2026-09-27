@@ -2,167 +2,207 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ArrowUpRight, FileText } from "lucide-react";
 
+/** Labels match the heading of the section each one lands on. */
 const NAV_LINKS = [
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Skills", href: "/#systems" },
-  { label: "Design Systems", href: "/#side-project" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Resume", href: "/resume" },
+  { label: "Case Studies", id: "work" },
+  { label: "Experience", id: "experience" },
+  { label: "Expertise", id: "systems" },
+  { label: "Design System", id: "side-project" },
+  { label: "Contact", id: "contact" },
 ];
 
+/**
+ * Which homepage section is under the middle of the viewport. An observer,
+ * not a scroll listener: it only fires when a section crosses that band.
+ */
+function useActiveSection(enabled: boolean) {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!enabled) {
+      setActive(null);
+      return;
+    }
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return active;
+}
+
+/**
+ * A floating island rather than a bar glued to the top edge. It is always
+ * frosted, so it needs no scroll listener to decide when to become visible.
+ * Section links sit in the middle; Resume is a page, not a section, so it
+ * lives with the actions on the right.
+ */
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const onResume = pathname === "/resume";
+  const activeSection = useActiveSection(onHome);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Tutup menu mobile otomatis kalau layar di-resize ke desktop
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1024) setMobileOpen(false);
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMobileOpen(false);
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    desktop.addEventListener("change", onChange);
+    return () => desktop.removeEventListener("change", onChange);
   }, []);
+
+  // Escape closes the menu, per R-32.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        backgroundColor: scrolled ? "rgba(237, 239, 245, 0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(43, 78, 255, 0.1)" : "1px solid transparent",
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between">
-        {/* Logo + Nama — Klikable ke Home */}
+    <nav className="fixed inset-x-0 top-3 md:top-4 z-50 px-3 md:px-6">
+      <div
+        className="max-w-page mx-auto flex h-16 items-center justify-between gap-4 rounded-full pl-3 pr-2
+                   bg-white/80 backdrop-blur-xl ring-1 ring-line shadow-soft"
+      >
         <a
           href="/"
-          className="flex items-center gap-2.5 transition-opacity duration-150 hover:opacity-70"
-          style={{ textDecoration: "none" }}
+          className="flex items-center gap-2.5 min-h-11 rounded-full pl-1 pr-3 no-underline transition-opacity hover:opacity-70"
         >
           <Image
             src="/android-chrome-512x512.png"
-            alt="Rahadian Maulana"
-            width={28}
-            height={28}
+            alt=""
+            aria-hidden="true"
+            width={32}
+            height={32}
             priority
+            className="rounded-full"
           />
-          <span
-            className="text-sm font-semibold tracking-wide"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "#12151C",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Rahadian Maulana
-          </span>
+          <span className="text-[15px] font-semibold text-ink">Rahadian Maulana</span>
         </a>
 
-        {/* Nav links */}
-        <div className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-xs tracking-widest uppercase transition-colors duration-150 hover:opacity-60"
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                color: "#12151C",
-                textDecoration: "none",
-                letterSpacing: "0.1em",
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
+        <div className="hidden xl:flex items-center gap-1">
+          {NAV_LINKS.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.id}
+                href={`/#${item.id}`}
+                aria-current={isActive ? "location" : undefined}
+                className={`inline-flex items-center min-h-10 px-3.5 rounded-full text-sm font-medium no-underline
+                            transition-colors duration-200 hover:bg-surface-alt hover:text-ink
+                            ${isActive ? "bg-surface-alt text-ink" : "text-ink-2"}`}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
 
-        {/* CTA + Hamburger */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5">
+          <Link
+            href="/resume"
+            aria-current={onResume ? "page" : undefined}
+            className={`hidden sm:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold no-underline
+                        ring-1 transition duration-300 ease-out active:scale-[0.98]
+                        ${onResume ? "bg-ink text-surface ring-ink" : "text-ink ring-line-strong hover:bg-surface-alt"}`}
+          >
+            <FileText size={16} strokeWidth={1.75} />
+            Resume
+          </Link>
+
           <a
             href="mailto:rahadianm22@gmail.com"
-            className="hidden sm:inline-block text-xs px-4 py-2 rounded-md transition-all duration-150 hover:opacity-90"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 600,
-              backgroundColor: "transparent",
-              border: "1px solid #2B4EFF",
-              color: "#2B4EFF",
-              textDecoration: "none",
-              letterSpacing: "0.08em",
-            }}
+            className="group hidden sm:inline-flex items-center gap-2 min-h-12 pl-5 pr-1.5 rounded-full text-sm font-semibold
+                       bg-accent text-on-accent no-underline transition duration-300 ease-out
+                       hover:bg-accent-hover active:scale-[0.98]"
           >
-            Let&apos;s talk
+            Email me
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-px">
+              <ArrowUpRight size={16} strokeWidth={2} />
+            </span>
           </a>
 
-          {/* Hamburger — hanya muncul di mobile */}
+          {/* 48x48 so the only way into navigation on a phone is actually tappable. */}
           <button
             type="button"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="lg:hidden flex flex-col items-center justify-center gap-[5px] w-8 h-8"
+            className="xl:hidden relative flex items-center justify-center w-12 h-12 rounded-full transition-colors hover:bg-surface-alt"
           >
             <span
-              className="block w-5 h-[1.5px] transition-all duration-200"
-              style={{
-                backgroundColor: "#12151C",
-                transform: mobileOpen ? "translateY(6.5px) rotate(45deg)" : "none",
-              }}
+              className="absolute block w-5 h-[1.5px] bg-ink transition-transform duration-300 ease-out"
+              style={{ transform: mobileOpen ? "rotate(45deg)" : "translateY(-4px)" }}
             />
             <span
-              className="block w-5 h-[1.5px] transition-all duration-200"
-              style={{
-                backgroundColor: "#12151C",
-                opacity: mobileOpen ? 0 : 1,
-              }}
-            />
-            <span
-              className="block w-5 h-[1.5px] transition-all duration-200"
-              style={{
-                backgroundColor: "#12151C",
-                transform: mobileOpen ? "translateY(-6.5px) rotate(-45deg)" : "none",
-              }}
+              className="absolute block w-5 h-[1.5px] bg-ink transition-transform duration-300 ease-out"
+              style={{ transform: mobileOpen ? "rotate(-45deg)" : "translateY(4px)" }}
             />
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* `hidden` (not max-height:0) so the menu links leave the tab order
+          and the accessibility tree entirely while the menu is closed. */}
       <div
-        className="lg:hidden overflow-hidden transition-all duration-300"
-        style={{
-          maxHeight: mobileOpen ? "320px" : "0px",
-          backgroundColor: "rgba(237, 239, 245, 0.98)",
-          backdropFilter: "blur(12px)",
-          borderBottom: mobileOpen ? "1px solid rgba(43, 78, 255, 0.1)" : "1px solid transparent",
-        }}
+        id="mobile-menu"
+        hidden={!mobileOpen}
+        className="xl:hidden max-w-page mx-auto mt-2 rounded-lg bg-white/95 backdrop-blur-xl ring-1 ring-line shadow-lift"
       >
-        <div className="flex flex-col px-6 py-4 gap-4">
+        <div className="flex flex-col p-3">
           {NAV_LINKS.map((item) => (
             <a
-              key={item.href}
-              href={item.href}
+              key={item.id}
+              href={`/#${item.id}`}
               onClick={() => setMobileOpen(false)}
-              className="text-xs tracking-widest uppercase transition-colors duration-150 hover:opacity-60"
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                color: "#12151C",
-                textDecoration: "none",
-                letterSpacing: "0.1em",
-              }}
+              aria-current={activeSection === item.id ? "location" : undefined}
+              className={`flex items-center min-h-12 px-4 rounded-md text-lg font-semibold text-ink no-underline
+                          transition-colors hover:bg-surface-alt ${activeSection === item.id ? "bg-surface-alt" : ""}`}
             >
               {item.label}
             </a>
           ))}
+          <div className="sm:hidden mt-2 grid grid-cols-2 gap-2">
+            <Link
+              href="/resume"
+              onClick={() => setMobileOpen(false)}
+              aria-current={onResume ? "page" : undefined}
+              className="flex items-center justify-center gap-2 min-h-12 rounded-full ring-1 ring-line-strong
+                         text-ink text-[15px] font-semibold no-underline"
+            >
+              <FileText size={16} strokeWidth={1.75} />
+              Resume
+            </Link>
+            <a
+              href="mailto:rahadianm22@gmail.com"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center justify-center gap-2 min-h-12 rounded-full
+                         bg-accent text-on-accent text-[15px] font-semibold no-underline"
+            >
+              Email me
+              <ArrowUpRight size={16} strokeWidth={2} />
+            </a>
+          </div>
         </div>
       </div>
     </nav>

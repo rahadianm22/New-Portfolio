@@ -1,221 +1,123 @@
-"use client";
-
-import { useState } from "react";
-import { HeadingRise } from "./HeadingRise";
 import Image from "next/image";
-import { SectionLabel } from "./ExperienceSection";
 
 interface Client {
   name: string;
-  subtitle?: string;
-  color: string; // brand accent color, used as hover border/bg tint
-  // Preferred: path to a real logo file in /public (e.g. "/logos/bri.png").
-  // If omitted, falls back to the generic `icon` SVG below.
-  logo?: string;
-  icon?: React.ReactNode;
-  // Play Store (or app/website) link. Card becomes clickable when set.
+  logo: string;
+  /** Public link to the shipped product. Absent for products with none. */
   url?: string;
 }
 
 const clients: Client[] = [
   {
     name: "BRI",
-    color: "#00529C",
-    logo: "/Logo/BRI.png",
+    logo: "/Logo/trimmed/bri.png",
     url: "https://play.google.com/store/apps/details?id=id.co.bri.brimo",
   },
-   {
+  {
     name: "Qita by BRI",
-    color: "#00529C",
-    logo: "/Logo/qita.png",
-    url: "https://play.google.com/store/apps/details?id=id.co.bri.brimons&hl=en&pli=1", // TODO: isi link Play Store QITA di sini
+    logo: "/Logo/trimmed/qita.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.bri.brimons",
   },
   {
     name: "BRISPOT",
-    color: "#00529C",
-    logo: "/Logo/brispotbaru.png",
-    // BRISPOT itu internal tool, biasanya nggak ada di Play Store publik —
-    // biarkan kosong (card jadi nggak bisa diklik) kecuali kamu punya link lain.
-    url: "https://play.google.com/store/apps/details?id=id.co.bri.brispotnew"
+    logo: "/Logo/trimmed/brispotbaru.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.bri.brispotnew",
   },
   {
     name: "BSI",
-    // subtitle: "Islamic Bank",
-    color: "#00A651",
-    logo: "/Logo/byond.png",
+    logo: "/Logo/trimmed/byond.png",
     url: "https://play.google.com/store/apps/details?id=co.id.bankbsi.superapp",
   },
   {
     name: "Bale by BTN",
-    color: "#F7941E",
-    logo: "/Logo/bale.png",
-    url: "https://play.google.com/store/apps/details?id=id.co.btn.mobilebanking.android", // TODO: isi link Play Store BTN Mobile / Bale
+    logo: "/Logo/trimmed/bale.png",
+    url: "https://play.google.com/store/apps/details?id=id.co.btn.mobilebanking.android",
   },
-  {
-    name: "BTN Syariah",
-    color: "#F7941E",
-    logo: "/Logo/btnsyariah.png",
-    url: "", // TODO: isi link Play Store BTN Syariah
-  },
-  {
-    name: "CIMB",
-    color: "#7A1E2C",
-    logo: "/Logo/cimb.png",
-    url: "https://www.cimbniaga.co.id/id/home/welcome", // TODO: isi link Play Store OCTO Mobile CIMB
-  },
-  {
-    name: "Kotakode",
-    color: "#7A1E2C",
-    logo: "/Logo/kotakode.png",
-    url: "https://labs.kotakode.com/", // TODO: isi link Play Store / website Kotakode
-  },
-  {
-    name: "Malline",
-    color: "#12151C",
-    logo: "/Logo/Malline.png",
-    url: "", // TODO: isi link website Malline (kemungkinan bukan app, jadi bisa link ke situsnya)
-  },
+  { name: "BTN Syariah", logo: "/Logo/trimmed/btnsyariah.png" },
+  { name: "CIMB", logo: "/Logo/trimmed/cimb.png", url: "https://www.cimbniaga.co.id/id/home/welcome" },
+  { name: "Kotakode", logo: "/Logo/trimmed/kotakode.png", url: "https://labs.kotakode.com/" },
+  { name: "Malline", logo: "/Logo/trimmed/malline.png" },
 ];
 
-const VISIBLE_COUNT = 5;
-
+/**
+ * A full-bleed logo marquee directly under the hero. The list is rendered
+ * twice so the track can loop; the second copy is hidden from assistive
+ * tech and the tab order. Marks rest in greyscale so nine brand colours
+ * don't compete with the page's one accent, and take their colour back on
+ * hover or focus, which also pauses the track (globals.css).
+ */
 export function TrustedBySection() {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [showAll, setShowAll] = useState(false);
-  const visibleClients = showAll ? clients : clients.slice(0, VISIBLE_COUNT);
-
   return (
-    <section className="py-16 md:py-20" style={{ backgroundColor: "#F5F6FA" }}>
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
-        {/* Label row */}
-        <div className="mb-8">
-          <SectionLabel label="// Projects Handled" />
-        </div>
-
-        <HeadingRise>
-          <h2
-            className="text-3xl md:text-4xl mb-10"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              fontWeight: 700,
-              color: "#12151C",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Digital products shipped across fintech & banking.
+    <section aria-labelledby="shipped-heading" className="bg-surface">
+      <div className="max-w-page mx-auto px-6 md:px-12">
+        <div className="border-t border-line pt-10">
+          <h2 id="shipped-heading" className="text-center text-[15px] font-medium text-ink-3">
+            Products I&apos;ve shipped across fintech and banking
           </h2>
-        </HeadingRise>
-
-        {/* Logo grid */}
-        <div className="flex flex-wrap justify-center gap-3">
-          {visibleClients.map((client, i) => {
-            const isHovered = hovered === i;
-            const hasUrl = Boolean(client.url);
-            const CardTag = hasUrl ? "a" : "div";
-            return (
-              <CardTag
-                key={client.name}
-                {...(hasUrl
-                  ? { href: client.url, target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                className="flex flex-col items-center justify-center gap-3 py-8 px-4 transition-all duration-200"
-                style={{
-                  width: "150px",
-                  backgroundColor: isHovered ? "rgba(43, 78, 255, 0.06)" : "#FFFFFF",
-                  border: isHovered ? "1px solid #2B4EFF" : "1px solid rgba(18, 21, 28, 0.08)",
-                  borderRadius: "12px",
-                  textDecoration: "none",
-                  cursor: hasUrl ? "pointer" : "default",
-                }}
-              >
-                <div
-                  className="relative flex items-center justify-center transition-all duration-200"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "8px",
-                    backgroundColor: client.logo ? "transparent" : isHovered ? "transparent" : "#D1D5DB",
-                    color: isHovered ? client.color : "#6B7280",
-                  }}
-                >
-                  {client.logo ? (
-                    <Image
-                      src={client.logo}
-                      alt={client.name}
-                      fill
-                      sizes="40px"
-                      style={{
-                        objectFit: "contain",
-                        filter: isHovered ? "grayscale(0)" : "grayscale(1)",
-                        opacity: isHovered ? 1 : 0.5,
-                        transition: "filter 0.2s ease, opacity 0.2s ease",
-                      }}
-                    />
-                  ) : (
-                    client.icon
-                  )}
-                </div>
-                <div className="flex flex-col items-center gap-1">
-                  <span
-                    className="text-xs tracking-wider uppercase transition-opacity duration-200"
-                    style={{
-                      fontFamily: "'Urbanist', sans-serif",
-                      fontWeight: 700,
-                      color: "#12151C",
-                      opacity: isHovered ? 1 : 0.6,
-                    }}
-                  >
-                    {client.name}
-                  </span>
-                  {client.subtitle && (
-                    <span
-                      className="text-[10px] tracking-wider uppercase transition-opacity duration-200"
-                      style={{
-                        fontFamily: "'Urbanist', sans-serif",
-                        color: "#2B4EFF",
-                        opacity: isHovered ? 1 : 0,
-                        height: isHovered ? "auto" : 0,
-                      }}
-                    >
-                      {client.subtitle}
-                    </span>
-                  )}
-                </div>
-              </CardTag>
-            );
-          })}
         </div>
+      </div>
 
-        {/* See more / show less toggle */}
-        {clients.length > VISIBLE_COUNT && (
-          <div className="flex justify-center mt-6">
-            <button
-              onClick={() => setShowAll((v) => !v)}
-              className="flex items-center gap-2 px-5 py-2.5 transition-colors duration-200"
-              style={{ border: "1px dashed rgba(43, 78, 255, 0.3)", borderRadius: "8px" }}
-            >
-              <span style={{ color: "#2B4EFF" }}>{showAll ? "−" : "+"}</span>
-              <span
-                className="text-[10px] tracking-wider uppercase"
-                style={{ fontFamily: "'Urbanist', sans-serif", color: "#2B4EFF", opacity: 0.8 }}
-              >
-                {showAll ? "Show Less" : `${clients.length - VISIBLE_COUNT} More`}
-              </span>
-            </button>
-          </div>
-        )}
-
-        {!showAll && clients.length > VISIBLE_COUNT && (
-          <p
-            className="mt-6 text-[10px] tracking-wide text-center"
-            style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}
-          >
-            See all {clients.length} projects
-          </p>
-        )}
+      <div className="marquee mt-8">
+        <div className="marquee-track">
+          <LogoGroup />
+          <LogoGroup copy />
+        </div>
       </div>
     </section>
+  );
+}
+
+function LogoGroup({ copy = false }: { copy?: boolean }) {
+  return (
+    <ul
+      aria-hidden={copy || undefined}
+      className={`flex shrink-0 items-center ${copy ? "marquee-copy" : ""}`}
+    >
+      {clients.map((client) => (
+        <li key={client.name} className="w-36 px-5 md:w-44 md:px-7">
+          <ClientTile client={client} hidden={copy} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ClientTile({ client, hidden = false }: { client: Client; hidden?: boolean }) {
+  const mark = (
+    <div className="relative h-9 w-full">
+      <Image
+        src={client.logo}
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="128px"
+        className="object-contain grayscale contrast-125 opacity-90 transition duration-300 ease-out
+                   group-hover:grayscale-0 group-hover:opacity-100 group-focus-visible:grayscale-0 group-focus-visible:opacity-100"
+      />
+    </div>
+  );
+
+  const base = "group flex h-16 items-center justify-center rounded-md px-2";
+
+  if (!client.url) {
+    return (
+      <div className={base} role="img" aria-label={client.name} title={client.name}>
+        {mark}
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={client.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${client.name}, open the product`}
+      title={client.name}
+      tabIndex={hidden ? -1 : undefined}
+      className={`${base} no-underline transition duration-300 ease-out hover:-translate-y-0.5`}
+    >
+      {mark}
+    </a>
   );
 }

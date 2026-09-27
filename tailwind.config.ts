@@ -1,45 +1,60 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Every value here resolves to a CSS custom property defined in
+ * app/globals.css, so the palette has exactly one source of truth.
+ * Direction and measured contrast ratios live in DESIGN.md.
+ */
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        paper: "#EDEFF5",
-        surface: "#FFFFFF",
-        ink: "#12151C",
-        blueprint: "#2B4EFF",
-        redline: "#FF4B33",
-        muted: "#6B7280",
-        line: "#C7CCDA",
+        surface: "var(--surface)",
+        "surface-alt": "var(--surface-alt)",
+        "surface-ink": "var(--surface-ink)",
+        ink: "var(--ink)",
+        "ink-2": "var(--ink-2)",
+        "ink-3": "var(--ink-3)",
+        "ink-on-dark": "var(--ink-on-dark)",
+        accent: "var(--accent)",
+        "accent-hover": "var(--accent-hover)",
+        "accent-soft": "var(--accent-soft)",
+        "on-accent": "var(--on-accent)",
+        "accent-on-dark": "var(--accent-on-dark)",
+        "status-live": "var(--status-live)",
+        "status-live-on-dark": "var(--status-live-on-dark)",
+        "status-warn": "var(--status-warn)",
+        "status-warn-bg": "var(--status-warn-bg)",
+        line: "var(--line)",
+        "line-strong": "var(--line-strong)",
+        "line-on-dark": "var(--line-on-dark)",
+        "tint-blue": "var(--tint-blue)",
       },
       fontFamily: {
-        display: ["var(--font-display)"],
-        body: ["var(--font-body)"],
-        mono: ["var(--font-mono)"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        body: ["var(--font-display)", "system-ui", "sans-serif"],
       },
-      backgroundImage: {
-        grid:
-          "linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)",
+      spacing: {
+        section: "var(--space-section)",
+        block: "var(--space-block)",
+        tight: "var(--space-tight)",
       },
-      backgroundSize: {
-        grid: "40px 40px",
+      borderRadius: {
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
       },
-      keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "draw-line": {
-          "0%": { strokeDashoffset: "1" },
-          "100%": { strokeDashoffset: "0" },
-        },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        lift: "var(--shadow-lift)",
       },
-      animation: {
-        "fade-up": "fade-up 0.6s ease-out both",
+      transitionTimingFunction: {
+        out: "var(--ease-out)",
+      },
+      maxWidth: {
+        page: "72rem",
+        prose: "44rem",
       },
     },
   },

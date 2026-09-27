@@ -26,7 +26,7 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.01",
     role: "Senior Product Designer",
     company: "Bank Rakyat Indonesia (BRI)",
-    period: "Dec 2023 – Jul 2026",
+    period: "Dec 2023 - Jul 2026",
     duration: "2.5+ yr",
     tags: ["Internal Tools", "Design System", "Multi-role Workflow", "Data Dashboard", "Mobile Banking", "Credit & Lending"],
     products: [
@@ -85,7 +85,7 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.02",
     role: "Product Designer",
     company: "Bank Syariah Indonesia (BSI)",
-    period: "Aug 2022 – Jul 2023",
+    period: "Aug 2022 - Jul 2023",
     duration: "1 yr",
     tags: ["Mobile Banking", "Design System", "User Research"],
     products: [
@@ -111,14 +111,14 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.03",
     role: "UI/UX Designer",
     company: "Infosys Solusi Terpadu",
-    period: "Mar 2021 – May 2022",
+    period: "Mar 2021 - May 2022",
     description:
       "Merancang sistem desain untuk BTN Conventional & Syariah, serta dashboard analitik multi-dimensi untuk sistem manajemen ATM CIMB.",
     duration: "1+ yr",
     tags: ["Banking", "Dashboard", "3D Illustration", "Mobile App Design", "Design System"],
     products: [
       {
-        tabLabel: "btn-conventional",
+        tabLabel: "BTN Conventional",
         name: "BTN Conventional (bale by BTN)",
         category: "DIGITAL BANKING · RETAIL SERVICES",
         status: "Live · Released on Google Play & App Store",
@@ -134,7 +134,7 @@ export const experiences: ExperienceEntry[] = [
         ],
       },
       {
-        tabLabel: "btn-syariah",
+        tabLabel: "BTN Syariah",
         name: "BTN Syariah",
         category: "MOBILE BANKING · SHARIA SERVICES",
         status: "Unreleased Concept",
@@ -150,7 +150,7 @@ export const experiences: ExperienceEntry[] = [
         ],
       },
       {
-        tabLabel: "cimb-atm",
+        tabLabel: "CIMB ATM",
         name: "CIMB ATM",
         category: "INTERNAL PLATFORM · WEB DASHBOARD",
         status: "Live · Deployed Internally",
@@ -171,7 +171,7 @@ export const experiences: ExperienceEntry[] = [
     docId: "DOC.04",
     role: "Co-Founder & UI/UX Designer",
     company: "Malline Indonesia",
-    period: "Sep 2019 – Feb 2021",
+    period: "Sep 2019 - Feb 2021",
     duration: "1.5+ yr",
     tags: ["E-commerce", "End-to-end", "Wireframing", "Design"],
     products: [

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { DownloadResumeButton } from "@/components/DownloadResumeButton";
@@ -8,11 +10,19 @@ export const metadata = {
   description: "Resume summary and downloadable PDF for Rahadian Maulana, Senior Product Designer.",
 };
 
-const sectionLabelStyle = {
-  fontFamily: "'Urbanist', sans-serif",
-  color: "#2B4EFF",
-  letterSpacing: "0.12em",
-} as const;
+/**
+ * One sheet on the alternate surface. Each block is a row: its name in a
+ * narrow left column, its content on the right, a hairline between rows.
+ * Headings are ink, not accent; blue stays on the download button and links.
+ */
+function ResumeRow({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="grid gap-4 border-t border-line py-8 md:grid-cols-[160px_1fr] md:gap-10 print:py-5">
+      <h2 className="text-sm font-semibold text-ink">{title}</h2>
+      <div>{children}</div>
+    </section>
+  );
+}
 
 export default function ResumePage() {
   return (
@@ -21,105 +31,101 @@ export default function ResumePage() {
         <Navbar />
       </div>
 
-      <section className="pt-32 pb-24 px-6 md:px-12 print:pt-0 print:pb-0" style={{ backgroundColor: "#EDEFF5" }}>
-        <div
+      <div className="bg-surface-alt px-3 pt-28 pb-section md:px-6 md:pt-32 print:bg-surface print:p-0">
+        <article
           id="resume-sheet"
-          className="max-w-3xl mx-auto p-8 md:p-12"
-          style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(18, 21, 28, 0.1)" }}
+          className="max-w-4xl mx-auto rounded-lg bg-surface p-7 ring-1 ring-line shadow-soft md:p-14
+                     print:rounded-none print:shadow-none print:ring-0"
         >
-          {/* Header */}
-          <div className="flex items-start justify-between gap-4 flex-wrap mb-8 pb-8" style={{ borderBottom: "1px solid #D1D5DB" }}>
+          <header className="flex flex-col gap-8 pb-10 md:flex-row md:items-end md:justify-between print:pb-6">
             <div>
-              <h1
-                className="text-3xl md:text-4xl"
-                style={{ fontFamily: "'Urbanist', sans-serif", fontWeight: 700, color: "#12151C", letterSpacing: "-0.02em" }}
-              >
+              <h1 className="text-4xl md:text-5xl font-bold leading-[1.05] tracking-[-0.03em] text-ink">
                 Rahadian Maulana
               </h1>
-              <p className="mt-2 text-base" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                Senior Product Designer · Fintech &amp; Digital Banking
-              </p>
+              <p className="mt-3 text-lg text-ink-2">Senior Product Designer · Fintech &amp; Digital Banking</p>
+
+              <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-[15px] text-ink-2">
+                <li>
+                  <a href="mailto:rahadianm22@gmail.com" className="text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-accent">
+                    rahadianm22@gmail.com
+                  </a>
+                </li>
+                <li>
+                  <a href="https://rahadianm22.my.id" className="text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-accent">
+                    rahadianm22.my.id
+                  </a>
+                </li>
+                <li>Jakarta, Indonesia</li>
+              </ul>
             </div>
-            <DownloadResumeButton />
-          </div>
 
-          {/* Contact */}
-          <div className="flex flex-wrap gap-x-6 gap-y-1 mb-10 text-sm" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-            <span>rahadianm22@gmail.com</span>
-            <span>rahadianm22.my.id</span>
-            <span>Jakarta, Indonesia</span>
-          </div>
+            <div className="no-print flex flex-wrap gap-2 md:shrink-0 md:flex-nowrap">
+              <DownloadResumeButton />
+              <a
+                href="mailto:rahadianm22@gmail.com"
+                className="group inline-flex items-center gap-2 min-h-12 px-6 rounded-full text-[15px] font-semibold
+                           text-ink ring-1 ring-line-strong no-underline transition duration-300 ease-out
+                           hover:bg-surface-alt active:scale-[0.98]"
+              >
+                Email me
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={2}
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </header>
 
-          {/* Profile */}
-          <div className="mb-10">
-            <h2 className="text-xs tracking-widest uppercase mb-3" style={sectionLabelStyle}>
-              Profile
-            </h2>
-            <p className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-              {profileSummary}
-            </p>
-          </div>
+          <ResumeRow title="Profile">
+            <p className="max-w-prose text-base leading-relaxed text-ink-2">{profileSummary}</p>
+          </ResumeRow>
 
-          {/* Experience: condensed timeline, full detail lives on /experience and the PDF */}
-          <div className="mb-10">
-            <h2 className="text-xs tracking-widest uppercase mb-4" style={sectionLabelStyle}>
-              Experience
-            </h2>
-            <div className="space-y-3">
+          {/* Condensed: the full case-by-case breakdown lives on /experience and in the PDF. */}
+          <ResumeRow title="Experience">
+            <ol className="space-y-5">
               {experiences.map((entry) => (
-                <div key={entry.docId} className="flex items-baseline justify-between flex-wrap gap-x-4 gap-y-0.5">
-                  <span className="text-sm font-semibold" style={{ fontFamily: "'Urbanist', sans-serif", color: "#12151C" }}>
-                    {entry.role} · {entry.company}
-                  </span>
-                  <span className="text-xs" style={{ fontFamily: "'Urbanist', sans-serif", color: "#6B7280" }}>
-                    {entry.period}
-                  </span>
-                </div>
+                <li key={entry.docId} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-0.5">
+                  <div>
+                    <p className="text-base font-semibold text-ink">{entry.role}</p>
+                    <p className="text-[15px] text-ink-2">{entry.company}</p>
+                  </div>
+                  <p className="text-sm text-ink-3 tabular-nums">{entry.period}</p>
+                </li>
               ))}
-            </div>
-            <p className="mt-4 text-xs" style={{ fontFamily: "'Inter', sans-serif", color: "#9AA1B1" }}>
-              Full case-by-case breakdown on the{" "}
-              <a href="/experience" style={{ color: "#2B4EFF", textDecoration: "underline" }}>
+            </ol>
+            <p className="no-print mt-6 text-sm text-ink-3">
+              Full breakdown per product on the{" "}
+              <Link href="/experience" className="text-accent underline underline-offset-4">
                 Experience page
-              </a>{" "}
-              or in the downloadable PDF above.
+              </Link>
+              , or in the PDF.
             </p>
-          </div>
+          </ResumeRow>
 
-          {/* Key Achievements */}
-          <div className="mb-10">
-            <h2 className="text-xs tracking-widest uppercase mb-4" style={sectionLabelStyle}>
-              Key Achievements
-            </h2>
-            <ul className="space-y-1.5">
-              {keyAchievements.map((achievement, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-2 text-sm leading-relaxed"
-                  style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}
-                >
-                  <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "#2B4EFF" }} />
+          <ResumeRow title="Key achievements">
+            <ul className="space-y-3">
+              {keyAchievements.map((achievement) => (
+                <li key={achievement} className="flex gap-3 text-base leading-relaxed text-ink-2">
+                  <span aria-hidden="true" className="mt-[0.7em] h-1 w-3 shrink-0 rounded-full bg-line-strong" />
                   {achievement}
                 </li>
               ))}
             </ul>
-          </div>
+          </ResumeRow>
 
-          {/* Skills */}
-          <div>
-            <h2 className="text-xs tracking-widest uppercase mb-3" style={sectionLabelStyle}>
-              Skills
-            </h2>
-            <div className="space-y-2">
+          <ResumeRow title="Skills">
+            <dl className="space-y-4">
               {skillGroups.map((group) => (
-                <p key={group.label} className="text-sm leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", color: "#3D4557" }}>
-                  <span style={{ fontWeight: 700, color: "#12151C" }}>{group.label}:</span> {group.items}
-                </p>
+                <div key={group.label}>
+                  <dt className="text-base font-semibold text-ink">{group.label}</dt>
+                  <dd className="mt-0.5 text-[15px] leading-relaxed text-ink-2">{group.items}</dd>
+                </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
+            </dl>
+          </ResumeRow>
+        </article>
+      </div>
 
       <div className="no-print">
         <Footer />

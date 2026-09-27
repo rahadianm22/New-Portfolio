@@ -1,181 +1,83 @@
-﻿"use client";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-import { useState, useEffect } from "react";
-
+/**
+ * Centred, type-led hero. No image: a soft wash of the canvas tint sits
+ * behind the headline so the first screen has depth without a picture,
+ * and one marker highlight points at the domain the whole page is about.
+ */
 export function Hero() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
   return (
-    <section
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
-      style={{ backgroundColor: "#FFFFFF" }}
-    >
-      {/* Blueprint grid background */}
+    <section className="relative isolate overflow-hidden bg-surface pt-32 pb-16 md:pt-36 md:pb-20">
+      {/* Background wash: one tint, radial, fading to the page white. */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(43, 78, 255, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(43, 78, 255, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)",
-        }}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[720px]
+                   bg-[radial-gradient(ellipse_60%_55%_at_50%_0%,var(--tint-blue),transparent_70%)]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-24 -z-10 h-72 w-[42rem] max-w-[90vw] -translate-x-1/2
+                   rounded-full bg-[radial-gradient(closest-side,rgba(43,78,255,0.10),transparent)] blur-2xl"
       />
 
-      {/* Registration marks at corners */}
-      <CornerMark position="top-left" />
-      <CornerMark position="top-right" />
-      <CornerMark position="bottom-left" />
-      <CornerMark position="bottom-right" />
-
       <div
-        className="relative z-10 max-w-6xl mx-auto w-full px-6 md:px-12 py-24 hero-stagger"
-        data-mounted={mounted ? "true" : "false"}
+        className="max-w-page mx-auto w-full px-6 md:px-12 flex flex-col items-center text-center hero-stagger"
       >
-        {/* Top meta row */}
-        <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between mb-16">
-          <span
-            className="text-xs tracking-widest uppercase"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "#6B7280",
-            }}
-          >
-            Product Designer
+        {/* Availability is real state, so it earns the one dot on the page's first screen. */}
+        <span className="inline-flex items-center gap-2 min-h-9 pl-3 pr-4 rounded-full bg-white/70 backdrop-blur ring-1 ring-line shadow-soft text-sm font-medium text-ink-2">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-status-live opacity-50 motion-safe:animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-status-live" />
           </span>
-          <span
-            className="flex items-center gap-2 text-xs tracking-widest uppercase"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "#6B7280",
-            }}
+          Product Designer, open to remote roles
+        </span>
+
+        {/* Sized so the headline sets in two lines on desktop (taste-skill hero rule). */}
+        <h1 className="mt-8 max-w-[32ch] text-[2.5rem] sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem] font-bold leading-[1.05] tracking-[-0.045em] text-ink [text-wrap:balance]">
+          Designing{" "}
+          <span className="relative whitespace-nowrap">
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-[-0.08em] bottom-[0.08em] -z-10 h-[0.34em] rounded-full bg-[#d3dcff]"
+            />
+            fintech products
+          </span>{" "}
+          across lending and digital banking
+        </h1>
+
+        <p className="mt-8 max-w-[36rem] text-lg md:text-xl leading-relaxed text-ink-2 [text-wrap:balance]">
+          5+ years designing regulated fintech products, from internal lending tools to consumer
+          credit cards, for Indonesia&apos;s largest banks.
+        </p>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/#work"
+            className="group inline-flex items-center gap-3 min-h-14 pl-7 pr-2 rounded-full text-[15px] font-semibold
+                       bg-accent text-on-accent no-underline shadow-[0_12px_28px_-12px_rgba(43,78,255,0.7)]
+                       transition duration-300 ease-out hover:bg-accent-hover active:scale-[0.98]"
           >
-            <span className="inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-            Open to remote roles · Jakarta (GMT+7)
-          </span>
-        </div>
+            View case studies
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-y-0.5">
+              <ArrowRight size={18} strokeWidth={2} className="rotate-90" />
+            </span>
+          </a>
 
-        {/* Single centered column layout */}
-        <div className="flex flex-col items-center text-center">
-          {/* Headline with dashed border */}
-          <div className="relative mb-10">
-            <div
-              className="relative inline-block"
-              style={{
-                border: "1.5px dashed rgba(43, 78, 255, 0.35)",
-                padding: "24px 28px",
-              }}
-            >
-              <span className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2" style={{ borderColor: "#2B4EFF" }} />
-              <span className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2" style={{ borderColor: "#2B4EFF" }} />
-
-              <h1
-                className="text-4xl md:text-6xl leading-[1.05]"
-                style={{
-                  fontFamily: "'Urbanist', sans-serif",
-                  fontWeight: 700,
-                  color: "#12151C",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Designing <span className="bg-[#2B4EFF] text-white px-2 py-0.5 rounded">
-    Fintech
-  </span> Products Across Lending and Digital Banking
-              </h1>
-            </div>
-          </div>
-
-          {/* Sub-headline */}
-          <p
-            className="text-lg md:text-xl max-w-xl mb-12 leading-relaxed"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "#3D4557",
-              fontWeight: 400,
-            }}
+          <a
+            href="mailto:rahadianm22@gmail.com"
+            className="group inline-flex items-center gap-2 min-h-14 px-7 rounded-full text-[15px] font-semibold
+                       text-ink bg-white/70 backdrop-blur ring-1 ring-line-strong no-underline transition duration-300 ease-out
+                       hover:bg-surface active:scale-[0.98]"
           >
-           5+ years designing regulated <span className="text-lg md:text-xl leading-relaxed" style={{ fontFamily: "'Urbanist', sans-serif",
-              color: "#2B4EFF",
-              fontWeight: 400, }}>fintech & banking products</span>, from internal lending tools to consumer credit card experiences, for Indonesia's largest banks.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="/case-studies"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#1937B3]"
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                fontWeight: 600,
-                backgroundColor: "#2B4EFF",
-                color: "#FFFFFF",
-                fontSize: "15px",
-              }}
-            >
-              View Case Studies{" "}
-              <span className="text-white transition-colors duration-200 group-hover:text-[#D6DFFF]">
-                →
-              </span>
-            </a>
-
-            <a
-              href="mailto:rahadianm22@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-200 hover:bg-[#EAEFFF]"
-              style={{
-                fontFamily: "'Urbanist', sans-serif",
-                fontWeight: 600,
-                backgroundColor: "transparent",
-                border: "1px solid #2B4EFF",
-                color: "#2B4EFF",
-                fontSize: "15px",
-              }}
-            >
-              Let&apos;s talk
-            </a>
-          </div>
-        </div>
-
-        {/* Bottom annotation */}
-        <div className="mt-20 flex items-center gap-3">
-          <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.15)" }} />
-          <span
-            className="text-xs tracking-widest uppercase"
-            style={{
-              fontFamily: "'Urbanist', sans-serif",
-              color: "#6B7280",
-              fontSize: "10px",
-            }}
-          >
-            DOC.00
-          </span>
-          <div className="h-px flex-1" style={{ backgroundColor: "rgba(43, 78, 255, 0.15)" }} />
+            Email me
+            <ArrowUpRight
+              size={16}
+              strokeWidth={2}
+              className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
         </div>
       </div>
     </section>
   );
-}
-
-function CornerMark({ position }: { position: "top-left" | "top-right" | "bottom-left" | "bottom-right" }) {
-  const baseClass = "absolute w-5 h-5";
-  const positionClass = {
-    "top-left": "top-6 left-6",
-    "top-right": "top-6 right-6",
-    "bottom-left": "bottom-6 left-6",
-    "bottom-right": "bottom-6 right-6",
-  }[position];
-
-  const borderStyle = {
-    "top-left": { borderTop: "2px solid rgba(43,78,255,0.3)", borderLeft: "2px solid rgba(43,78,255,0.3)" },
-    "top-right": { borderTop: "2px solid rgba(43,78,255,0.3)", borderRight: "2px solid rgba(43,78,255,0.3)" },
-    "bottom-left": { borderBottom: "2px solid rgba(43,78,255,0.3)", borderLeft: "2px solid rgba(43,78,255,0.3)" },
-    "bottom-right": { borderBottom: "2px solid rgba(43,78,255,0.3)", borderRight: "2px solid rgba(43,78,255,0.3)" },
-  }[position];
-
-  return <span className={`${baseClass} ${positionClass}`} style={borderStyle} />;
 }
