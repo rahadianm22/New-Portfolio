@@ -31,11 +31,21 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Rahadian Maulana Portfolio",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Rahadian Maulana, Senior Product Designer",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    images: ["/twitter-image"],
   },
 };
 
