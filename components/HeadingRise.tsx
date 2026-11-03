@@ -15,10 +15,7 @@ export function HeadingRise({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setSettled(true);
-      return;
-    }
+    // Reduced motion needs no branch: globals.css cuts every transition to ~0ms.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,15 +30,7 @@ export function HeadingRise({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div
-      ref={ref}
-      style={{
-        opacity: settled ? 1 : 0,
-        transform: settled ? "none" : "translate3d(0, 10px, 0)",
-        transition:
-          "opacity 420ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 120ms",
-      }}
-    >
+    <div ref={ref} className={settled ? "rise is-in" : "rise"}>
       {children}
     </div>
   );

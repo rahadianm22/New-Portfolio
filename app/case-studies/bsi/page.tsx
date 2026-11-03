@@ -13,13 +13,17 @@ import {
   StatGrid,
   Reflection,
   NextCase,
+  type ProcessStep,
 } from "@/components/case-study/Kit";
+import { PinPadDemo } from "@/components/case-study/PinPadDemo";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "BSI: PIN Confirmation Security · Rahadian Maulana",
   description:
     "Catching a tap-feedback pattern that leaked a customer's PIN through color alone, validating it with internal BSI users, and redesigning the confirmation screen so the number pad gives away nothing.",
-};
+  path: "/case-studies/bsi",
+});
 
 const QUICK_FACTS = [
   { label: "Role", value: "Product Designer" },
@@ -39,18 +43,33 @@ const PROBLEMS = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ProcessStep[] = [
   {
+    phase: "Spot",
     title: "A pattern that looked right everywhere else",
     body: "Noticed it during routine design QA on the confirmation flow: the same tap-feedback used app-wide, applied without a second thought to a screen where it wasn't just cosmetic.",
+    output: "The leak, found on the Konfirmasi PIN screen",
+    href: "#problem",
   },
   {
+    phase: "Test",
     title: "Testing the concern before pitching a fix",
     body: "Ran A/B testing on the PIN screen with internal BSI users before proposing anything. The shoulder-surfing worry came up unprompted, in their own words: public places, PIN entry, someone standing close.",
+    output: "The risk, named by users before anyone suggested it",
   },
   {
+    phase: "Pitch",
     title: "Bringing data to my lead, not just an instinct",
     body: "Took the test results to my lead along with a proposal: strip color feedback off the number pad entirely, and move all visible state to the dot row above it.",
+    output: "A proposal: no color on the pad, all state on the dots",
+    href: "#solution",
+  },
+  {
+    phase: "Ship",
+    title: "One change, nothing else touched",
+    body: "The fix shipped as the smallest change that closes the leak: the number pad stops changing color when pressed. Everything else on the screen stayed exactly as it was, so there was nothing new for customers to learn.",
+    output: "The neutral keypad, live in BSI Mobile",
+    href: "#solution",
   },
 ];
 
@@ -103,7 +122,6 @@ export default function BsiCaseStudy() {
       <Navbar />
 
       <CaseHero
-        eyebrow="BSI · PIN Confirmation Security"
         title="BSI: PIN Confirmation Security."
         intro={
           <>
@@ -113,6 +131,7 @@ export default function BsiCaseStudy() {
           </>
         }
         facts={QUICK_FACTS}
+        chapters={["Context", "The problem", "Process", "The solution", "Outcome"]}
         cover={<Cover />}
       />
 
@@ -147,6 +166,9 @@ export default function BsiCaseStudy() {
           in one at a time as the PIN is entered, and that&apos;s the only thing on screen that changes
           state.
         </Body>
+        <div className="mt-10">
+          <PinPadDemo />
+        </div>
         <div className="mt-10">
           <Figure
             image={AFTER}

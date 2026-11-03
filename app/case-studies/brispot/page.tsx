@@ -10,18 +10,23 @@ import {
   ProblemGrid,
   ProcessSteps,
   Figure,
-  PhoneFrame,
+  DesktopFrame,
   BeforeAfter,
+  ScreenFlow,
+  FigureStack,
   StatGrid,
   Reflection,
   NextCase,
+  type ProcessStep,
 } from "@/components/case-study/Kit";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "BRISPOT: Internal Lending Platform · Rahadian Maulana",
   description:
     "Cutting Briguna loan approval from ~3 weeks to 3-5 days by redesigning the hand-offs between Initiator, Approver, and Credit Admin Officer at Bank Rakyat Indonesia.",
-};
+  path: "/case-studies/brispot",
+});
 
 const QUICK_FACTS = [
   { label: "Role", value: "Senior Product Designer" },
@@ -41,22 +46,32 @@ const PROBLEMS = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ProcessStep[] = [
   {
+    phase: "Scope",
     title: "A full redesign from day one, not a patch",
     body: "The brief from day one: rebuild the old, cluttered BRISPOT interface into something fast enough to speed up how Briguna applications moved. No scope pivot, the direction stayed the same from kickoff to ship.",
+    output: "A brief for a rebuild, not a reskin",
   },
   {
+    phase: "Map",
     title: "Mapping judgment vs. administration",
     body: "Mapped the full workflow across all three roles plus the two automated systems feeding into it (ARCI, Early Warning System), separating hand-offs that were purely administrative from ones that needed a human decision. Every screen was designed around that split.",
+    output: "A role-by-role map of every hand-off",
+    href: "#problem",
   },
   {
-    title: "Shipping through a live infrastructure migration",
-    body: "This ran on infrastructure mid-migration: Checker & Signer were moving from legacy to React, access was moving onto SSO. Worked closely with engineering so design decisions never conflicted with what was actually shippable.",
-  },
-  {
+    phase: "Size",
     title: "Grounded in real numbers from the people who'd know",
     body: "Kept asking the product owner and business analysts one question: how many applications move through this every day? The answer, 1,000 to 3,000 per branch, kept the redesign honest. Not a workflow to redesign on instinct alone.",
+    output: "A volume target: 1,000 to 3,000 applications a day per branch",
+  },
+  {
+    phase: "Ship",
+    title: "Shipping through a live infrastructure migration",
+    body: "This ran on infrastructure mid-migration: Checker & Signer were moving from legacy to React, access was moving onto SSO. Worked closely with engineering so design decisions never conflicted with what was actually shippable.",
+    output: "Analisa Data Kredit, rebuilt as nine tabs in the order the work is done",
+    href: "#solution",
   },
 ];
 
@@ -69,10 +84,104 @@ const BEFORE = {
 
 const AFTER = {
   src: "/case-studies/brispot/biaya-biaya-after.png",
-  alt: "Redesigned Verifikasi Biaya-biaya tab on mobile: the same fees grouped into read-only cards the Credit Admin Officer confirms instead of re-entering",
+  alt: "Redesigned Verifikasi Biaya-biaya tab on BRISPOT web: the same fees grouped into read-only cards the Credit Admin Officer confirms instead of re-entering",
   width: 265,
   height: 497,
 };
+
+const OLD_TAB = { width: 718 };
+const oldTab = (file: string, height: number, alt: string) => ({
+  src: `/case-studies/brispot/screens/${file}.png`,
+  alt,
+  height,
+  ...OLD_TAB,
+});
+
+/** Three tabs of the old mobile Analisa Kredit, at full length: the length is the finding. */
+const OLD_MOBILE = [
+  {
+    image: oldTab("old-data-kredit", 2559, "Old Analisa Kredit, Data Kredit tab: loan data, the active loan portfolio, and a column of credit fields to fill in"),
+    label: "Data Kredit",
+    note: "Loan, portfolio and credit fields, all typed in.",
+  },
+  {
+    image: oldTab("old-data-prescoring", 3539, "Old Analisa Kredit, Data Prescoring tab: pension date, income, plafond, rates and exposure fields, then a declaration and an analysis note"),
+    label: "Data Prescoring",
+    note: "The longest tab: sixteen fields, a declaration, a free-text analysis.",
+  },
+  {
+    image: oldTab("old-asuransi", 2432, "Old Analisa Kredit, Asuransi tab: life and credit insurance, each with its own Cek Premi button, then the digital-sign contract details"),
+    label: "Asuransi",
+    note: "Two insurance checks and the contract, before Selanjutnya.",
+  },
+];
+
+const cao = (file: string, width: number, height: number, alt: string) => ({
+  src: `/case-studies/brispot/screens/${file}.png`,
+  alt,
+  width,
+  height,
+});
+
+const CAO_PANELS = [
+  {
+    image: cao("cao-prescoring", 2074, 1048, "Data Prescoring on desktop: twenty values from pension date to credit due date, laid out in three columns"),
+    caption: "Data Prescoring on the Credit Admin Officer's desktop: twenty values to read before a decision.",
+  },
+  {
+    image: cao("cao-portfolio", 2074, 850, "Portofolio Pinjaman Aktif: a table of active Briguna loans with account number, product, outstanding, realisation date and a note on which ones the RM chose to settle"),
+    caption: "The applicant's active loans, with the RM's note on which ones get settled by the new loan.",
+  },
+  {
+    image: cao("cao-agunan", 2074, 846, "Analisa Agunan Tambahan: collateral type, certificate number, owner, building type, location and the NJOP check"),
+    caption: "Additional collateral: the certificate, the owner, the location and the tax-value check.",
+  },
+];
+
+/** The nine tabs the Credit Admin Officer's analysis was split into, read off the redesign board. */
+const CAO_TABS = [
+  "Informasi Rekening",
+  "Detail Data Pribadi",
+  "Pengajuan & Prescreening",
+  "Analisa Kredit",
+  "Verifikasi Biaya-biaya",
+  "Dokumen Kredit",
+  "Analisa & Catatan",
+  "Dokumen Akad",
+  "Data Pencairan",
+];
+
+function TabMap() {
+  return (
+    <figure>
+      <div className="rounded-lg bg-tint-blue p-5 md:p-10">
+        <ol className="grid gap-2 sm:grid-cols-3">
+          {CAO_TABS.map((tab, i) => (
+            <li
+              key={tab}
+              className={`flex items-center gap-3 rounded-md px-4 py-3.5 text-[15px] font-semibold ${
+                tab === "Verifikasi Biaya-biaya" ? "bg-accent text-on-accent" : "bg-surface text-ink ring-1 ring-line"
+              }`}
+            >
+              <span
+                className={`flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-xs font-bold tabular-nums ${
+                  tab === "Verifikasi Biaya-biaya" ? "bg-white/20" : "bg-surface-alt text-ink-2"
+                }`}
+              >
+                {i + 1}
+              </span>
+              {tab}
+            </li>
+          ))}
+        </ol>
+      </div>
+      <figcaption className="mt-4 max-w-[70ch] px-1 text-sm leading-relaxed text-ink-3">
+        Analisa Data Kredit, the Credit Admin Officer&apos;s analysis, split into nine tabs in the order the
+        work is done. Verifikasi Biaya-biaya, highlighted, is the screen in the before and after above.
+      </figcaption>
+    </figure>
+  );
+}
 
 /** Hero cover: the same screen before and after, readable at a glance. */
 function Cover() {
@@ -96,8 +205,8 @@ function Cover() {
         <ArrowRight size={24} strokeWidth={2} />
       </span>
 
-      <div className="absolute right-[6%] top-24 w-[42%] max-w-[280px] sm:w-[34%] md:right-[12%] md:top-20 md:w-[24%]">
-        <PhoneFrame image={AFTER} priority />
+      <div className="absolute right-[6%] top-24 w-[36%] max-w-[265px] rotate-1 sm:w-[30%] md:right-[12%] md:top-24 md:w-[24%]">
+        <DesktopFrame image={AFTER} priority sizes="265px" />
       </div>
     </div>
   );
@@ -109,7 +218,6 @@ export default function BrispotCaseStudy() {
       <Navbar />
 
       <CaseHero
-        eyebrow="BRI · Internal Lending Platform"
         title="BRISPOT: Internal Lending Platform."
         intro={
           <>
@@ -120,6 +228,7 @@ export default function BrispotCaseStudy() {
           </>
         }
         facts={QUICK_FACTS}
+        chapters={["Context", "The problem", "Process", "The solution", "Outcome"]}
         cover={<Cover />}
       />
 
@@ -134,7 +243,19 @@ export default function BrispotCaseStudy() {
 
       <CaseSection label="The problem" title="Three hand-offs, and context lost at every one." tone="alt">
         <ProblemGrid items={PROBLEMS} />
-        <div className="mt-6">
+        <div className="mt-10">
+          <ScreenFlow
+            label="Old BRISPOT Analisa Kredit tabs on mobile"
+            screens={OLD_MOBILE}
+            minWidth={200}
+            maxWidth={250}
+            caption="Three of the old mobile Analisa Kredit tabs, at their real length. Open any of them full size and scroll."
+          />
+        </div>
+        <div className="mt-10">
+          <FigureStack items={CAO_PANELS} />
+        </div>
+        <div className="mt-10">
           <Figure
             image={{
               src: "/case-studies/brispot/analisa-kredit-form-flow.png",
@@ -171,13 +292,16 @@ export default function BrispotCaseStudy() {
           <BeforeAfter
             before={BEFORE}
             after={AFTER}
-            afterIsPhone
             beforeCaption="Biaya-biaya on the old desktop flow. Every fee sat open and editable, stacked into one long scroll the Credit Admin Officer had to fill in by hand."
-            afterCaption="Verifikasi Biaya-biaya in the redesign. Same fees, grouped into cards to confirm instead of re-enter, one tab in a set of nine."
+            afterCaption="Verifikasi Biaya-biaya in the redesign, on BRISPOT web. Same fees, grouped into cards to confirm instead of re-enter, one tab in a set of nine."
           />
         </div>
 
-        <div className="mt-6">
+        <div className="mt-10">
+          <TabMap />
+        </div>
+
+        <div className="mt-10">
           <Figure
             image={{
               src: "/case-studies/brispot/redesign-flows-overview.png",

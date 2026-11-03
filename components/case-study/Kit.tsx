@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, TriangleAlert, Check, Quote, Lock } from "lucide-react";
-import { SectionLabel } from "@/components/SectionLabel";
+import { ArrowLeft, ArrowRight, ArrowDown, TriangleAlert, Check, Quote, Lock } from "lucide-react";
 import { ShotCard, NoteCard } from "@/components/ShotCard";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import { Zoomable } from "./Zoomable";
@@ -14,24 +13,33 @@ import { Zoomable } from "./Zoomable";
 
 type Img = { src: string; alt: string; width: number; height: number };
 
+/** The anchor a section is reachable at: "The problem" becomes #problem. */
+export const chapterId = (label: string) =>
+  label
+    .toLowerCase()
+    .replace(/^the /, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
 /* ------------------------------------------------------------------ */
 /* Hero                                                                 */
 /* ------------------------------------------------------------------ */
 
 export function CaseHero({
-  eyebrow,
   title,
   intro,
   facts,
   actions,
   cover,
+  chapters,
 }: {
-  eyebrow: string;
   title: string;
   intro: React.ReactNode;
   facts: { label: string; value: string }[];
   actions?: React.ReactNode;
   cover?: React.ReactNode;
+  /** Section labels in page order, shown as the route the story takes. */
+  chapters?: string[];
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-surface pt-28 md:pt-32">
@@ -51,8 +59,7 @@ export function CaseHero({
           All case studies
         </Link>
 
-        <p className="mt-10 text-[15px] font-medium text-accent">{eyebrow}</p>
-        <h1 className="mt-4 max-w-[20ch] text-[2.5rem] sm:text-5xl lg:text-[4rem] font-bold leading-[1.02] tracking-[-0.04em] text-ink [text-wrap:balance]">
+        <h1 className="mt-10 max-w-[20ch] text-[2.5rem] sm:text-5xl lg:text-[4rem] font-bold leading-[1.02] tracking-[-0.04em] text-ink [text-wrap:balance]">
           {title}
         </h1>
         <p className="mt-6 max-w-[60ch] text-lg md:text-xl leading-relaxed text-ink-2">{intro}</p>
@@ -67,6 +74,8 @@ export function CaseHero({
             </div>
           ))}
         </dl>
+
+        {chapters && <Chapters items={chapters} />}
       </div>
 
       {cover && <div className="max-w-page mx-auto mt-12 px-3 md:mt-16 md:px-6">{cover}</div>}
@@ -75,10 +84,42 @@ export function CaseHero({
   );
 }
 
+/** The case study's route, in order, each stop a link to its section. */
+function Chapters({ items }: { items: string[] }) {
+  return (
+    <nav aria-label="On this page" className="mt-8">
+      <ol className="flex flex-wrap items-center gap-x-1 gap-y-2">
+        {items.map((label, i) => (
+          <li key={label} className="flex items-center gap-1">
+            <a
+              href={`#${chapterId(label)}`}
+              className="inline-flex min-h-11 items-center gap-2 rounded-full pl-1.5 pr-3.5 text-sm font-medium text-ink-2
+                         no-underline transition-colors hover:bg-surface-alt hover:text-ink"
+            >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface-alt text-xs font-bold tabular-nums text-ink">
+                {i + 1}
+              </span>
+              {label.replace(/^The (.)/, (_, c: string) => c.toUpperCase())}
+            </a>
+            {i < items.length - 1 && <ArrowRight size={14} strokeWidth={1.75} aria-hidden="true" className="text-ink-3" />}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Section scaffolding                                                  */
 /* ------------------------------------------------------------------ */
 
+/**
+ * `label` names the section ("Process", "Outcome"). When the section has its
+ * own title, the label is not printed above it (that would be an eyebrow);
+ * it names the section for assistive tech instead, and the title stands on
+ * a ruled line. Without a title, the label is the heading. The label also
+ * gives the section its anchor, so chapters and process steps can link to it.
+ */
 export function CaseSection({
   label,
   title,
@@ -91,15 +132,17 @@ export function CaseSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`${tone === "alt" ? "bg-surface-alt" : "bg-surface"} py-section`}>
+    <section
+      id={chapterId(label)}
+      aria-label={title ? label : undefined}
+      className={`${tone === "alt" ? "bg-surface-alt" : "bg-surface"} scroll-mt-20 py-section`}
+    >
       <div className="max-w-page mx-auto px-6 md:px-12">
-        <SectionLabel label={label} />
-        {title && (
-          <h2 className="mt-tight max-w-[22ch] text-3xl md:text-[2.75rem] font-bold leading-[1.08] tracking-[-0.03em] text-ink [text-wrap:balance]">
-            {title}
-          </h2>
-        )}
-        <div className={title ? "mt-10" : "mt-8"}>{children}</div>
+        <div aria-hidden="true" className="h-px bg-line-strong" />
+        <h2 className="mt-tight max-w-[22ch] text-3xl md:text-[2.75rem] font-bold leading-[1.08] tracking-[-0.03em] text-ink [text-wrap:balance]">
+          {title ?? label}
+        </h2>
+        <div className="mt-10">{children}</div>
       </div>
     </section>
   );
@@ -134,32 +177,79 @@ export function ProblemGrid({ items }: { items: { label: string; body: string }[
   );
 }
 
-export function ProcessSteps({ items }: { items: { title: string; body: string }[] }) {
+export type ProcessStep = {
+  /** One or two words for the phase, shown in the overview strip. */
+  phase: string;
+  title: string;
+  body: string;
+  /** What the step produced, in a line. */
+  output?: string;
+  /** Where on the page that output can be seen, e.g. "#solution". */
+  href?: string;
+};
+
+/**
+ * The work in the order it happened: an overview strip of phases, then a
+ * timeline where every step names what it produced and links to it.
+ */
+export function ProcessSteps({ items }: { items: ProcessStep[] }) {
+  const last = items.length - 1;
   return (
-    <ol className="grid gap-4 md:grid-cols-2">
-      {items.map((item, i) => (
-        <li
-          key={item.title}
-          className="group relative overflow-hidden rounded-lg bg-surface p-7 md:p-9 ring-1 ring-line shadow-soft
-                     transition duration-300 ease-out hover:-translate-y-1"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute -right-2 -top-6 text-[7rem] font-bold leading-none tracking-[-0.06em] text-tint-blue
-                       transition-colors duration-300 group-hover:text-[#d3dcff]"
-          >
-            {i + 1}
-          </span>
-          <div className="relative">
-            <span className="inline-flex h-9 min-w-9 items-center justify-center rounded-full bg-accent px-3 text-sm font-bold text-on-accent">
-              {i + 1}
+    <div>
+      <ol aria-label="Phases" className="flex flex-wrap items-center gap-x-2 gap-y-3">
+        {items.map((item, i) => (
+          <li key={item.phase} className="flex items-center gap-2">
+            <span className="inline-flex min-h-10 items-center gap-2 rounded-full bg-tint-blue pl-1.5 pr-4 text-sm font-semibold text-ink">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-bold tabular-nums text-on-accent">
+                {i + 1}
+              </span>
+              {item.phase}
             </span>
-            <h3 className="mt-6 max-w-[26ch] text-xl font-bold leading-snug tracking-[-0.01em] text-ink">{item.title}</h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-ink-2">{item.body}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
+            {i < last && <ArrowRight size={16} strokeWidth={1.75} aria-hidden="true" className="text-ink-3" />}
+          </li>
+        ))}
+      </ol>
+
+      <ol className="mt-12">
+        {items.map((item, i) => (
+          <li key={item.title} className="grid grid-cols-[2.25rem_1fr] gap-x-5 md:grid-cols-[2.75rem_1fr] md:gap-x-8">
+            <div className="flex flex-col items-center">
+              <span
+                aria-hidden="true"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold tabular-nums text-on-accent md:h-11 md:w-11 md:text-base"
+              >
+                {i + 1}
+              </span>
+              {i < last && <span aria-hidden="true" className="my-2 w-px flex-1 bg-line-strong" />}
+            </div>
+            <div className={i < last ? "pb-12 md:pb-14" : ""}>
+              <h3 className="pt-1 text-xl md:pt-1.5 md:text-2xl font-bold leading-snug tracking-[-0.01em] text-ink">
+                <span className="sr-only">{`Step ${i + 1}, ${item.phase}: `}</span>
+                {item.title}
+              </h3>
+              <p className="mt-3 max-w-[62ch] text-base md:text-[17px] leading-relaxed text-ink-2">{item.body}</p>
+              {item.output && (
+                <div className="mt-5 flex max-w-[62ch] flex-wrap items-center gap-x-4 gap-y-1 rounded-md bg-surface-alt px-4 py-2.5 ring-1 ring-line md:px-5">
+                  <p className="py-1 text-[15px] leading-snug text-ink">
+                    <span className="text-ink-3">Output: </span>
+                    <span className="font-semibold">{item.output}</span>
+                  </p>
+                  {item.href && (
+                    <a
+                      href={item.href}
+                      className="ml-auto inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold text-accent no-underline hover:underline"
+                    >
+                      See it
+                      <ArrowDown size={15} strokeWidth={2} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
@@ -272,6 +362,104 @@ export function PhoneFrame({
   );
 }
 
+/** A desktop screenshot in a plain window: a hairline edge, no drawn browser chrome. */
+export function DesktopFrame({ image, priority = false, sizes = "340px" }: { image: Img; priority?: boolean; sizes?: string }) {
+  return (
+    <div className="overflow-hidden rounded-md bg-surface shadow-lift ring-1 ring-line">
+      <Image src={image.src} alt={image.alt} width={image.width} height={image.height} priority={priority} sizes={sizes} className="h-auto w-full" />
+    </div>
+  );
+}
+
+export type Screen = { image: Img; label: string; note?: string };
+
+/**
+ * Final screens in the order a person meets them, each one big enough to
+ * read and zoomable to full size. A few screens fill the width; a longer
+ * flow scrolls sideways (snap on touch, arrow keys once focused).
+ */
+export function ScreenFlow({
+  screens,
+  caption,
+  label,
+  numbered = true,
+  minWidth = 190,
+  maxWidth,
+  priority = false,
+}: {
+  screens: Screen[];
+  caption?: React.ReactNode;
+  /** Names the scrolling region for assistive tech. */
+  label: string;
+  numbered?: boolean;
+  /** Narrowest a screen may get before the row scrolls instead of shrinking. */
+  minWidth?: number;
+  /** Widest a screen may get, for very long screens that would otherwise run a page tall. */
+  maxWidth?: number;
+  priority?: boolean;
+}) {
+  return (
+    <figure>
+      <div className="rounded-lg bg-tint-blue py-6 md:py-10">
+        <ol
+          tabIndex={0}
+          aria-label={label}
+          style={{
+            gridAutoColumns: `minmax(${minWidth}px, ${maxWidth ? `${maxWidth}px` : "1fr"})`,
+            justifyContent: maxWidth ? "center" : undefined,
+          }}
+          className="grid snap-x snap-mandatory scroll-px-4 grid-flow-col gap-4 overflow-x-auto px-4 pb-2 outline-none
+                     focus-visible:ring-2 focus-visible:ring-accent md:scroll-px-10 md:gap-6 md:px-10"
+        >
+          {screens.map((s, i) => (
+            <li key={s.image.src} className="flex snap-start flex-col">
+              <Zoomable {...s.image} badge="icon">
+                <div className="overflow-hidden rounded-[1.4rem] bg-surface shadow-lift ring-1 ring-line">
+                  <Image
+                    src={s.image.src}
+                    alt={s.image.alt}
+                    width={s.image.width}
+                    height={s.image.height}
+                    priority={priority && i < 3}
+                    sizes={`${Math.max(minWidth, 260)}px`}
+                    className="h-auto w-full"
+                  />
+                </div>
+              </Zoomable>
+              <div className="mt-4 flex gap-2.5 px-1">
+                {numbered && (
+                  <span className="flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full bg-surface px-1.5 text-xs font-bold text-ink tabular-nums">
+                    {i + 1}
+                  </span>
+                )}
+                <div>
+                  <p className="text-[15px] font-semibold leading-snug text-ink">{s.label}</p>
+                  {s.note && <p className="mt-1 text-sm leading-relaxed text-ink-2">{s.note}</p>}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      {caption && <figcaption className="mt-4 max-w-[70ch] px-1 text-sm leading-relaxed text-ink-3">{caption}</figcaption>}
+    </figure>
+  );
+}
+
+/**
+ * Several wide figures stacked under one heading, each with its own short
+ * caption. For flows that were drawn as one board per path.
+ */
+export function FigureStack({ items }: { items: { image: Img; caption: React.ReactNode }[] }) {
+  return (
+    <div className="grid gap-10">
+      {items.map((item) => (
+        <Figure key={item.image.src} image={item.image} caption={item.caption} canvasClassName="md:p-8" />
+      ))}
+    </div>
+  );
+}
+
 /** Before and after side by side, each on its own canvas, each zoomable. */
 export function BeforeAfter({
   before,
@@ -308,13 +496,7 @@ export function BeforeAfter({
             After
           </span>
           <Zoomable {...after} className={afterIsPhone ? "max-w-[260px]" : "max-w-[340px]"}>
-            {afterIsPhone ? (
-              <PhoneFrame image={after} />
-            ) : (
-              <div className="overflow-hidden rounded-md bg-surface shadow-lift ring-1 ring-line">
-                <Image src={after.src} alt={after.alt} width={after.width} height={after.height} sizes="340px" className="h-auto w-full" />
-              </div>
-            )}
+            {afterIsPhone ? <PhoneFrame image={after} /> : <DesktopFrame image={after} />}
           </Zoomable>
         </div>
         <figcaption className="mt-4 px-1 text-sm leading-relaxed text-ink-3">{afterCaption}</figcaption>
@@ -395,8 +577,6 @@ export function Reflection({ children }: { children: React.ReactNode }) {
     <section className="bg-surface pb-section">
       <div className="max-w-page mx-auto px-3 md:px-6">
         <div className="on-accent relative overflow-hidden rounded-lg bg-accent px-6 py-14 md:px-16 md:py-20">
-          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/15 blur-3xl" />
-          <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-[#1e3acc]/60 blur-3xl" />
           <div className="relative max-w-4xl">
             <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-on-accent ring-1 ring-white/25">
               <Quote size={20} strokeWidth={1.75} />

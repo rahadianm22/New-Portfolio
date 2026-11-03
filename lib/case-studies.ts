@@ -7,6 +7,7 @@
  */
 export type CaseStudy = {
   id: string;
+  /** Who it was for: the client, or that it was personal. Shown as a caption, never above a heading. */
   eyebrow: string;
   title: string;
   summary: string;
@@ -28,7 +29,7 @@ export type CaseStudy = {
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: "brispot",
-    eyebrow: "BRI · Internal Lending Platform",
+    eyebrow: "Bank Rakyat Indonesia",
     title: "BRISPOT: Internal Lending Platform",
     summary:
       "Redesigning BRISPOT's Briguna approval workflow to close the hand-off gaps between Initiator, Approver, and Credit Admin Officer, for a workflow now handling 1,000 to 3,000 applications a day per branch.",
@@ -49,10 +50,10 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Mapping two QRIS payment paths (Open Amount and Closed Amount) into one connected flow, with PIN confirmation, optional tipping, and every failure state a scan can hit.",
     tags: ["Payment Flow", "Edge-case Design", "Mobile Banking"],
     href: "/case-studies/qris-domestik",
-    cover: "/case-studies/qris-domestik/bsi-mobile-qris-merchants.jpg",
-    coverAlt: "BSI Mobile open on its QRIS scanner, surrounded by merchant QRIS codes for a coffee shop, bike store, petrol station, minimarket and gadget store",
+    cover: "/case-studies/qris-domestik/qris-cover.png",
+    coverAlt: "Three screens from the QRIS Domestik flow: the BYOND home with its QRIS shortcut, the QRIS scanner over a merchant code, and the receipt with transaction details",
     coverWidth: 1600,
-    coverHeight: 1500,
+    coverHeight: 1250,
     featured: true,
   },
   {
@@ -72,11 +73,41 @@ export const CASE_STUDIES: CaseStudy[] = [
     featured: true,
   },
   {
+    id: "youtube-download",
+    eyebrow: "Personal project",
+    title: "YouTube: Redesigning the Download Feature",
+    summary:
+      "An independent case study on YouTube's offline download feature: validating commuter frustrations through interviews, then cutting deletion and reordering down from double-digit taps to a few.",
+    tags: ["Personal Project", "Mobile UX", "User Research"],
+    href: "/case-studies/youtube-download",
+    cover: "/case-studies/youtube-download/cover.png",
+    coverAlt: "The redesigned YouTube Downloads list: slide a video left to reveal a delete button, then tap it",
+    coverWidth: 996,
+    coverHeight: 830,
+    outcome: { value: "10 → 4 taps", label: "to reorder the queue" },
+    featured: true,
+  },
+  {
+    id: "card-delivery-status",
+    eyebrow: "Digital bank, under NDA",
+    title: "Card Delivery Status: Closing a Visibility Gap",
+    summary:
+      "Benchmarking three banks that already shipped card delivery tracking, then designing the state most of them still handle badly: the delivery that fails.",
+    tags: ["Benchmarking", "Edge-case Design", "Mobile Banking"],
+    href: "/case-studies/card-delivery-status",
+    cover: "/case-studies/card-delivery-status/cover.png",
+    coverAlt: "Two unbranded card delivery trackers: one ending in Delivered with Activate card, one ending in Delivery failed with a free reorder",
+    coverWidth: 1600,
+    coverHeight: 931,
+    coverNote: "Redrawn without client branding; the shipped screens stay private until launch.",
+    featured: true,
+  },
+  {
     id: "natuna-digilab",
-    eyebrow: "Design System · Personal",
+    eyebrow: "Personal project",
     title: "Natuna Digilab: Unbranded Design System",
     summary:
-      "A token-first, unbranded design system built from the recurring weak points I kept hitting across four banking teams. 1,600+ components, five token categories, built on its own terms.",
+      "A token-first, unbranded design system built from the recurring weak points I kept hitting across four banking teams. 46 components ready in Figma, eight color ramps, and React code following.",
     tags: ["Design Tokens", "Figma Variables", "Component Architecture"],
     href: "/case-studies/natuna-digilab",
     cover: "/case-studies/natuna-digilab/figma-community-listing.png",
@@ -84,26 +115,6 @@ export const CASE_STUDIES: CaseStudy[] = [
     coverWidth: 2146,
     coverHeight: 1654,
     featured: true,
-  },
-  {
-    id: "youtube-download",
-    eyebrow: "YouTube · Personal Project",
-    title: "YouTube: Redesigning the Download Feature",
-    summary:
-      "An independent case study on YouTube's offline download feature: validating commuter frustrations through interviews, then cutting deletion and reordering down from double-digit taps to a few.",
-    tags: ["Personal Project", "Mobile UX", "User Research"],
-    href: "/case-studies/youtube-download",
-    coverNote: "Screens live inside the case study.",
-  },
-  {
-    id: "card-delivery-status",
-    eyebrow: "Digital Banking · Under NDA",
-    title: "Card Delivery Status: Closing a Visibility Gap",
-    summary:
-      "Benchmarking three banks that already shipped card delivery tracking, then designing the state most of them still handle badly: the delivery that fails.",
-    tags: ["Benchmarking", "Edge-case Design", "Mobile Banking"],
-    href: "/case-studies/card-delivery-status",
-    coverNote: "Client and screens withheld until launch.",
   },
 ];
 

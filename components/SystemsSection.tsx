@@ -12,23 +12,23 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     title: "Design System Architecture",
-    description: "Token-based systems that align design and engineering.",
+    description: "Variable-token systems for BRI, BSI and BTN that front-end teams build against directly.",
     deliverables: ["Design Tokens & Variables", "Component Library", "Governance & Version Control"],
-    tools: ["Figma", "Tokens Studio", "Confluence"],
+    tools: ["Figma", "Variable Tokens", "Confluence"],
     icon: Blocks,
   },
   {
     title: "Complex Systems & Dashboard Design",
-    description: "Turning dense, multi-role workflows into intuitive experiences.",
+    description: "Multi-role approval flows and data-heavy dashboards, from BRISPOT lending to CIMB's ATM network.",
     deliverables: ["UX Audits & Flow Mapping", "Data-Dense Dashboards", "Usability Testing"],
-    tools: ["FigJam", "Maze", "Jira"],
+    tools: ["FigJam", "Jira", "Notion"],
     icon: Workflow,
   },
   {
     title: "Design to Code Bridge",
-    description: "Dev-friendly handoffs that cut implementation friction.",
+    description: "Specs engineers can build from, and design QA that catches drift before release.",
     deliverables: ["Clean Token Exports", "Dev Mode Annotations", "Design System QA"],
-    tools: ["Figma Dev Mode", "Claude Code", "Storybook"],
+    tools: ["Figma Dev Mode", "Claude Code"],
     icon: CodeXml,
   },
 ];
@@ -40,7 +40,6 @@ const services: ServiceItem[] = [
  */
 export function SystemsSection() {
   const [lead, ...supporting] = services;
-  const LeadIcon = lead.icon;
 
   return (
     <section id="systems" className="bg-surface py-section">
@@ -52,15 +51,7 @@ export function SystemsSection() {
             className="on-accent relative overflow-hidden lg:col-span-5 lg:row-span-2 flex flex-col rounded-lg p-7 md:p-10
                        bg-accent text-on-accent"
           >
-            {/* Soft light inside the accent card, same hue, no second colour. */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/15 blur-3xl"
-            />
-            <span className="relative flex h-14 w-14 items-center justify-center rounded-md bg-white/15 ring-1 ring-white/25">
-              <LeadIcon size={26} strokeWidth={1.75} />
-            </span>
-            <h3 className="relative mt-10 text-3xl md:text-4xl font-bold leading-[1.1] tracking-[-0.02em]">
+            <h3 className="relative text-3xl md:text-4xl font-bold leading-[1.1] tracking-[-0.02em]">
               {lead.title}
             </h3>
             <p className="relative mt-4 max-w-[36ch] text-lg leading-relaxed text-white/85">{lead.description}</p>

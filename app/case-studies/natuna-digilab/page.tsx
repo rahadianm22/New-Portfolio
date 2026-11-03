@@ -14,21 +14,24 @@ import {
   StatGrid,
   Reflection,
   NextCase,
+  type ProcessStep,
 } from "@/components/case-study/Kit";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Building an Unbranded Design System From the Cracks Four Banks Left Behind · Natuna Digilab · Rahadian Maulana",
+export const metadata = pageMetadata({
+  title: "Natuna Digilab: An Unbranded Design System · Rahadian Maulana",
   description:
-    "A token-first, unbranded design system built from the recurring weak points found across four banking teams. 1,600+ components, five token categories, v1.0 and still building.",
-};
+    "A token-first, unbranded design system built from the recurring weak points found across four banking teams. 46 components ready in Figma, eight color ramps, v1.1 and in beta.",
+  path: "/case-studies/natuna-digilab",
+});
 
-const FIGMA_URL = "https://www.figma.com/community/file/1660946308636540525";
+const FIGMA_URL = "https://natunadigilab.vercel.app/";
 
 const QUICK_FACTS = [
   { label: "Role", value: "Creator & Maintainer" },
-  { label: "Status", value: "v1.0, still building" },
-  { label: "Scale", value: "1,600+ components" },
-  { label: "Distribution", value: "Figma Community" },
+  { label: "Status", value: "v1.1, site in beta" },
+  { label: "Scale", value: "46 components in Figma" },
+  { label: "Distribution", value: "Figma Community, React" },
 ];
 
 const PROBLEMS = [
@@ -46,22 +49,31 @@ const PROBLEMS = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ProcessStep[] = [
   {
-    title: "Token-first, not component-first",
-    body: "Built from five token categories before any component existed: Color (--color-*), Typography (--text-*), Effect (--shadow-*), Number (--spacing-*), and Icons (on Phosphor as a neutral base). Rebrand the foundation, and only the token values change, not every component.",
-  },
-  {
-    title: "Unbranded by design, not by default",
-    body: "A deliberate choice, not a limitation. Neutral on purpose, so it works as a starting point for anyone instead of one brand identity. Most public design systems do the opposite: double as a showcase for their creator's brand.",
-  },
-  {
-    title: "Dev Mode annotations & clean token exports",
-    body: "Both prove the foundation isn't just built to look good in Figma: there's real attention to how a developer consumes it at handoff.",
-  },
-  {
+    phase: "Iterate",
     title: "Trial and error, before it was a system",
     body: "The earliest version was trial and error. There was a pull to copy proven systems (Wise, Gojek's Asphalt/Aloha), but Natuna stayed anchored to its own principle: unbranded, ours. Every component went through repeated iteration before being called “done.”",
+    output: "A first version, rebuilt until it held",
+  },
+  {
+    phase: "Tokens",
+    title: "Token-first, not component-first",
+    body: "Built from five token categories before any component existed: Color (--color-*), Typography (--text-*), Effect (--shadow-*), Number (--spacing-*), and Icons (on Phosphor as a neutral base). Rebrand the foundation, and only the token values change, not every component.",
+    output: "Five token categories, eight color ramps",
+  },
+  {
+    phase: "Unbranded",
+    title: "Unbranded by design, not by default",
+    body: "A deliberate choice, not a limitation. Neutral on purpose, so it works as a starting point for anyone instead of one brand identity. Most public design systems do the opposite: double as a showcase for their creator's brand.",
+    output: "A neutral base anyone can rebrand",
+  },
+  {
+    phase: "Handoff",
+    title: "Dev Mode annotations & clean token exports",
+    body: "Both prove the foundation isn't just built to look good in Figma: there's real attention to how a developer consumes it at handoff.",
+    output: "46 components, annotated for developers",
+    href: "#solution",
   },
 ];
 
@@ -89,7 +101,6 @@ export default function NatunaDigilabCaseStudy() {
       <Navbar />
 
       <CaseHero
-        eyebrow="Design System · Personal Project"
         title="An unbranded design system, built from the cracks four banks left behind."
         intro={
           <>
@@ -99,6 +110,7 @@ export default function NatunaDigilabCaseStudy() {
           </>
         }
         facts={QUICK_FACTS}
+        chapters={["Context", "The problem", "Process", "The solution", "Outcome"]}
         actions={
           <a
             href={FIGMA_URL}
@@ -107,7 +119,7 @@ export default function NatunaDigilabCaseStudy() {
             className="group inline-flex items-center gap-3 min-h-14 pl-7 pr-2 rounded-full text-[15px] font-semibold
                        bg-accent text-on-accent no-underline transition duration-300 ease-out hover:bg-accent-hover active:scale-[0.98]"
           >
-            Open on Figma Community
+            Visit Natuna Digilab
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <ArrowUpRight size={18} strokeWidth={2} />
             </span>
@@ -163,8 +175,9 @@ export default function NatunaDigilabCaseStudy() {
 
       <CaseSection label="The solution" title="Two components that prove the depth." tone="alt">
         <Body>
-          Natuna Digilab is at v1.0 and still building. 1,600+ components, full variable support across
-          five token categories, distributed on Figma Community so others can use it too.
+          Natuna Digilab is at v1.1, with its site in beta. All 46 components are ready in Figma, the
+          source of truth, and React code follows component by component. It is distributed on Figma
+          Community so others can use it too.
         </Body>
         <div className="mt-10">
           <DecisionGrid items={COMPONENTS} />
@@ -206,7 +219,7 @@ export default function NatunaDigilabCaseStudy() {
               </div>
             </div>
             <span className="mt-4 inline-flex items-center gap-1.5 px-1 text-sm font-semibold text-accent">
-              Live listing on Figma Community
+              Visit Natuna Digilab (listing on Figma Community shown)
               <ArrowUpRight size={16} strokeWidth={2} className="transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </a>

@@ -4,12 +4,14 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ShotCard, NoteCard } from "@/components/ShotCard";
 import { CASE_STUDIES } from "@/lib/case-studies";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Case Studies · Rahadian Maulana",
   description:
     "In-depth case studies from Rahadian Maulana: the problems, process, and outcomes behind fintech products and design systems.",
-};
+  path: "/case-studies",
+});
 
 const withCover = CASE_STUDIES.filter((s) => s.cover);
 const withoutCover = CASE_STUDIES.filter((s) => !s.cover);

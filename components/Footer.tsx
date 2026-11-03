@@ -18,7 +18,7 @@ const ELSEWHERE = [
   { label: "WhatsApp", href: "https://wa.me/6285782760827" },
 ];
 
-const CURRENTLY = ["Open to remote roles", "Usually replies within a day", "Based in Jakarta, Indonesia"];
+const CURRENTLY = ["Open to remote roles", "Based in Jakarta, Indonesia"];
 
 const linkClass =
   "group inline-flex items-center gap-1.5 min-h-11 text-[15px] font-medium text-ink no-underline transition-colors hover:text-accent";

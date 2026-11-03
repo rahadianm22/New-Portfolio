@@ -33,8 +33,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BRISPOT",
         name: "BRISPOT: Internal Lending Platform",
-        category: "BRIGUNA & KPR",
-        status: "Live · On Deployment & Active Development",
+        category: "Briguna and KPR",
+        status: "Live, in active development",
         statusLive: true,
         description:
           "BRI's internal lending platform for Briguna (personal loan) and KPR (mortgage) applications, covering the approval workflow end to end plus Whitelist management, credit administration, and digital agreement signing.",
@@ -51,8 +51,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BRImo & QITA",
         name: "BRImo (Super App) & QITA: Credit Card, Lifestyle, Biller",
-        category: "CONSUMER-FACING · SUPER APP",
-        status: "Live · On Deployment & Active Development",
+        category: "Consumer-facing super app",
+        status: "Live, in active development",
         statusLive: true,
         description:
           "Consumer-facing modules across the BRImo and QITA super apps: Credit Card and Installment Conversion, the physical debit card issuance journey, Biller payments, and Lifestyle features.",
@@ -68,8 +68,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BUMDes BRI",
         name: "BUMDes BRI: Digital Platform",
-        category: "INTERNAL PLATFORM",
-        status: "Completed · Transitioned to Agen BRILink",
+        category: "Internal platform",
+        status: "Completed, transitioned to Agen BRILink",
         statusLive: false,
         description:
           "A digital platform for BUMDes operational workflows, financial reporting, and educational resources, built before the team shifted focus to the BRILink Agent segment.",
@@ -92,8 +92,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BYOND",
         name: "BYOND by BSI: Mobile Banking App",
-        category: "MOBILE BANKING · POST-MERGER REBRAND",
-        status: "Live · Released on Google Play & App Store",
+        category: "Mobile banking, post-merger rebrand",
+        status: "Live on Google Play and App Store",
         statusLive: true,
         description:
           "BSI's mobile banking app after the three-bank merger: consolidating the design system and rebuilding the enterprise component library around the new brand.",
@@ -120,8 +120,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BTN Conventional",
         name: "BTN Conventional (bale by BTN)",
-        category: "DIGITAL BANKING · RETAIL SERVICES",
-        status: "Live · Released on Google Play & App Store",
+        category: "Digital banking, retail services",
+        status: "Live on Google Play and App Store",
         statusLive: true,
         description:
           "BTN's retail banking app across mobile and web, covering daily transactions, account management, and the rest of the core banking services.",
@@ -136,8 +136,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "BTN Syariah",
         name: "BTN Syariah",
-        category: "MOBILE BANKING · SHARIA SERVICES",
-        status: "Unreleased Concept",
+        category: "Mobile banking, sharia services",
+        status: "Unreleased concept",
         statusLive: false,
         description:
           "A concept for adapting BTN's core banking services to BTN Syariah's own brand and Sharia-compliant requirements.",
@@ -152,8 +152,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "CIMB ATM",
         name: "CIMB ATM",
-        category: "INTERNAL PLATFORM · WEB DASHBOARD",
-        status: "Live · Deployed Internally",
+        category: "Internal platform, web dashboard",
+        status: "Live, deployed internally",
         statusLive: true,
         description:
           "CIMB's internal web dashboard for monitoring the ATM network: operations, system maintenance, and transaction analytics.",
@@ -178,8 +178,8 @@ export const experiences: ExperienceEntry[] = [
       {
         tabLabel: "Malline",
         name: "Website E-commerce Malline",
-        category: "E-COMMERCE PLATFORM · B2C",
-        status: "No Longer Available",
+        category: "E-commerce platform, B2C",
+        status: "No longer available",
         statusLive: false,
         description:
           "I founded a startup with my small team from campus, focused on e-commerce. I created the UI design concept for the home, category, product, cart, and order pages. I also assisted the front-end team in developing the website.",

@@ -12,13 +12,15 @@ import { useEffect, useRef } from "react";
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
+  const ringInnerRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     const finePointer = window.matchMedia("(pointer: fine)").matches;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!finePointer || reduceMotion || !dot || !ring) return;
+    const ringInner = ringInnerRef.current;
+    if (!finePointer || reduceMotion || !dot || !ring || !ringInner) return;
 
     const root = document.documentElement;
     root.classList.add("has-custom-cursor");
@@ -63,7 +65,7 @@ export function CustomCursor() {
 
       // An element can ask the ring to become a labelled bubble, e.g. "See more" on work tiles.
       const label = target?.closest<HTMLElement>("[data-cursor-label]")?.dataset.cursorLabel ?? "";
-      if (ring.textContent !== label) ring.textContent = label;
+      if (ringInner.textContent !== label) ringInner.textContent = label;
       ring.dataset.label = String(label !== "");
       dot.dataset.label = ring.dataset.label;
       if (!frame) frame = requestAnimationFrame(follow);
@@ -90,7 +92,9 @@ export function CustomCursor() {
 
   return (
     <>
-      <div ref={ringRef} aria-hidden="true" className="cursor-ring" />
+      <div ref={ringRef} aria-hidden="true" className="cursor-ring">
+        <span ref={ringInnerRef} className="cursor-ring-inner" />
+      </div>
       <div ref={dotRef} aria-hidden="true" className="cursor-dot" />
     </>
   );

@@ -4,11 +4,13 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { DownloadResumeButton } from "@/components/DownloadResumeButton";
 import { experiences, profileSummary, keyAchievements, skillGroups } from "@/lib/experience-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Resume · Rahadian Maulana",
   description: "Resume summary and downloadable PDF for Rahadian Maulana, Senior Product Designer.",
-};
+  path: "/resume",
+});
 
 /**
  * One sheet on the alternate surface. Each block is a row: its name in a

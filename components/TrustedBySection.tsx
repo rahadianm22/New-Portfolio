@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MarqueeToggle } from "./MarqueeToggle";
 
 interface Client {
   name: string;
@@ -50,14 +51,15 @@ export function TrustedBySection() {
   return (
     <section aria-labelledby="shipped-heading" className="bg-surface">
       <div className="max-w-page mx-auto px-6 md:px-12">
-        <div className="border-t border-line pt-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 border-t border-line pt-10">
           <h2 id="shipped-heading" className="text-center text-[15px] font-medium text-ink-3">
             Products I&apos;ve shipped across fintech and banking
           </h2>
+          <MarqueeToggle target="shipped-marquee" />
         </div>
       </div>
 
-      <div className="marquee mt-8">
+      <div id="shipped-marquee" className="marquee mt-8">
         <div className="marquee-track">
           <LogoGroup />
           <LogoGroup copy />

@@ -24,10 +24,7 @@ export function SectionLabel({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDrawn(true);
-      return;
-    }
+    // Reduced motion needs no branch: globals.css cuts every transition to ~0ms.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

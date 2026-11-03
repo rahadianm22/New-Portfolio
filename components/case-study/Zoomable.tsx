@@ -17,6 +17,7 @@ export function Zoomable({
   height,
   children,
   className = "",
+  badge = "pill",
 }: {
   src: string;
   alt: string;
@@ -24,6 +25,8 @@ export function Zoomable({
   height: number;
   children: React.ReactNode;
   className?: string;
+  /** "icon" keeps the hint small and in a corner, for screens too narrow to cover with a pill. */
+  badge?: "pill" | "icon";
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -40,14 +43,24 @@ export function Zoomable({
         className={`group relative block w-full cursor-zoom-in text-left ${className}`}
       >
         {children}
-        <span
-          aria-hidden="true"
-          className="absolute bottom-4 right-4 flex h-11 items-center gap-2 rounded-full bg-white/90 pl-3.5 pr-4 text-sm font-semibold text-ink
-                     shadow-soft ring-1 ring-line backdrop-blur transition duration-300 ease-out group-hover:-translate-y-0.5"
-        >
-          <Maximize2 size={15} strokeWidth={2} />
-          Zoom
-        </span>
+        {badge === "icon" ? (
+          <span
+            aria-hidden="true"
+            className="absolute right-2.5 top-2.5 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-ink
+                       shadow-soft ring-1 ring-line backdrop-blur transition duration-300 ease-out group-hover:-translate-y-0.5"
+          >
+            <Maximize2 size={14} strokeWidth={2} />
+          </span>
+        ) : (
+          <span
+            aria-hidden="true"
+            className="absolute bottom-4 right-4 flex h-11 items-center gap-2 rounded-full bg-white/90 pl-3.5 pr-4 text-sm font-semibold text-ink
+                       shadow-soft ring-1 ring-line backdrop-blur transition duration-300 ease-out group-hover:-translate-y-0.5"
+          >
+            <Maximize2 size={15} strokeWidth={2} />
+            Zoom
+          </span>
+        )}
       </button>
 
       <dialog

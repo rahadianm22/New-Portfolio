@@ -1,13 +1,3 @@
-import {
-  Package,
-  Printer,
-  Handshake,
-  Truck,
-  CircleCheck,
-  CircleX,
-  RotateCcw,
-  type LucideIcon,
-} from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
@@ -20,13 +10,17 @@ import {
   Callout,
   Reflection,
   NextCase,
+  type ProcessStep,
 } from "@/components/case-study/Kit";
+import { Tracker, DeliveryExplorer } from "@/components/case-study/DeliveryTracker";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Card Delivery Status: Closing a Visibility Gap · Rahadian Maulana",
   description:
     "Benchmarking how digital banks communicate physical card delivery, then designing the status tracking, including what happens when the delivery fails. Client and product details withheld under NDA.",
-};
+  path: "/case-studies/card-delivery-status",
+});
 
 const QUICK_FACTS = [
   { label: "Role", value: "Senior Product Designer" },
@@ -46,96 +40,35 @@ const PROBLEMS = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ProcessStep[] = [
   {
+    phase: "Benchmark",
     title: "Benchmarking three banks that already had it",
     body: "I studied how Jago, blu by BCA Digital, and Mandiri each handled card delivery, focused on three questions: how many stages they expose, how they notify at each one, and what they do when delivery fails. All three answered differently, and that's what made the trade-offs visible instead of guessed at.",
+    output: "Three answers to the same three questions",
   },
   {
+    phase: "Derive",
     title: "Deriving the stages instead of inheriting them",
     body: "The status stages weren't handed to me. I built the sequence from the benchmarking, aiming for enough steps that the wait feels accounted for and few enough that it doesn't read as noise. Then I checked each one against a state the backend could actually report.",
+    output: "A stage sequence where every stage is a state the backend reports",
+    href: "#structure",
   },
   {
+    phase: "Edge case",
     title: "Designing the failure state as a real state",
     body: "When delivery fails, the backend returns the card to the bank and deactivates it. I designed that as a first-class state, not an error message: say plainly what happened, say the old card is deactivated for security, and put the free reorder directly in that same view.",
+    output: "A failed ending with the free reorder in the same view",
+    href: "#structure",
+  },
+  {
+    phase: "Hand off",
+    title: "Handed off, waiting on launch",
+    body: "The sequence and both endings went to the team as one flow. Until it launches, the screens stay private, so the tracker on this page is redrawn without client branding.",
+    output: "The full state sequence, ready to build",
+    href: "#outcome",
   },
 ];
-
-type Stage = { icon: LucideIcon; label: string; detail: string };
-
-const STAGES: Stage[] = [
-  { icon: Package, label: "Card being prepared", detail: "Request confirmed, card queued for production" },
-  { icon: Printer, label: "Card being printed", detail: "Physical card produced at the bank" },
-  { icon: Handshake, label: "Handed to courier", detail: "Waiting for pickup" },
-  { icon: Truck, label: "In transit", detail: "Courier and tracking number surfaced in-app" },
-];
-
-/**
- * The state sequence redrawn as an unbranded tracker. It shows the
- * structure the case study describes, not the client's actual screens,
- * and the caption says so.
- */
-function Tracker({ outcome }: { outcome: "delivered" | "failed" }) {
-  const failed = outcome === "failed";
-  return (
-    <div className="rounded-[2.4rem] bg-ink p-2 shadow-lift">
-      <div className="rounded-[1.9rem] bg-surface px-5 pb-6 pt-8">
-        <p className="text-center text-sm font-semibold text-ink">Card delivery</p>
-
-        <ol className="mt-6">
-          {STAGES.map(({ icon: Icon, label, detail }) => (
-            <li key={label} className="flex gap-3">
-              <div className="flex flex-col items-center">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-tint-blue text-accent">
-                  <Icon size={15} strokeWidth={2} />
-                </span>
-                <span className="my-1 w-px flex-1 bg-line-strong" />
-              </div>
-              <div className="pb-4">
-                <p className="text-[13px] font-semibold leading-tight text-ink">{label}</p>
-                <p className="mt-0.5 text-xs leading-snug text-ink-3">{detail}</p>
-              </div>
-            </li>
-          ))}
-          <li className="flex gap-3">
-            <span
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-                failed ? "bg-status-warn-bg text-status-warn" : "bg-accent text-on-accent"
-              }`}
-            >
-              {failed ? <CircleX size={16} strokeWidth={2} /> : <CircleCheck size={16} strokeWidth={2} />}
-            </span>
-            <div>
-              <p className={`text-[13px] font-semibold leading-tight ${failed ? "text-status-warn" : "text-ink"}`}>
-                {failed ? "Delivery failed" : "Delivered"}
-              </p>
-              <p className="mt-0.5 text-xs leading-snug text-ink-3">
-                {failed
-                  ? "Card returned to the bank. Your old card is deactivated for security."
-                  : "Card received, ready to activate"}
-              </p>
-            </div>
-          </li>
-        </ol>
-
-        <div
-          className={`mt-6 flex h-11 items-center justify-center gap-2 rounded-full text-[13px] font-semibold ${
-            failed ? "bg-accent text-on-accent" : "bg-surface-alt text-ink"
-          }`}
-        >
-          {failed ? (
-            <>
-              <RotateCcw size={14} strokeWidth={2} />
-              Reorder card, free
-            </>
-          ) : (
-            "Activate card"
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function Cover() {
   return (
@@ -174,7 +107,6 @@ export default function CardDeliveryStatusCaseStudy() {
       <Navbar />
 
       <CaseHero
-        eyebrow="Digital Banking · Under NDA"
         title="Card Delivery Status: Closing a Visibility Gap."
         intro={
           <>
@@ -185,6 +117,7 @@ export default function CardDeliveryStatusCaseStudy() {
           </>
         }
         facts={QUICK_FACTS}
+        chapters={["Context", "The problem", "Process", "The structure", "Outcome"]}
         cover={<Cover />}
       />
 
@@ -192,7 +125,7 @@ export default function CardDeliveryStatusCaseStudy() {
         <div className="max-w-page mx-auto px-6 md:px-12">
           <Callout title="Under NDA">
             This feature hasn&apos;t launched publicly, so the client, product name, and interface are
-            withheld. The tracker above is a redrawn structure, not the shipped UI. I&apos;m happy to
+            withheld. The trackers on this page are a redrawn structure, not the shipped UI. I&apos;m happy to
             walk through the actual work in an interview.
           </Callout>
         </div>
@@ -220,9 +153,11 @@ export default function CardDeliveryStatusCaseStudy() {
           exactly where people lost confidence the card was even moving. From there the path forks. Most
           cards resolve into a plain &ldquo;delivered.&rdquo; When one doesn&apos;t, that fork is a real
           state too: the failed delivery is stated plainly, with why the old card is now deactivated and
-          the free reorder right there instead of a call to support. Both endings are shown side by side
-          at the top of this page.
+          the free reorder right there instead of a call to support. Step through every state below.
         </Body>
+        <div className="mt-10">
+          <DeliveryExplorer />
+        </div>
       </CaseSection>
 
       <CaseSection label="Outcome" title="Designed, handed off, waiting on launch.">

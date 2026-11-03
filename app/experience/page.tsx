@@ -2,11 +2,13 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { experiences } from "@/lib/experience-data";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Experience · Rahadian Maulana",
   description: "Full work experience and case studies from Rahadian Maulana.",
-};
+  path: "/experience",
+});
 
 export default function ExperiencePage() {
   return (
@@ -26,11 +28,6 @@ export default function ExperiencePage() {
             Back to Homepage
           </Link>
 
-          <span
-            className="block text-xs mb-3"
-            style={{ color: "var(--accent)" }}
-          >Full Archive
-          </span>
           <h1
             className="text-4xl md:text-5xl"
             style={{ fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}
@@ -53,18 +50,11 @@ export default function ExperiencePage() {
               <div className="px-6 md:px-10 pt-8 pb-6" style={{ borderBottom: "1px solid var(--line)" }}>
                 <div className="flex items-center gap-3 mb-3">
                   <span
-                    className="text-sm"
-                    style={{ color: "var(--accent)", fontWeight: 600 }}
-                  >
-                    {entry.docId}
-                  </span>
-                  <span
                     className="text-xs px-2 py-0.5"
                     style={{
                       color: "var(--status-warn)",
                       backgroundColor: "var(--status-warn-bg)",
-                      border: "1px solid var(--line)",
-                      fontSize: "10px" }}
+                      border: "1px solid var(--line)" }}
                   >
                     {entry.duration}
                   </span>
@@ -76,18 +66,17 @@ export default function ExperiencePage() {
                   {entry.company}
                 </h2>
                 <p className="text-sm mb-4" style={{ color: "var(--ink-3)", fontWeight: 500 }}>
-                  {entry.role} · {entry.period}
+                  {entry.role}, {entry.period}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {entry.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2 py-1 tracking-wide uppercase"
+                      className="text-xs px-2 py-1"
                       style={{
                         color: "var(--ink-3)",
                         backgroundColor: "var(--surface-alt)",
-                        border: "1px solid var(--line)",
-                        fontSize: "10px" }}
+                        border: "1px solid var(--line)" }}
                     >
                       {tag}
                     </span>
@@ -108,19 +97,15 @@ export default function ExperiencePage() {
                           {product.name}
                         </h3>
                         <span
-                          className="flex items-center gap-1.5 text-xs"
+                          className="text-xs font-medium"
                           style={{ color: product.statusLive ? "var(--status-live)" : "var(--ink-3)" }}
                         >
-                          <span
-                            className="w-1.5 h-1.5 rounded-full"
-                            style={{ backgroundColor: product.statusLive ? "var(--status-live)" : "var(--ink-3)" }}
-                          />
                           {product.status}
                         </span>
                       </div>
                       <span
-                        className="block text-xs mb-3"
-                        style={{ color: "var(--accent)" }}
+                        className="block text-sm mb-3"
+                        style={{ color: "var(--ink-3)" }}
                       >
                         {product.category}
                       </span>
@@ -134,7 +119,7 @@ export default function ExperiencePage() {
                             className="flex items-start gap-3 text-sm leading-relaxed"
                             style={{ color: "var(--ink-2)" }}
                           >
-                            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--accent)" }} />
+                            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--ink-3)" }} />
                             {c}
                           </li>
                         ))}

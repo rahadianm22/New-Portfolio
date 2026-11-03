@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
 
 /** Labels match the heading of the section each one lands on. */
 const NAV_LINKS = [
@@ -23,10 +23,7 @@ function useActiveSection(enabled: boolean) {
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!enabled) {
-      setActive(null);
-      return;
-    }
+    if (!enabled) return;
     const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
       (el): el is HTMLElement => el !== null
     );
@@ -42,7 +39,7 @@ function useActiveSection(enabled: boolean) {
     return () => observer.disconnect();
   }, [enabled]);
 
-  return active;
+  return enabled ? active : null;
 }
 
 /**
@@ -78,12 +75,13 @@ export function Navbar() {
   }, [mobileOpen]);
 
   return (
-    <nav className="fixed inset-x-0 top-3 md:top-4 z-50 px-3 md:px-6">
+    <>
+    <nav aria-label="Main" className="fixed inset-x-0 top-3 md:top-4 z-50 px-3 md:px-6">
       <div
         className="max-w-page mx-auto flex h-16 items-center justify-between gap-4 rounded-full pl-3 pr-2
                    bg-white/80 backdrop-blur-xl ring-1 ring-line shadow-soft"
       >
-        <a
+        <Link
           href="/"
           className="flex items-center gap-2.5 min-h-11 rounded-full pl-1 pr-3 no-underline transition-opacity hover:opacity-70"
         >
@@ -97,7 +95,7 @@ export function Navbar() {
             className="rounded-full"
           />
           <span className="text-[15px] font-semibold text-ink">Rahadian Maulana</span>
-        </a>
+        </Link>
 
         <div className="hidden xl:flex items-center gap-1">
           {NAV_LINKS.map((item) => {
@@ -121,7 +119,7 @@ export function Navbar() {
           <Link
             href="/resume"
             aria-current={onResume ? "page" : undefined}
-            className={`hidden sm:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold no-underline
+            className={`hidden lg:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold no-underline
                         ring-1 transition duration-300 ease-out active:scale-[0.98]
                         ${onResume ? "bg-ink text-surface ring-ink" : "text-ink ring-line-strong hover:bg-surface-alt"}`}
           >
@@ -131,15 +129,26 @@ export function Navbar() {
 
           <a
             href="mailto:rahadianm22@gmail.com"
+            className="hidden md:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold
+                       text-ink ring-1 ring-line-strong no-underline transition duration-300 ease-out
+                       hover:bg-surface-alt active:scale-[0.98]"
+          >
+            Email me
+            <ArrowUpRight size={16} strokeWidth={2} />
+          </a>
+
+          {/* The work is what a reviewer came for, so it is the one filled button. */}
+          <Link
+            href={onHome ? "#work" : "/case-studies"}
             className="group hidden sm:inline-flex items-center gap-2 min-h-12 pl-5 pr-1.5 rounded-full text-sm font-semibold
                        bg-accent text-on-accent no-underline transition duration-300 ease-out
                        hover:bg-accent-hover active:scale-[0.98]"
           >
-            Email me
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-px">
-              <ArrowUpRight size={16} strokeWidth={2} />
+            Case studies
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15 transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+              <ArrowRight size={16} strokeWidth={2} />
             </span>
-          </a>
+          </Link>
 
           {/* 48x48 so the only way into navigation on a phone is actually tappable. */}
           <button
@@ -182,7 +191,7 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
-          <div className="sm:hidden mt-2 grid grid-cols-2 gap-2">
+          <div className="lg:hidden mt-2 grid grid-cols-2 gap-2">
             <Link
               href="/resume"
               onClick={() => setMobileOpen(false)}
@@ -206,5 +215,8 @@ export function Navbar() {
         </div>
       </div>
     </nav>
+    {/* Target of the skip link in app/layout.tsx: the first thing after the navigation. */}
+    <div id="content" tabIndex={-1} className="outline-none" />
+    </>
   );
 }

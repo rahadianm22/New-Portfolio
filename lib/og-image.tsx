@@ -117,6 +117,7 @@ export async function renderOgImage() {
         </div>
 
         <img
+          alt=""
           src={brispot}
           width={400}
           height={439}

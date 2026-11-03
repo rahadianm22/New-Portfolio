@@ -9,15 +9,20 @@ import {
   ProblemGrid,
   ProcessSteps,
   Comparison,
+  Figure,
+  FigureStack,
   Reflection,
   NextCase,
+  type ProcessStep,
 } from "@/components/case-study/Kit";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "YouTube: Redesigning the Download Feature · Rahadian Maulana",
   description:
     "An independent case study on YouTube's offline download feature: validating commuter frustrations through interviews, then redesigning deletion and reordering to cut the steps down.",
-};
+  path: "/case-studies/youtube-download",
+});
 
 const MEDIUM_URL = "https://medium.com/@Rahadianm22/case-study-redesigning-feature-of-youtube-download-3f4d7e63a8e0";
 
@@ -39,24 +44,90 @@ const PROBLEMS = [
   },
 ];
 
-const PROCESS = [
+const PROCESS: ProcessStep[] = [
   {
+    phase: "Validate",
     title: "Checking it wasn't just me",
     body: "Before designing anything, I ran interviews and a survey with other people who download YouTube videos for offline viewing. The same five complaints came up independently. This wasn't one commuter's pet peeve.",
+    output: "Five complaints, raised independently",
+    href: "#problem",
   },
   {
-    title: "Mapping the real cost in steps",
-    body: "Traced the existing flows screen by screen instead of going on feel: deleting a video took 3 taps across 4 screens, reordering took 10 taps across 11. That gap between what it should take and what it actually took became the design target.",
-  },
-  {
+    phase: "Persona",
     title: "Designing around Haikal",
     body: "Built the redesign around Haikal, a 27-year-old commuter persona pulled from the interviews: an hour each way, tutorial and gaming content, wants videos ready to go without fighting the app to manage them.",
+    output: "An empathy map and a persona board",
+    href: "#persona",
+  },
+  {
+    phase: "Measure",
+    title: "Mapping the real cost in steps",
+    body: "Traced the existing flows screen by screen instead of going on feel: deleting a video took 3 taps across 4 screens, reordering took 10 taps across 11. That gap between what it should take and what it actually took became the design target.",
+    output: "A tap count for every job: 3 to delete, 10 to reorder",
+    href: "#current-flow",
+  },
+  {
+    phase: "Design",
+    title: "Three gestures, on the list itself",
+    body: "Each complaint got a gesture on the Downloads list instead of a trip to another screen: swipe to delete one video, select to clear several, drag to reorder. All three are built from the same video row, in a normal and an edit state.",
+    output: "Swipe, select and drag flows, and the components behind them",
+    href: "#solution",
   },
 ];
 
 const TAPS = [
-  { task: "Delete a video", before: "3", beforeDetail: "taps · 4 screens", after: "2", afterDetail: "taps · 1 screen (swipe)" },
-  { task: "Reorder the queue", before: "10", beforeDetail: "taps · 11 screens", after: "4", afterDetail: "taps · 3 screens" },
+  { task: "Delete a video", before: "3", beforeDetail: "taps, 4 screens", after: "2", afterDetail: "taps, 1 screen (swipe)" },
+  { task: "Reorder the queue", before: "10", beforeDetail: "taps, 11 screens", after: "4", afterDetail: "taps, 3 screens" },
+  { task: "Delete several videos", before: "3×", beforeDetail: "taps for every single video", after: "5", afterDetail: "taps, 4 screens, any number of videos" },
+];
+
+const yt = (file: string, width: number, height: number, alt: string) => ({
+  src: `/case-studies/youtube-download/${file}.png`,
+  alt,
+  width,
+  height,
+});
+
+const OLD_FLOWS = [
+  {
+    image: yt("old-delete", 2124, 976, "Current YouTube flow for deleting a download: open Downloads, tap the menu on a video, tap Delete from downloads, back to the list"),
+    caption: "Today, deleting one download: 3 taps across 4 screens, and the same again for every other video.",
+  },
+  {
+    image: yt("old-reorder-1", 2219, 1188, "Current flow to bring a video to the top of downloads, part one: open Downloads, delete the video from its menu, then tap search"),
+    caption: "Moving a video to the front of the queue, part one: the list cannot be reordered, so the video is deleted first, then searched for.",
+  },
+  {
+    image: yt("old-reorder-2", 2207, 1412, "Part two: search for the channel, open it, scroll its videos until the one you want, open its menu"),
+    caption: "Part two: search for the channel, open its Videos tab and scroll until the video turns up.",
+  },
+  {
+    image: yt("old-reorder-3", 1561, 1208, "Part three: Download video from its menu, tap View on the toast, and it is back at the top of Downloads"),
+    caption: "Part three: download it again, and only then is it first. 10 taps across 11 screens in total.",
+  },
+];
+
+const NEW_FLOWS = [
+  {
+    image: yt("new-swipe", 996, 984, "Redesigned Downloads: slide a video to the left to reveal a delete button, then tap it"),
+    caption: "Swipe to delete: slide a video left, tap the bin. 2 taps, on the list itself.",
+  },
+  {
+    image: yt("new-select-1", 2212, 1188, "Redesigned multi-select: open the menu, choose Select from the drawer, tick several videos, open the menu on top and tap Delete"),
+    caption: "Select to delete, part one: Select from the drawer, tick as many videos as you like, Delete from the menu on top.",
+  },
+  {
+    image: yt("new-select-2", 996, 1207, "Tap Done on top and the selected videos are gone from the list"),
+    caption: "Part two: Done, and every selected video is gone. 5 taps across 4 screens, however many videos.",
+  },
+  {
+    image: yt("new-reorder-1", 1696, 1188, "Redesigned reorder: open the menu, tap Edit, hold a video card and drop it at the top"),
+    caption: "Drag to reorder, part one: Edit from the menu, then hold a video and drop it where it belongs.",
+  },
+  {
+    image: yt("new-reorder-2", 996, 1207, "Tap Done and the video sits at the top of the downloads list"),
+    caption: "Part two: Done, and the video is first. 4 taps across 3 screens, down from 10 across 11.",
+  },
 ];
 
 function Persona() {
@@ -95,7 +166,6 @@ export default function YoutubeDownloadCaseStudy() {
       <Navbar />
 
       <CaseHero
-        eyebrow="Personal Project · Mobile UX"
         title="YouTube: Redesigning the Download Feature."
         intro={
           <>
@@ -106,6 +176,7 @@ export default function YoutubeDownloadCaseStudy() {
           </>
         }
         facts={QUICK_FACTS}
+        chapters={["Context", "The problem", "Process", "Current flow", "The solution", "Outcome"]}
         actions={
           <a
             href={MEDIUM_URL}
@@ -121,9 +192,11 @@ export default function YoutubeDownloadCaseStudy() {
           </a>
         }
         cover={
-          <Comparison
-            rows={TAPS}
-            note="Step counts mapped directly from the existing flow against the redesigned one, not estimates."
+          <Figure
+            image={NEW_FLOWS[0].image}
+            priority
+            canvasClassName="md:px-24 lg:px-56"
+            caption="Swipe to delete, from the redesign: slide a download left and tap the bin, without leaving the list."
           />
         }
       />
@@ -142,27 +215,63 @@ export default function YoutubeDownloadCaseStudy() {
 
       <CaseSection label="Process" title="From one commuter's complaint to a shared problem.">
         <ProcessSteps items={PROCESS} />
-        <div className="mt-6">
+        <div id="persona" className="mt-12 scroll-mt-24">
           <Persona />
+        </div>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <Figure
+            image={yt("empathy", 918, 922, "Empathy map built from the interviews: what commuters say, think, do and feel about YouTube downloads")}
+            caption="The empathy map from the interviews and survey."
+          />
+          <Figure
+            image={yt("persona", 1384, 1149, "Persona board for Haikal: main goal, scenario, personality, frustrations and the tools he uses")}
+            caption="Haikal's persona board: the goal, the commute, and what wears him down."
+          />
         </div>
       </CaseSection>
 
-      <CaseSection label="The solution" title="Swipe to delete, drag to reorder." tone="alt">
+      <CaseSection label="Current flow" title="What it takes today, tap by tap." tone="alt">
+        <Body>
+          Before designing anything, I traced the two jobs people complained about most through the app as
+          it ships, counting every tap and every screen.
+        </Body>
+        <div className="mt-10">
+          <FigureStack items={OLD_FLOWS} />
+        </div>
+      </CaseSection>
+
+      <CaseSection label="The solution" title="Swipe to delete, drag to reorder.">
         <Body>
           Two ways to delete, depending on the situation: swipe a single video away in place, or switch
           to multi-select to clear several at once instead of repeating the same flow one video at a time.
           Reordering became drag-and-drop directly in the list, instead of routing through a separate
-          screen for every move. The tap counts at the top of this page are the result.
+          screen for every move. The tap counts further down are the result.
         </Body>
+        <div className="mt-10">
+          <FigureStack items={NEW_FLOWS} />
+        </div>
+        <div className="mt-10">
+          <Figure
+            image={yt("components", 815, 668, "The component set: thumbnails, the video row in normal and edit mode, checkboxes, the Select drawer, and the Delete and Edit menus")}
+            canvasClassName="md:px-24 lg:px-48"
+            caption="The handful of components every new screen is built from: the video row in normal and edit mode, the checkbox, the drawer and the two menus."
+          />
+        </div>
       </CaseSection>
 
-      <CaseSection label="Outcome" title="A proposal, with the numbers behind it.">
-        <Body>
+      <CaseSection label="Outcome" title="A proposal, with the numbers behind it." tone="alt">
+        <Comparison
+          rows={TAPS}
+          note="Step counts mapped directly from the existing flow against the redesigned one, not estimates."
+        />
+        <div className="mt-8">
+          <Body>
           This was a proposal, not a shipped feature. YouTube doesn&apos;t take outside redesigns, and I
           don&apos;t have adoption numbers to report. What it did do: turn a recurring commute annoyance
           into a fully scoped problem with real numbers behind it, and confirm through other commuters
           that the friction wasn&apos;t just in my head.
-        </Body>
+          </Body>
+        </div>
       </CaseSection>
 
       <Reflection>

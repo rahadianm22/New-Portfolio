@@ -57,6 +57,8 @@
   /* Two elevation levels, both tinted toward the accent rather than black. */
   --shadow-soft: 0 1px 2px rgba(22, 36, 110, 0.05), 0 8px 24px -12px rgba(22, 36, 110, 0.14);
   --shadow-lift: 0 2px 6px rgba(22, 36, 110, 0.06), 0 28px 56px -20px rgba(22, 36, 110, 0.32);
+  /* Primary buttons only: offset and blur, never a zero-offset glow. */
+  --shadow-accent: 0 12px 28px -12px rgba(43, 78, 255, 0.7);
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -69,6 +71,13 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* clip, not hidden: hidden would make html a scroll container and break
+   position: sticky. Nothing on the page may scroll sideways at any width. */
+html,
+body {
+  overflow-x: clip;
 }
 
 html {
@@ -95,6 +104,26 @@ button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* Off-screen until focused, then the first thing a keyboard user sees. */
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 300;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
 }
 
 /* On the dark anchor the blue outline disappears into the background,
@@ -137,6 +166,24 @@ button:focus-visible {
 }
 .hero-stagger > *:nth-child(n + 4) {
   animation-delay: 0.22s;
+}
+
+/* ---------------------------------------------------------------
+   Section heads: settle in once reached. Hidden only under .js
+   (set by an inline script in app/layout.tsx), so a page whose
+   scripts fail still shows every heading.
+   --------------------------------------------------------------- */
+.js .rise {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition:
+    opacity 420ms var(--ease-out) 120ms,
+    transform 420ms var(--ease-out) 120ms;
+}
+
+.js .rise.is-in {
+  opacity: 1;
+  transform: none;
 }
 
 /* Thin scroll-progress bar at the very top of the page. Driven by a CSS
@@ -199,69 +246,70 @@ button:focus-visible {
   box-shadow: 0 0 0 1.5px var(--surface);
 }
 
-/* Size changes use width/height, not scale, because transform
-   already carries the position written from JS. */
-.cursor-ring {
-  width: 40px;
-  height: 40px;
-  background: rgba(18, 21, 28, 0.1);
-  transition:
-    opacity 0.2s ease-out,
-    width 0.3s var(--ease-out),
-    height 0.3s var(--ease-out),
-    background-color 0.3s var(--ease-out);
-}
-
 .cursor-dot[data-visible="true"],
 .cursor-ring[data-visible="true"] {
   opacity: 1;
 }
 
-.cursor-ring[data-hover="true"] {
-  width: 64px;
-  height: 64px;
-  background: var(--accent-soft);
-  box-shadow: inset 0 0 0 1.5px rgba(43, 78, 255, 0.35);
-}
-
-.cursor-ring[data-down="true"] {
-  width: 28px;
-  height: 28px;
-}
-
-/* Labelled bubble, requested by [data-cursor-label] (work tiles). */
+/* The ring element only carries the position (transform, from JS). Its
+   inner disc carries the size, as a scale of the 104px label bubble, so
+   nothing animates width or height. */
 .cursor-ring {
+  width: 0;
+  height: 0;
+}
+
+.cursor-ring-inner {
+  position: absolute;
+  left: -52px;
+  top: -52px;
+  width: 104px;
+  height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   white-space: nowrap;
+  border-radius: 9999px;
   font-size: 0;
   font-weight: 600;
   color: var(--on-accent);
+  background: rgba(18, 21, 28, 0.1);
+  transform: scale(0.385);
+  transition:
+    transform 0.3s var(--ease-out),
+    background-color 0.3s var(--ease-out);
 }
 
-.cursor-ring[data-label="true"] {
-  width: 104px;
-  height: 104px;
+.cursor-ring[data-hover="true"] .cursor-ring-inner {
+  transform: scale(0.615);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 2.5px rgba(43, 78, 255, 0.35);
+}
+
+.cursor-ring[data-down="true"] .cursor-ring-inner {
+  transform: scale(0.27);
+}
+
+/* Labelled bubble, requested by [data-cursor-label] (work tiles). */
+.cursor-ring[data-label="true"] .cursor-ring-inner {
+  transform: none;
   font-size: 14px;
   background: var(--accent);
-  box-shadow: 0 12px 28px -12px rgba(43, 78, 255, 0.7);
+  box-shadow: var(--shadow-accent);
 }
 
-.cursor-ring[data-label="true"][data-down="true"] {
-  width: 92px;
-  height: 92px;
+.cursor-ring[data-label="true"][data-down="true"] .cursor-ring-inner {
+  transform: scale(0.885);
 }
 
 .cursor-dot[data-label="true"] {
   opacity: 0;
 }
 
-/* With the labelled cursor on, the in-tile "See more" pill would say the
-   same thing twice on hover. It still shows on keyboard focus. */
-.has-custom-cursor .work-tile:hover:not(:focus-visible) .tile-pill {
-  display: none;
+/* Fields keep the text cursor so typing position stays visible. */
+.has-custom-cursor :is(input, textarea, select, [contenteditable="true"]) {
+  cursor: auto !important;
 }
 
 /* ---------------------------------------------------------------
@@ -282,7 +330,8 @@ button:focus-visible {
 }
 
 .marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track {
+.marquee:focus-within .marquee-track,
+.marquee[data-paused] .marquee-track {
   animation-play-state: paused;
 }
 
@@ -326,10 +375,19 @@ button:focus-visible {
     display: none !important;
   }
 
+  .js .rise {
+    opacity: 1;
+    transform: none;
+  }
+
   /* No motion: one still, wrapped row of logos, no duplicate set. */
   .marquee {
     -webkit-mask-image: none;
     mask-image: none;
+  }
+
+  .marquee-toggle {
+    display: none !important;
   }
 
   .marquee-track {

@@ -48,6 +48,7 @@ const config: Config = {
       boxShadow: {
         soft: "var(--shadow-soft)",
         lift: "var(--shadow-lift)",
+        accent: "var(--shadow-accent)",
       },
       transitionTimingFunction: {
         out: "var(--ease-out)",

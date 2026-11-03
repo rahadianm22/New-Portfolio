@@ -23,10 +23,7 @@ export function SectionHeading({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDrawn(true);
-      return;
-    }
+    // Reduced motion needs no branch: globals.css cuts every transition to ~0ms.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -43,13 +40,7 @@ export function SectionHeading({
   return (
     <div ref={ref} className="mb-block flex flex-wrap items-center gap-x-6 gap-y-4">
       <h2
-        className="text-3xl md:text-4xl font-bold leading-tight tracking-[-0.025em] text-ink"
-        style={{
-          opacity: drawn ? 1 : 0,
-          transform: drawn ? "none" : "translate3d(0, 10px, 0)",
-          transition:
-            "opacity 420ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 120ms",
-        }}
+        className={`text-3xl md:text-[2.75rem] font-bold leading-tight tracking-[-0.025em] text-ink rise ${drawn ? "is-in" : ""}`}
       >
         {title}
       </h2>

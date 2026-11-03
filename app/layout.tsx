@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { CustomCursor } from "@/components/CustomCursor";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
 /**
  * Self-hosted by next/font, so there is no render-blocking stylesheet
@@ -16,37 +17,30 @@ const urbanist = Urbanist({
   display: "swap",
 });
 
-const SITE_URL = "https://rahadianm22.my.id";
 const TITLE = "Rahadian Maulana · Senior Product Designer";
 const DESCRIPTION =
   "Senior Product Designer with 5+ years designing regulated fintech & banking products.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
-  description: DESCRIPTION,
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: SITE_URL,
-    siteName: "Rahadian Maulana Portfolio",
-    type: "website",
-    locale: "en_US",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Rahadian Maulana, Senior Product Designer",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-    images: ["/twitter-image"],
-  },
+  ...pageMetadata({ title: TITLE, description: DESCRIPTION, path: "/" }),
+};
+
+/** Who the site is about, for search engines. Only facts the site already states. */
+const PERSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rahadian Maulana",
+  jobTitle: "Senior Product Designer",
+  url: SITE_URL,
+  email: "mailto:rahadianm22@gmail.com",
+  address: { "@type": "PostalAddress", addressLocality: "Jakarta", addressCountry: "ID" },
+  sameAs: [
+    "https://www.linkedin.com/in/rahadianm22/",
+    "https://dribbble.com/rahadianm22",
+    "https://medium.com/@Rahadianm22",
+    "https://www.instagram.com/rahadianonly/",
+  ],
 };
 
 export default function RootLayout({
@@ -55,8 +49,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={urbanist.variable}>
+    // suppressHydrationWarning: the script below adds "js" to <html> before React hydrates.
+    <html lang="en" className={urbanist.variable} suppressHydrationWarning>
       <head>
+        {/* Entrance styles hide content only under .js, so nothing stays invisible without scripts. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -64,6 +61,13 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="antialiased font-display bg-surface text-ink">
+        <a href="#content" className="skip-link">
+          Skip to content
+        </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_LD) }}
+        />
         {children}
         <CustomCursor />
         <Analytics />
