@@ -28,12 +28,13 @@ const linkClass =
  * last thing on every page is the way to reach him. Below it, three short
  * columns: where to go on the site, where else to find him, and his status.
  */
-export function Footer() {
+export function Footer({ showEmail = true }: { showEmail?: boolean }) {
   const year = new Date().getFullYear();
 
   return (
     <footer className="bg-surface px-6 md:px-12 pb-10">
       <div className="max-w-page mx-auto">
+        {showEmail ? (
         <a
           href={`mailto:${EMAIL}`}
           className="group grid items-center gap-x-8 gap-y-3 border-y border-line py-8 md:py-10 no-underline
@@ -54,6 +55,9 @@ export function Footer() {
             <ArrowUpRight size={20} strokeWidth={1.75} />
           </span>
         </a>
+        ) : (
+          <div className="border-t border-line" />
+        )}
 
         <div className="grid gap-10 py-12 md:grid-cols-3 md:gap-0">
           <FooterColumn title="Pages" first>

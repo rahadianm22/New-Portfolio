@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL, lastModified, priority: 1 },
     { url: `${SITE_URL}/case-studies`, lastModified, priority: 0.8 },
     { url: `${SITE_URL}/experience`, lastModified, priority: 0.8 },
+    { url: `${SITE_URL}/playground`, lastModified, priority: 0.6 },
     { url: `${SITE_URL}/resume`, lastModified, priority: 0.8 },
     ...CASE_STUDIES.map((study) => ({ url: `${SITE_URL}${study.href}`, lastModified, priority: 0.7 })),
   ];

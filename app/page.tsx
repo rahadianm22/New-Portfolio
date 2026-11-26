@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { SelectedWorkSection } from "@/components/SelectedWorkSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
+import { PlaygroundSection } from "@/components/PlaygroundSection";
 import { SystemsSection } from "@/components/SystemsSection";
 import { SideProjectSection } from "@/components/SideProjectSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -23,10 +24,11 @@ export default function Home() {
       <TrustedBySection />
       <SelectedWorkSection />
       <ExperienceSection />
+      <PlaygroundSection />
       <SystemsSection />
       <SideProjectSection />
       <ContactSection />
-      <Footer />
+      <Footer showEmail={false} />
     </main>
   );
 }

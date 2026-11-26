@@ -10,6 +10,7 @@ import { ArrowRight, ArrowUpRight, FileText } from "lucide-react";
 const NAV_LINKS = [
   { label: "Case Studies", id: "work" },
   { label: "Experience", id: "experience" },
+  { label: "Playground", id: "playground" },
   { label: "Expertise", id: "systems" },
   { label: "Design System", id: "side-project" },
   { label: "Contact", id: "contact" },
@@ -94,7 +95,7 @@ export function Navbar() {
             priority
             className="rounded-full"
           />
-          <span className="text-[15px] font-semibold text-ink">Rahadian Maulana</span>
+          <span className="whitespace-nowrap text-[15px] font-semibold text-ink">Rahadian Maulana</span>
         </Link>
 
         <div className="hidden xl:flex items-center gap-1">
@@ -105,7 +106,7 @@ export function Navbar() {
                 key={item.id}
                 href={`/#${item.id}`}
                 aria-current={isActive ? "location" : undefined}
-                className={`inline-flex items-center min-h-10 px-3.5 rounded-full text-sm font-medium no-underline
+                className={`inline-flex items-center min-h-10 px-3 2xl:px-3.5 whitespace-nowrap rounded-full text-sm font-medium no-underline
                             transition-colors duration-200 hover:bg-surface-alt hover:text-ink
                             ${isActive ? "bg-surface-alt text-ink" : "text-ink-2"}`}
               >
@@ -119,7 +120,7 @@ export function Navbar() {
           <Link
             href="/resume"
             aria-current={onResume ? "page" : undefined}
-            className={`hidden lg:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold no-underline
+            className={`hidden lg:inline-flex items-center gap-2 min-h-12 px-5 whitespace-nowrap rounded-full text-sm font-semibold no-underline
                         ring-1 transition duration-300 ease-out active:scale-[0.98]
                         ${onResume ? "bg-ink text-surface ring-ink" : "text-ink ring-line-strong hover:bg-surface-alt"}`}
           >
@@ -127,9 +128,10 @@ export function Navbar() {
             Resume
           </Link>
 
+          {/* Between xl and 2xl the six section links need the room; Contact covers email there. */}
           <a
             href="mailto:rahadianm22@gmail.com"
-            className="hidden md:inline-flex items-center gap-2 min-h-12 px-5 rounded-full text-sm font-semibold
+            className="hidden md:inline-flex xl:hidden 2xl:inline-flex items-center gap-2 min-h-12 px-5 whitespace-nowrap rounded-full text-sm font-semibold
                        text-ink ring-1 ring-line-strong no-underline transition duration-300 ease-out
                        hover:bg-surface-alt active:scale-[0.98]"
           >
@@ -140,7 +142,7 @@ export function Navbar() {
           {/* The work is what a reviewer came for, so it is the one filled button. */}
           <Link
             href={onHome ? "#work" : "/case-studies"}
-            className="group hidden sm:inline-flex items-center gap-2 min-h-12 pl-5 pr-1.5 rounded-full text-sm font-semibold
+            className="group hidden sm:inline-flex items-center gap-2 min-h-12 pl-5 pr-1.5 whitespace-nowrap rounded-full text-sm font-semibold
                        bg-accent text-on-accent no-underline transition duration-300 ease-out
                        hover:bg-accent-hover active:scale-[0.98]"
           >
