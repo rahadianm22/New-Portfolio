@@ -32,7 +32,7 @@ export default function PlaygroundPage() {
           <h1 className="mt-8 max-w-3xl text-4xl md:text-6xl font-bold leading-[1.02] tracking-[-0.035em] text-ink">
             Things I built to try an idea.
           </h1>
-          <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink-2">
+          <p className="mt-6 max-w-4xl text-lg md:text-xl leading-relaxed text-ink-2 [text-wrap:pretty]">
             Side projects I vibe-coded on my own. I design each one, build it with AI coding tools like
             Claude Code, and ship it myself, from the first idea to the live URL. Every one of them is
             live, so open them and click around.

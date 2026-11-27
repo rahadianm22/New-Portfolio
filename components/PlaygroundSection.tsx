@@ -109,7 +109,7 @@ export function PlaygroundSection() {
           }
         />
 
-        <p className="-mt-4 mb-12 max-w-[62ch] text-lg leading-relaxed text-ink-2 md:-mt-6">
+        <p className="-mt-4 mb-12 max-w-4xl text-lg md:text-xl leading-relaxed text-ink-2 [text-wrap:pretty] md:-mt-6">
           Side projects I vibe-coded on my own. I design each one, build it with AI coding tools like Claude
           Code, and ship it myself, from the first idea to the live URL. It&apos;s where I try ideas faster
           than client work allows, and every one of them is live, so open them and click around.
